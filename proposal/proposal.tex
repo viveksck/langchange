@@ -1,0 +1,45 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage{natbib}
+\author{Will Hamilton}
+\title{Rotation Project Proposal}
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+
+A number of recent works have examined the way in which social factors influence the spread of (linguistic) conventions or innovations within social networks and online communities \citep[e.g.,][]{centola_spontaneous_2015, danescu-niculescu-mizil_no_2013,kooti_predicting_2012, montanari_spread_2010, young_dynamics_2011}.
+The topology of the social network (e.g., the degree distribution) in particular has received a great deal of attention.
+My proposed project will focus on a complementary set of ``intrinsic'' features influencing the spread of \emph{lexical innovations}: features of the innovation itself and its relation to other recent innovations.
+Examples of such features include the sentiment of the new lexeme, its similarity (e.g., in LSA space) to other recent innovations, and its frequency of use outside the community (e.g., its frequency in the Google N-gram dataset). 
+
+I propose to use the RateBeer and BeerAdvocate  datasets in order to quantify the relative contribution of such ``intrinsic'' features --- compared to social features such as the centrality, competence, or prolificity of the innovator --- in determining the success of a lexical innovation.
+My primary means of quantifying such contributions will be based upon comparing the relative performance of (simple) classifiers which predict whether or not a lexical innovation will be ``successful'', i.e. conventionalized.
+Thus, as a corollary, I will aim produce a state-of-the-art classifier with respect to this objective of predicting an innovation's success. 
+
+Given the potential complexity and openendedness of such a project, my methodology will emphasize an incremental approach, making substantial use of pre-existing works.
+My initial plan will be to
+\begin{enumerate}
+\item
+contact Prof. Danescu-Niculescu-Mizil in order to determine any interest he has in this particular area and relevant findings he might have,
+\item
+analyze and collect statistics on the rate etc. of lexical innovation in the datasets (building upon using existing results from \citep{danescu-niculescu-mizil_no_2013}),
+\item
+build a rudimentary (logistic) classifier based only on features available in the dataset (e.g., prolificity of the innovator),
+\item
+incrementally add sophisticated features using pre-existing frameworks  (e.g., sentiment classifiers, Google N-grams) with an emphasis on ``intrinsic'' features.  (The development of such features may provide interesting insights independent of their use in classification.),
+\item
+determine which of these features are most useful and refine their computation via more domain specific techniques,
+\end{enumerate}
+
+{\small
+\bibliography{langchange}
+\bibliographystyle{plain}
+}
+
+ 
+
+\end{document}
