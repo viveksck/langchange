@@ -1369,7 +1369,7 @@ static char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous
 static char __pyx_k_retrieve_cooccurrence_as_coo[] = "retrieve_cooccurrence_as_coo";
 static char __pyx_k_info_relevantwords_100000_pkl[] = "info/relevantwords-100000.pkl";
 static char __pyx_k_Padding_rest_of_array_uniformly[] = "Padding rest of array uniformly randomly...";
-static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/googlengram/statpullscripts/makew2vtrain.pyx";
+static char __pyx_k_dfs_scratch0_wleif_langchange_g[] = "/dfs/scratch0/wleif/langchange/googlengram/statpullscripts/makew2vtrain.pyx";
 static char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
 static char __pyx_k_Format_string_allocated_too_shor[] = "Format string allocated too short, see comment in numpy.pxd";
 static char __pyx_k_Getting_sum_of_remaining_element[] = "Getting sum of remaining elements...";
@@ -1419,7 +1419,6 @@ static PyObject *__pyx_n_s_YEARS;
 static PyObject *__pyx_kp_s__10;
 static PyObject *__pyx_kp_s__8;
 static PyObject *__pyx_n_s_acquire;
-static PyObject *__pyx_kp_s_afs_cs_stanford_edu_u_williamle;
 static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_kp_s_bin;
 static PyObject *__pyx_n_s_binomial;
@@ -1437,6 +1436,7 @@ static PyObject *__pyx_kp_s_cv_txt;
 static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_n_s_defaultdict;
 static PyObject *__pyx_kp_s_dfs_scratch0_google_ngrams;
+static PyObject *__pyx_kp_s_dfs_scratch0_wleif_langchange_g;
 static PyObject *__pyx_n_s_dirs;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_empty;
@@ -7339,7 +7339,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 0, 1, 0},
   {&__pyx_kp_s__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 0, 1, 0},
   {&__pyx_n_s_acquire, __pyx_k_acquire, sizeof(__pyx_k_acquire), 0, 0, 1, 1},
-  {&__pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_k_afs_cs_stanford_edu_u_williamle, sizeof(__pyx_k_afs_cs_stanford_edu_u_williamle), 0, 0, 1, 0},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_kp_s_bin, __pyx_k_bin, sizeof(__pyx_k_bin), 0, 0, 1, 0},
   {&__pyx_n_s_binomial, __pyx_k_binomial, sizeof(__pyx_k_binomial), 0, 0, 1, 1},
@@ -7357,6 +7356,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
   {&__pyx_n_s_defaultdict, __pyx_k_defaultdict, sizeof(__pyx_k_defaultdict), 0, 0, 1, 1},
   {&__pyx_kp_s_dfs_scratch0_google_ngrams, __pyx_k_dfs_scratch0_google_ngrams, sizeof(__pyx_k_dfs_scratch0_google_ngrams), 0, 0, 1, 0},
+  {&__pyx_kp_s_dfs_scratch0_wleif_langchange_g, __pyx_k_dfs_scratch0_wleif_langchange_g, sizeof(__pyx_k_dfs_scratch0_wleif_langchange_g), 0, 0, 1, 0},
   {&__pyx_n_s_dirs, __pyx_k_dirs, sizeof(__pyx_k_dirs), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_empty, __pyx_k_empty, sizeof(__pyx_k_empty), 0, 0, 1, 1},
@@ -7664,7 +7664,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__21 = PyTuple_Pack(4, __pyx_n_s_word_file, __pyx_n_s_common_words, __pyx_n_s_common_indices, __pyx_n_s_i); if (unlikely(!__pyx_tuple__21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 22; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_get_word_indices, 22, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 22; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 4, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_dfs_scratch0_wleif_langchange_g, __pyx_n_s_get_word_indices, 22, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 22; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "googlengram/statpullscripts/makew2vtrain.pyx":33
  * MERGED_INDEX = list(MERGED_INDEX)
@@ -7676,7 +7676,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__23 = PyTuple_Pack(8, __pyx_n_s_proc_num, __pyx_n_s_lock, __pyx_n_s_years, __pyx_n_s_work_left, __pyx_n_s_year, __pyx_n_s_dirs, __pyx_n_s_fname, __pyx_n_s_fp); if (unlikely(!__pyx_tuple__23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_main, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_dfs_scratch0_wleif_langchange_g, __pyx_n_s_main, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "googlengram/statpullscripts/makew2vtrain.pyx":59
  * @cython.boundscheck(False)
@@ -7688,7 +7688,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__25 = PyTuple_Pack(33, __pyx_n_s_year, __pyx_n_s_year_mat_coo, __pyx_n_s_og_sum, __pyx_n_s_subsampler, __pyx_n_s_year_mat_csr, __pyx_n_s_rows_to_remove, __pyx_n_s_row_i, __pyx_n_s_num_subsampled, __pyx_n_s_keep_row_map, __pyx_n_s_year_mat_csc, __pyx_n_s_cols_to_remove, __pyx_n_s_col_i, __pyx_n_s_keep_col_map, __pyx_n_s_i, __pyx_n_s_sum, __pyx_n_s_nnz, __pyx_n_s_tmp_array, __pyx_n_s_row_counts, __pyx_n_s_col_counts, __pyx_n_s_r, __pyx_n_s_num_samples, __pyx_n_s_count, __pyx_n_s_num_added, __pyx_n_s_prob, __pyx_n_s_j, __pyx_n_s_rand_i, __pyx_n_s_train_fp, __pyx_n_s_pair, __pyx_n_s_wv_fp, __pyx_n_s_keep_row_list, __pyx_n_s_word_i, __pyx_n_s_cv_fp, __pyx_n_s_keep_col_list); if (unlikely(!__pyx_tuple__25)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 33, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_train_data_for_year, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 33, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_dfs_scratch0_wleif_langchange_g, __pyx_n_s_train_data_for_year, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "googlengram/statpullscripts/makew2vtrain.pyx":165
  *         cv_fp.write(MERGED_INDEX[word_i].encode('utf-8') + " " + str(count) + "\n")
@@ -7700,7 +7700,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__27 = PyTuple_Pack(5, __pyx_n_s_num_procs, __pyx_n_s_lock, __pyx_n_s_procs, __pyx_n_s_p, __pyx_n_s_i); if (unlikely(!__pyx_tuple__27)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_run_parallel, 165, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_dfs_scratch0_wleif_langchange_g, __pyx_n_s_run_parallel, 165, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
