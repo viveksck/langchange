@@ -3,14 +3,17 @@ import os
 from multiprocessing import Process, Lock
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/vecs-tmp/'
-OUTPUT_DIR = DATA_DIR + '/vecs-tmp-np/'
-CTX_INPUT_FILE = INPUT_DIR + '{year}-300ctxvecs'
-W_INPUT_FILE = INPUT_DIR + '{year}-300vecs'
-CTX_OUTPUT_FILE = OUTPUT_DIR + '{year}-300ctxvecs'
+INPUT_DIR = DATA_DIR + '/sglove-vecs-smallrel/'
+OUTPUT_DIR = DATA_DIR + '/sglove-vecs-smallrel-np/'
+#CTX_INPUT_FILE = INPUT_DIR + '{year}-300ctxvecs'
+W_INPUT_FILE = INPUT_DIR + '{year}-300vec.txt'
+#CTX_OUTPUT_FILE = OUTPUT_DIR + '{year}-300ctxvecs'
 W_OUTPUT_FILE = OUTPUT_DIR + '{year}-300vecs'
 
-YEARS = range(2007, 2008)
+YEARS = range(1930,1931)
+VOCAB_SIZE = 100000
+DIM = 300
+size = (VOCAB_SIZE, DIM)
 
 def main(proc_num, lock):
     while True:
@@ -35,12 +38,12 @@ def main(proc_num, lock):
 
 def write_year(year):
     write_vecs(W_INPUT_FILE.format(year=year), W_OUTPUT_FILE.format(year=year))
-    write_vecs(CTX_INPUT_FILE.format(year=year), CTX_OUTPUT_FILE.format(year=year))
+#    write_vecs(CTX_INPUT_FILE.format(year=year), CTX_OUTPUT_FILE.format(year=year))
 
 def write_vecs(finname, foutname):
     fh=file(finname)
-    first=fh.next()
-    size=map(int,first.strip().split())
+#    first=fh.next()
+#    size=map(int,first.strip().split())
 
     wvecs=np.zeros((size[0],size[1]),float)
     vocab=[]
@@ -62,4 +65,4 @@ def run_parallel(num_procs):
         p.join()
 
 if __name__ == '__main__':
-    run_parallel(1)
+    run_parallel(30)

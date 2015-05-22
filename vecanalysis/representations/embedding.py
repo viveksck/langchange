@@ -25,6 +25,17 @@ class Embedding:
         iw = file(vocabfile).read().split()
         return cls(m, iw, normalize) 
 
+    def get_subembed(self, word_list):
+        word_list = [word for word in word_list if not self.oov(word)]
+        keep_indices = [self.wi[word] for word in word_list]
+        return Embedding(self.m[keep_indices, :], word_list)
+
+    def get_neighbourhood_embed(self, w, n=1000):
+        neighbours = self.closest(w, n=n)
+        keep_indices = [self.wi[neighbour] for _, neighbour in neighbours] 
+        new_mat = self.m[keep_indices, :]
+        return Embedding(new_mat, [neighbour for _, neighbour in neighbours]) 
+
     def normalize(self):
         norm = np.sqrt(np.sum(self.m * self.m, axis=1))
         self.m = self.m / norm[:, np.newaxis]

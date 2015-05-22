@@ -8,37 +8,46 @@ def intersection_align(embed1, embed2):
         Get the intersection of two embeddings.
         Returns embeddings with common vocabulary and indices.
     """
-    common_vocab = filter(set(embed1._vocab).__contains__, embed2._vocab) 
-    new_vecs1 = np.empty((len(common_vocab), embed1._vecs.shape[1]))
-    new_vecs2 = np.empty((len(common_vocab), embed2._vecs.shape[1]))
+    common_vocab = filter(set(embed1.iw).__contains__, embed2.iw) 
+    newvecs1 = np.empty((len(common_vocab), embed1.m.shape[1]))
+    newvecs2 = np.empty((len(common_vocab), embed2.m.shape[1]))
     for i in xrange(len(common_vocab)):
-        new_vecs1[i] = embed1._vecs[embed1._w2v[common_vocab[i]]]
-        new_vecs2[i] = embed2._vecs[embed2._w2v[common_vocab[i]]]
-    return Embedding(new_vecs1, common_vocab), Embedding(new_vecs2, common_vocab)
-    
+        newvecs1[i] = embed1.m[embed1.wi[common_vocab[i]]]
+        newvecs2[i] = embed2.m[embed2.wi[common_vocab[i]]]
+    return Embedding(newvecs1, common_vocab), Embedding(newvecs2, common_vocab)
+
+def smart_procrustes_align(base_embed, other_embed, post_normalize=False):
+    in_base_embed, in_other_embed = intersection_align(base_embed, other_embed)
+    base_vecs = in_base_embed.m
+    other_vecs = in_other_embed.m
+    m = other_vecs.T.dot(base_vecs)
+    u, _, v = np.linalg.svd(m) 
+    ortho = u.dot(v)
+    return Embedding((other_embed.m).dot(ortho), other_embed.iw, normalize = post_normalize)
+
 def procrustes_align(base_embed, other_embed):
     """ 
         Align other embedding to base embeddings via Procrustes.
         Returns best distance-preserving aligned version of other_embed
         NOTE: Assumes indices are aligned
     """
-    base_vecs = base_embed._vecs
-    other_vecs = other_embed._vecs
-    m = other_vecs.T.dot(base_vecs)
+    basevecs = base_embed.m - base_embed.m.mean(0)
+    othervecs = other_embed.m - other_embed.m.mean(0)
+    m = othervecs.T.dot(basevecs)
     u, _, v = np.linalg.svd(m) 
     ortho = u.dot(v)
-    fixed_vecs = other_vecs.dot(ortho)
-    return Embedding(fixed_vecs, other_embed._vocab)
+    fixedvecs = othervecs.dot(ortho)
+    return Embedding(fixedvecs, other_embed.iw)
 
 def linear_align(base_embed, other_embed):
     """
         Align other embedding to base embedding using best linear transform.
         NOTE: Assumes indices are aligned
     """
-    base_vecs = base_embed._vecs
-    other_vecs = other_embed._vecs
-    fixed_vecs = other_vecs.dot(np.pinv(other_vecs)).dot(base_vecs)
-    return Embedding(fixed_vecs, other_embed.vocab)
+    basevecs = base_embed.m
+    othervecs = other_embed.m
+    fixedvecs = othervecs.dot(np.linalg.pinv(othervecs)).dot(basevecs)
+    return Embedding(fixedvecs, other_embed.iw)
 
 
 

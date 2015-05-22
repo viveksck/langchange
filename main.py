@@ -1,5 +1,3 @@
-from googlengram.statpullscripts.samplesizes import run_parallel 
+from googlengram.statpullscripts.laplaceppmigen import run_parallel
 
-run_parallel(10)
-
-
+run_parallel(20)

@@ -6,7 +6,7 @@ from scipy.sparse import coo_matrix
 import numpy as np
 cimport numpy as np
 
-NGRAM_DIM = 754405
+NGRAM_DIM = 739547
 
 def export_cooccurrence(year_counts, output_dir):
     cdef FILE* fout
@@ -66,6 +66,7 @@ def retrieve_cooccurrence(filename):
     return year_count
 
 def retrieve_cooccurrence_as_coo(matfn):
+    print "FUCCCCCKKKKK"
     cdef FILE* fin
     cdef int word1, word2, ret
     cdef double val

@@ -10,7 +10,7 @@ OUTPUT_DIR = DATA_DIR + '/vecs-interesting-aligned/'
 INPUT_FILE = INPUT_DIR + '{year}-200vecs.npy'
 OUTPUT_FILE = OUTPUT_DIR + '{year}-200vecs'
 
-YEARS = range(1850, 2006, 5)
+YEARS = range(1850, 2009)
 BASE_YEAR = 2005
 BASE_EMBED = embeddings.Embeddings.load(INPUT_FILE.format(year=BASE_YEAR))
 

@@ -3,17 +3,19 @@ import os
 from multiprocessing import Process, Lock
 
 from googlengram import util
-from representations.explicit import Explicit
+from vecanalysis.representations.representation_factory import simple_create_representation
 
 DATA_DIR = "/dfs/scratch0/google_ngrams/"
-PPMI_DIR = DATA_DIR + "5grams_ppmi_smooth/"
+INPUT_PATH = DATA_DIR + "vecs-fixed-aligned-seq/{year}-300vecs"
 TMP_DIR = '/lfs/madmax5/0/will/google_ngrams/tmp/'
-OUTPUT_PREFIX = DATA_DIR + "info/ppmi_cosine_f1900"
+OUTPUT_PREFIX = DATA_DIR + "info/vec_cosine_f1900"
 
 YEARS = range(1901, 2009)
 CONTEXT_WORDS = context_words = util.load_pickle("/dfs/scratch0/google_ngrams/info/relevantwords.pkl")
 WORDS = util.load_pickle("/dfs/scratch0/google_ngrams/info/interestingwords.pkl")
-DISPLACEMENT_BASE = Explicit.load(PPMI_DIR + "1900.bin", restricted_context=CONTEXT_WORDS)
+REP_TYPE = "SKIPGRAM"
+
+DISPLACEMENT_BASE = simple_create_representation(REP_TYPE, INPUT_PATH.format(year=1900), restricted_context=CONTEXT_WORDS)
 
 def get_cosine_deltas(base_embeds, delta_embeds, words):
     deltas = {}
@@ -21,7 +23,10 @@ def get_cosine_deltas(base_embeds, delta_embeds, words):
         if base_embeds.oov(word) or delta_embeds.oov(word):
             deltas[word] = float('nan')
         else:
-            deltas[word] = base_embeds.represent(word).dot(delta_embeds.represent(word).T)[0, 0]
+            delta = base_embeds.represent(word).dot(delta_embeds.represent(word).T)
+            if REP_TYPE == "PPMI":
+                delta = delta[0,0]
+            deltas[word] = delta
     return deltas
 
 def merge():
@@ -62,8 +67,8 @@ def main(proc_num, lock):
             break
         
         print proc_num, "Loading matrices..."
-        base = Explicit.load(PPMI_DIR + str(year - 1) + ".bin", restricted_context=CONTEXT_WORDS)
-        delta = Explicit.load(PPMI_DIR + str(year) + ".bin", restricted_context=CONTEXT_WORDS)
+        base = simple_create_representation(REP_TYPE, INPUT_PATH.format(year=year-1), restricted_context=CONTEXT_WORDS)
+        delta = simple_create_representation(REP_TYPE, INPUT_PATH.format(year=year), restricted_context=CONTEXT_WORDS)
         print proc_num, "Getting deltas..."
         year_vols = get_cosine_deltas(base, delta, WORDS)
         year_disp = get_cosine_deltas(DISPLACEMENT_BASE, delta, WORDS)
