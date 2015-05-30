@@ -22,6 +22,5 @@ if __name__ == '__main__':
     print "Saving year", year
     np.save(OUTPUT_PATH.format(year=year) + ".npy", new_mat)
     vocab_outfp = open(OUTPUT_PATH.format(year=year) + ".vocab", "w")
-    vocab_outfp.write(" ".join(base_embed.iw))
-
-
+    words = [word.encode('utf-8') for word in base_embed.iw]
+    vocab_outfp.write(" ".join(words))
