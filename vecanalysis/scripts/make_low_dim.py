@@ -20,7 +20,7 @@ if __name__ == '__main__':
     pca = TruncatedSVD(n_components=300)
     new_mat = pca.fit_transform(base_embed.m)
     print "Saving year", year
-    np.save(new_mat, OUTPUT_PATH.format(year=year) + ".npy")
+    np.save(OUTPUT_PATH.format(year=year) + ".npy", new_mat)
     vocab_outfp = open(OUTPUT_PATH.format(year=year) + ".vocab", "w")
     vocab_outfp.write(" ".join(base_embed.iw))
 
