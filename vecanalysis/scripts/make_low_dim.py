@@ -1,31 +1,27 @@
 import sys
 
 import numpy as np
+from sklearn.decomposition import TruncatedSVD
 
-from vecanalysis.representations.embedding import Embedding
-from vecanalysis.alignment import smart_procrustes_align
-from vecanalysis.dimreduce import reduce_dim
+from googlengram import util
+from vecanalysis.representations.explicit import Explicit
 
-INPUT_DIR = "/dfs/scratch0/google_ngrams/vecs-fixed-np/"
-OUTPUT_DIR = "/dfs/scratch0/google_ngrams/vecs-fixed-lowdim/"
-BASE_YEAR = 2008
-INPUT_PATH = INPUT_DIR + '{year}-300vecs'
-OUTPUT_PATH = OUTPUT_DIR + '{year}-vecs'
+INPUT_DIR = "/dfs/scratch0/google_ngrams/5grams_ppmi_lsmooth_fixed/"
+OUTPUT_DIR = "/dfs/scratch0/google_ngrams/vecs-svd/"
+INPUT_PATH = INPUT_DIR + '{year}.bin'
+OUTPUT_PATH = OUTPUT_DIR + '{year}-300vecs'
 
 if __name__ == '__main__':
     year = sys.argv[1]
-    print "Loading embeddings..."
-    base_embed = Embedding.load(INPUT_PATH.format(year=BASE_YEAR))
-    other_embed = Embedding.load(INPUT_PATH.format(year=year))
-    print "Reducing dimensionalities..."
-    base_embed = reduce_dim(base_embed)
-    other_embed = reduce_dim(other_embed)
-    print "Aligning..."
-    aligned_embed = smart_procrustes_align(base_embed, other_embed)
-    print "Writing..."
-    foutname = OUTPUT_PATH.format(year=year)
-    np.save(foutname+".npy",aligned_embed.m)
-    with file(foutname+".vocab","w") as outf:
-       print >> outf, " ".join(aligned_embed.iw)
+    print "Loading embeddings for year", year
+    words = util.load_pickle("/dfs/scratch0/google_ngrams/info/interestingwords.pkl")
+    base_embed = Explicit.load(INPUT_PATH.format(year=year), restricted_context=words)
+    print "SVD for year", year
+    pca = TruncatedSVD(n_components=300)
+    new_mat = pca.fit_transform(base_embed.m)
+    print "Saving year", year
+    np.save(new_mat, OUTPUT_PATH.format(year) + ".npy")
+    vocab_outfp = open(OUTPUT_PATH.format(year) + ".vocab", "w")
+    vocab_outfp.write(" ".join(base_embed.iw))
 
 

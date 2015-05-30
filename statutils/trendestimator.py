@@ -88,6 +88,7 @@ def get_densefreq_corr(density_trends_p, freq_trends_p, p_value_thresh = 0.001):
             freq_trends[word] = freq_trends_p[word]
     get_sig_slope = lambda info : info.params[1] if info.pvalues[1] < p_value_thresh else 0
     for word in density_trends.keys(): 
+        M
         if density_trends[word].nobs < 20 or freq_trends[word].nobs < 20:
             continue
         a.append(-1 * get_sig_slope(density_trends[word]))

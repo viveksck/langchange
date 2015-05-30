@@ -4,8 +4,8 @@ from vecanalysis import alignment
 from vecanalysis.representations import embedding
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/vecs-fixed-np/'
-OUTPUT_DIR = DATA_DIR + '/vecs-fixed-aligned-seq/'
+INPUT_DIR = DATA_DIR + '/sglove-vecs-smallrel-np/'
+OUTPUT_DIR = DATA_DIR + '/sglove-vecs-smallrel-aligned-seq/'
 INPUT_FILE = INPUT_DIR + '{year}-300vecs'
 OUTPUT_FILE = OUTPUT_DIR + '{year}-300vecs'
 

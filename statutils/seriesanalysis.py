@@ -28,10 +28,22 @@ def _make_series_mat(words_time_series, words, one_minus=True, start_year=1900, 
     series_mat = np.array(series_list)
     return series_mat
 
-def get_series_mean_conf(words_time_series, words, one_minus=True, start_year=1900, end_year=2000):
-    series_mat = _make_series_mat(words_time_series, words, one_minus=True, start_year=start_year, end_year=end_year)
+def get_series_mean_conf(words_time_series, words, one_minus=False, start_year=1900, end_year=2000):
+    series_mat = _make_series_mat(words_time_series, words, one_minus=one_minus, start_year=start_year, end_year=end_year)
     means = series_mat.mean(0)
     return means, series_mat.std(0) / np.sqrt(len(means))
+
+def get_power_series(word_degree_series, words, year=1999):
+    series_mat = _make_series_mat(word_degree_series, words, one_minus=False, start_year=year, end_year=year)
+    degs = []
+    probs = []
+    sum = series_mat.sum()
+    for i in range(1, series_mat.max() + 1):
+        count = (series_mat == i).sum()
+        if count != 0:
+            probs.append(float(count) / float(sum))
+            degs.append(i)
+    return degs, probs
 
 def p_value_series(words_time_series, word_set1, word_set2,  one_minus=True):
     series_mat1 = _make_series_mat(words_time_series, word_set1, one_minus=True)

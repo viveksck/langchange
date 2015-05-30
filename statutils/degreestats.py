@@ -5,12 +5,11 @@ from multiprocessing import Process, Lock
 from googlengram import matstore, util
 
 import numpy as np
-cimport numpy as np
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
 INPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed/'
-OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-clust-lfixed"
-TMP_DIR = '/lfs/madmax5/0/will/google_ngrams/tmp/'
+OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-neigh-fixed"
+TMP_DIR = '/lfs/madmax7/0/will/google_ngrams/tmp/'
 WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
 
 def get_word_indices(word_list):
@@ -28,32 +27,30 @@ def compute_word_stats(mat, word, context_indices):
     if word_i >= mat.shape[0]:
         return -1, -1 
     vec = mat[word_i, :]
-    indices = vec.nonzero()[1]
-    indices = np.intersect1d(indices, context_indices, assume_unique=True)
-    if len(indices) <= 1:
-        return 0, 0
-    weights = vec[:, indices]
-    weights /= weights.sum()
-    reduced = mat[indices, :]
-    reduced = reduced[:, indices]
-    return (weights * reduced).sum() / (float(len(indices)) - 1), float(reduced.nnz) / (len(indices) * (len(indices) - 1))
+    return vec.nnz, vec.sum(), vec.sum() / (float(vec.nnz)) 
 
 def merge():
-    binary_yearstats = {}
-    weighted_yearstats = {}
+    degree_yearstats = {}
+    sum_yearstats = {}
+    avg_yearstats = {}
     for word in WORDS:
-        binary_yearstats[word] = {}
-        weighted_yearstats[word] = {}
+        degree_yearstats[word] = {}
+        sum_yearstats[word] = {}
+        avg_yearstats[word] = {}
     for year in YEARS:
-        binary_yearstat = util.load_pickle(TMP_DIR + str(year) + "-binary.pkl")
-        weighted_yearstat = util.load_pickle(TMP_DIR + str(year) + "-weighted.pkl")
+        degree_yearstat = util.load_pickle(TMP_DIR + str(year) + "-deg.pkl")
+        sum_yearstat = util.load_pickle(TMP_DIR + str(year) + "-sum.pkl")
+        avg_yearstat = util.load_pickle(TMP_DIR + str(year) + "-avg.pkl")
         for word in WORDS:
-            binary_yearstats[word][year] = binary_yearstat[word]
-            weighted_yearstats[word][year] = weighted_yearstat[word]
-        os.remove(TMP_DIR + str(year) + "-binary.pkl")
-        os.remove(TMP_DIR + str(year) + "-weighted.pkl")
-    util.write_pickle(binary_yearstats, OUTPUT_PREFIX + "-binary.pkl")
-    util.write_pickle(weighted_yearstats, OUTPUT_PREFIX + "-weighted.pkl")
+            degree_yearstats[word][year] = degree_yearstat[word]
+            sum_yearstats[word][year] = sum_yearstat[word]
+            avg_yearstats[word][year] = avg_yearstat[word]
+        os.remove(TMP_DIR + str(year) + "-deg.pkl")
+        os.remove(TMP_DIR + str(year) + "-sum.pkl")
+        os.remove(TMP_DIR + str(year) + "-avg.pkl")
+    util.write_pickle(degree_yearstats, OUTPUT_PREFIX + "-deg.pkl")
+    util.write_pickle(sum_yearstats, OUTPUT_PREFIX + "-sum.pkl")
+    util.write_pickle(avg_yearstats, OUTPUT_PREFIX + "-avg.pkl")
 
 def main(proc_num, lock):
     years = range(YEARS[0], YEARS[-1] + 1)
@@ -64,11 +61,11 @@ def main(proc_num, lock):
         work_left = False
         for year in years:
             dirs = set(os.listdir(TMP_DIR))
-            if str(year) + "-binary.pkl" in dirs:
+            if str(year) + "-deg.pkl" in dirs:
                 continue
             work_left = True
             print proc_num, "year", year
-            fname = TMP_DIR + str(year) + "-binary.pkl"
+            fname = TMP_DIR + str(year) + "-deg.pkl"
             with open(fname, "w") as fp:
                 fp.write("")
             fp.close()
@@ -84,17 +81,20 @@ def main(proc_num, lock):
         context_indices = CONTEXT_INDICES[CONTEXT_INDICES < min(mat.shape[1], mat.shape[0])]
         mat = mat.tocsr()
         mat.eliminate_zeros()
-        weighted_word_stats = {}
-        binary_word_stats = {}
+        degree_word_stats = {}
+        sum_word_stats = {}
+        avg_word_stats = {}
         print proc_num, "Getting stats for year", year
         for word in WORDS:
-            weighted, binary = compute_word_stats(mat, word, context_indices)
-            weighted_word_stats[word] = weighted
-            binary_word_stats[word] = binary
+            degree, sum, avg = compute_word_stats(mat, word, context_indices)
+            degree_word_stats[word] = degree
+            sum_word_stats[word] = sum
+            avg_word_stats[word] = avg
 
         print proc_num, "Writing stats for year", year
-        util.write_pickle(weighted_word_stats, TMP_DIR + str(year) + "-weighted.pkl")
-        util.write_pickle(binary_word_stats, TMP_DIR + str(year) + "-binary.pkl")
+        util.write_pickle(degree_word_stats, TMP_DIR + str(year) + "-deg.pkl")
+        util.write_pickle(sum_word_stats, TMP_DIR + str(year) + "-sum.pkl")
+        util.write_pickle(avg_word_stats, TMP_DIR + str(year) + "-avg.pkl")
 
 def run_parallel(num_procs):
     lock = Lock()

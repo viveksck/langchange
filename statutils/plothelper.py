@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_word_dist(info, words, start_year, end_year, one_minus=False):
+def plot_word_dist(info, words, start_year, end_year, one_minus=False, legend_loc='upper left'):
     colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
     plot_info = {}
     for word in words:
@@ -17,7 +17,7 @@ def plot_word_dist(info, words, start_year, end_year, one_minus=False):
         color = colors.pop()
         plt.plot(x, smooth(np.array(y)), color=color)
         plt.scatter(x, y, marker='.', color=color)
-    plt.legend(plot_info.keys())
+    plt.legend(plot_info.keys(), loc=legend_loc)
     return plt
 
 def plot_word_basic(info, words, start_year, end_year, datatype):

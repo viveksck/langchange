@@ -16,15 +16,17 @@ from bokeh.properties import Instance
 from bokeh.server.app import bokeh_app
 from bokeh.server.utils.plugins import object_page
 from bokeh.models.widgets import HBox, Slider, TextInput, VBoxForm
-from bokeh.models.glyphs import Text
+from bokeh.models.glyphs import Text, Line
 
 from vecanalysis.sequentialembedding import SequentialEmbedding
 
-years = range(1900, 2001, 5)
+years = range(1900, 2001, 10)
 embeds = SequentialEmbedding(years)
 curr_reduced_embeds = None
 curr_basis = None
 curr_word = None
+
+word_list = ["cheerful", "gaiety", "jolly", "genial",  "pleasant", "lesbian",  "homosexual", "gay", "mannish", "cohabiting", "rights"]
 
 def get_data(year, word, basis):
     global curr_reduced_embeds, curr_basis, curr_word
@@ -37,8 +39,8 @@ def get_data(year, word, basis):
             word = curr_word
         else:
             curr_word = word
-        curr_reduced_embeds = embeds.get_reduced_word_subembeds(curr_word, n=5, basis=curr_basis)
-    return curr_reduced_embeds.get_embed(year)
+        curr_reduced_embeds = embeds.get_reduced_word_subembeds(curr_word, n=5, basis=curr_basis, word_list=word_list)
+    return curr_reduced_embeds
 
 
 class SlidersApp(HBox):
@@ -52,6 +54,7 @@ class SlidersApp(HBox):
     basis = Instance(Slider)
     plot = Instance(Plot)
     source = Instance(ColumnDataSource)
+    path_source = Instance(ColumnDataSource)
 
     @classmethod
     def create(cls):
@@ -63,6 +66,7 @@ class SlidersApp(HBox):
         obj = cls()
 
         obj.source = ColumnDataSource(dict(x=[], y=[], text=[]))
+        obj.path_source = ColumnDataSource(dict(xs=[], ys=[]))
 
         obj.text = TextInput(
             title="Word", name='word', value='gay'
@@ -70,12 +74,12 @@ class SlidersApp(HBox):
 
         obj.year = Slider(
             title="Display Year", name='year',
-            value=1900, start=1900, end=2000, step=5
+            value=1900, start=1900, end=2000, step=10
         )
 
         obj.basis = Slider(
             title="Basis Year", name='basis',
-            value=2000, start=1900, end=2000, step=5
+            value=2000, start=1900, end=2000, step=20
         )
 
         toolset = "crosshair,pan,reset,resize,save,wheel_zoom"
@@ -84,17 +88,25 @@ class SlidersApp(HBox):
                       plot_height=400,
                       plot_width=400,
                       tools=toolset,
-                      title="Word Neighbourhood",
+                      title="Changing Word Neighbourhood",
                       x_range=[-1, 1],
                       y_range=[-1, 1]
         )
 
   #      plot.line("x", "y", source=obj.source)
-        glyph = Text(x="x", y="y", text="text", text_color="#96deb3")
+        glyph = Text(x="x", y="y", text="text", text_color="#96deb3", text_align='center')
         plot.add_glyph(obj.source, glyph)
         glypht = Text(x="tx", y="ty", text="ttext")
         plot.add_glyph(obj.source, glypht)
 
+        rs = np.random.randint(150, size=len(word_list)).tolist()
+        gs = np.random.randint(150, size=len(word_list)).tolist()
+        bs = np.random.randint(150, size=len(word_list)).tolist()
+        colors = ["#%02x%02x%02x" % (r, g, b) for r, g, b in zip(rs, gs, bs)]
+        for word_i in range(len(word_list)):
+            word = word_list[word_i]
+            glyphline = Line(x=word+"x", y=word+"y", line_width=4, line_alpha=0.2, line_color=colors[word_i])
+            plot.add_glyph(obj.path_source, glyphline)
 
         obj.plot = plot
         obj.update_data(True, True)
@@ -152,7 +164,8 @@ class SlidersApp(HBox):
         if basis_change: 
             basis = self.basis.value
         year = self.year.value  
-        year_embed = get_data(year, word, basis)
+        year_embeds = get_data(year, word, basis)
+        year_embed = year_embeds.get_embed(year)
         year_embed.m -= year_embed.represent(self.text.value)
         t = year_embed.represent(self.text.value)
         tind = year_embed.wi[self.text.value]
@@ -162,6 +175,17 @@ class SlidersApp(HBox):
                 y=all_but[:,1].flatten().tolist(), 
                 text=all_but_words,
                 tx=[t[0]], ty=[t[1]], ttext=[self.text.value])
+        word_paths_xs = []
+        word_paths_ys = []
+        word_paths = year_embeds.get_word_paths(word_list)
+        for word in word_list:
+            word_paths_xs.append([point[0] - t[0] for iyear, point in word_paths[word].items() if iyear <= year]) 
+            word_paths_ys.append([point[1] - t[1] for iyear, point in word_paths[word].items() if iyear <= year]) 
+
+        self.path_source.data = {}
+        for i in range(len(word_list)):
+            self.path_source.data[word_list[i]+"x"]=word_paths_xs[i]
+            self.path_source.data[word_list[i]+"y"]=word_paths_ys[i]
 
 
 @bokeh_app.route("/bokeh/semchange/")

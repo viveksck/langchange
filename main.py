@@ -1,3 +1,3 @@
-from googlengram.statpullscripts.laplaceppmigen import run_parallel
+from statutils.degreestats import run_parallel
 
-run_parallel(20)
+run_parallel(35)

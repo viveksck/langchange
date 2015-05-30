@@ -3,15 +3,15 @@ import os
 from multiprocessing import Process, Lock
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/sglove-vecs-smallrel/'
-OUTPUT_DIR = DATA_DIR + '/sglove-vecs-smallrel-np/'
+INPUT_DIR = DATA_DIR + '/sglove-vecs-interesting/'
+OUTPUT_DIR = DATA_DIR + '/sglove-vecs-interesting-np/'
 #CTX_INPUT_FILE = INPUT_DIR + '{year}-300ctxvecs'
 W_INPUT_FILE = INPUT_DIR + '{year}-300vec.txt'
 #CTX_OUTPUT_FILE = OUTPUT_DIR + '{year}-300ctxvecs'
 W_OUTPUT_FILE = OUTPUT_DIR + '{year}-300vecs'
 
-YEARS = range(1930,1931)
-VOCAB_SIZE = 100000
+YEARS = range(2007,2008)
+VOCAB_SIZE = 50000
 DIM = 300
 size = (VOCAB_SIZE, DIM)
 

@@ -10,7 +10,7 @@ OUTPUT_DIR = DATA_DIR + '/info/'
 OUTPREFIX = OUTPUT_DIR + "interestingwords"
 
 NUM_KEEP = 50000
-YEARS = range(1850, 2009)
+YEARS = range(1900, 2000)
 INDEX = list(util.load_pickle(DATA_DIR + "5grams_merged/merged_index.pkl"))
 STOP_WORDS = set(stopwords.words("english"))
 

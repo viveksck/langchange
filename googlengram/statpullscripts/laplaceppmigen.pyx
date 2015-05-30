@@ -9,12 +9,12 @@ cimport numpy as np
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
 INPUT_DIR = DATA_DIR + '/5grams_merged/'
-OUTPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth/'
+OUTPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed/'
 
 DYTPE = np.float64
 ctypedef np.float64_t DTYPE_t
 
-cdef SMOOTH = 10**(-8)
+cdef float SMOOTH = 10.0**(-8.0)
 
 def compute_rowcol_probs(csr_mat, smooth):
     cdef np.ndarray row_probs
@@ -29,7 +29,7 @@ def main(proc_num, lock):
     cdef np.ndarray row_d, col_d
     cdef float prob_norm
 
-    years = range(1850, 2001)
+    years = range(1900, 2001)
     random.shuffle(years)
     print proc_num, "Start loop"
     while True:
@@ -56,6 +56,7 @@ def main(proc_num, lock):
         old_mat = old_mat.tocsr()
         old_mat = (old_mat + old_mat.T)/2.0
         smooth = old_mat.sum() * SMOOTH
+        print smooth, old_mat.sum(), SMOOTH
         row_probs = compute_rowcol_probs(old_mat, smooth)
         old_mat = old_mat.tocoo()
 
@@ -63,7 +64,7 @@ def main(proc_num, lock):
         col_d = old_mat.col
         data_d = old_mat.data
         
-        prob_norm = old_mat.sum() + old_mat.nnz * smooth
+        prob_norm = old_mat.sum() + (old_mat.shape[0] ** 2) * smooth
         for i in xrange(len(old_mat.data)):
             joint_prob = (data_d[i] + smooth) / prob_norm
             data_d[i] = np.log(joint_prob / (row_probs[row_d[i], 0] * row_probs[col_d[i], 0]))

@@ -274,9 +274,9 @@ class NNBase(object):
         Generic minibatch SGD
         """
         self._reset_grad_acc()
-        for i in range(len(y)):
+        for i in range(y.shape[0]):
             self._acc_grads(X[i], y[i])
-        self._apply_grad_acc(alpha)
+        self._apply_grad_acc(alpha / float(y.shape[0]))
 
 
     def grad_check(self, x, y, eps=1e-4, tol=1e-6,
@@ -293,7 +293,7 @@ class NNBase(object):
         """
         # Accumulate gradients in self.grads
         self._reset_grad_acc()
-        self._acc_grads(x, y)
+        self._acc_grads(x[0], y[0])
         self.sgrads.coalesce() # combine sparse updates
 
         ##
@@ -361,7 +361,8 @@ class NNBase(object):
         raise NotImplementedError("compute_loss not yet implemented")
 
     def compute_mean_loss(self, X, y):
-        return self.compute_loss(X, y) / len(y)
+        loss_sum = self.compute_loss(X, y) 
+        return loss_sum / len(y)
 
     def compute_display_loss(self, X, y):
         """
@@ -374,7 +375,7 @@ class NNBase(object):
                   printevery=10000, costevery=10000,
                   devidx=None):
         if idxiter == None: # default training schedule
-            idxiter = xrange(len(y))
+            idxiter = xrange(y.shape[0])
         if alphaiter == None: # default training schedule
             alphaiter = itertools.repeat(self.alpha)
 
@@ -407,7 +408,7 @@ class NNBase(object):
             """
             Allow manual early termination.
             """
-            print "SGD Interrupted: saw %d examples in %.02f seconds." % (counter, time.time() - t0)
+            print "SGD Interrupthed: saw %d examples in %.02f seconds." % (counter, time.time() - t0)
             return costs
 
         # Wrap-up

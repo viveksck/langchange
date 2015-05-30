@@ -66,7 +66,6 @@ def retrieve_cooccurrence(filename):
     return year_count
 
 def retrieve_cooccurrence_as_coo(matfn):
-    print "FUCCCCCKKKKK"
     cdef FILE* fin
     cdef int word1, word2, ret
     cdef double val
