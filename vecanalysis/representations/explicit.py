@@ -37,7 +37,7 @@ class Explicit:
         self.ci = {c:i for i,c in enumerate(self.ic)}
 
     def normalize(self):
-        preprocessing.normalize(self.mat, copy=False)
+        preprocessing.normalize(self.m, copy=False)
 
     def represent(self, w):
         if w in self.wi:
