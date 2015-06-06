@@ -3,8 +3,8 @@ import os
 from multiprocessing import Process, Lock
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/sglove-vecs-interesting/'
-OUTPUT_DIR = DATA_DIR + '/sglove-vecs-interesting-np/'
+INPUT_DIR = DATA_DIR + '/vecs-svd/'
+OUTPUT_DIR = DATA_DIR + '/vecs-svd-np/'
 #CTX_INPUT_FILE = INPUT_DIR + '{year}-300ctxvecs'
 W_INPUT_FILE = INPUT_DIR + '{year}-300vec.txt'
 #CTX_OUTPUT_FILE = OUTPUT_DIR + '{year}-300ctxvecs'

@@ -1,3 +1,3 @@
-from vecanalysis.cosinedelta import run_parallel
+from googlengram.statpullscripts.laplaceppmigen import run_parallel
 
-run_parallel(25)
+run_parallel(30)

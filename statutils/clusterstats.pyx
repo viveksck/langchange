@@ -8,8 +8,8 @@ import numpy as np
 cimport numpy as np
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed/'
-OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-clust-lfixed"
+INPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed9/'
+OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-clust-lfixed9"
 TMP_DIR = '/lfs/madmax5/0/will/google_ngrams/tmp/'
 WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
 

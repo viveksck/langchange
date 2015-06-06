@@ -8,8 +8,8 @@ import numpy as np
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
 INPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed/'
-OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-neigh-fixed"
-TMP_DIR = '/lfs/madmax7/0/will/google_ngrams/tmp/'
+OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-neigh-fixed-intcontext"
+TMP_DIR = '/lfs/madmax5/0/will/google_ngrams/tmp/'
 WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
 
 def get_word_indices(word_list):
@@ -27,6 +27,9 @@ def compute_word_stats(mat, word, context_indices):
     if word_i >= mat.shape[0]:
         return -1, -1 
     vec = mat[word_i, :]
+    vec = vec[:, context_indices]
+    if vec.nnz == 0:
+        return 0,0,0
     return vec.nnz, vec.sum(), vec.sum() / (float(vec.nnz)) 
 
 def merge():

@@ -9,12 +9,12 @@ cimport numpy as np
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
 INPUT_DIR = DATA_DIR + '/5grams_merged/'
-OUTPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed/'
+OUTPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed9/'
 
 DYTPE = np.float64
 ctypedef np.float64_t DTYPE_t
 
-cdef float SMOOTH = 10.0**(-8.0)
+cdef float SMOOTH = 10.0**(-9.0)
 
 def compute_rowcol_probs(csr_mat, smooth):
     cdef np.ndarray row_probs

@@ -1,6 +1,7 @@
 import heapq
 
-from scipy.sparse import dok_matrix, csr_matrix
+from scipy.sparse import csr_matrix
+from sklearn import preprocessing
 import numpy as np
 
 from vecanalysis.representations.matrix_serializer import load_shared_vocabulary, load_matrix
@@ -36,12 +37,7 @@ class Explicit:
         self.ci = {c:i for i,c in enumerate(self.ic)}
 
     def normalize(self):
-        m2 = self.m.copy()
-        m2.data **= 2
-        norm = np.reciprocal(np.sqrt(np.array(m2.sum(axis=1))[:, 0]))
-        normalizer = dok_matrix((len(norm), len(norm)))
-        normalizer.setdiag(norm)
-        self.m = normalizer.tocsr().dot(self.m)
+        preprocessing.normalize(self.mat, copy=False)
 
     def represent(self, w):
         if w in self.wi:

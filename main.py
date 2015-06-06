@@ -1,3 +1,3 @@
-from statutils.degreestats import run_parallel
+from vecanalysis.scripts.seq_procrustes import align_years
 
-run_parallel(35)
+align_years(range(1900, 2001))
