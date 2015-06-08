@@ -5,10 +5,10 @@ instructions on running.
 """
 
 import logging
+import numpy as np
 
 logging.basicConfig(level=logging.DEBUG)
 
-import numpy as np
 
 from bokeh.plotting import figure
 from bokeh.models import Plot, ColumnDataSource
@@ -20,6 +20,26 @@ from bokeh.models.glyphs import Text
 
 from vecanalysis.sequentialembedding import SequentialEmbedding
 
+years = range(1900, 2001, 5)
+embeds = SequentialEmbedding(years)
+curr_reduced_embeds = None
+curr_basis = None
+curr_word = None
+
+def get_data(year, word, basis):
+    global curr_reduced_embeds, curr_basis, curr_word
+    if not (word is None) or not (basis is None):
+        if basis is None:
+            basis = curr_basis
+        else:
+            curr_basis = basis
+        if word is None:
+            word = curr_word
+        else:
+            curr_word = word
+        curr_reduced_embeds = embeds.get_reduced_word_subembeds(curr_word, n=5, basis=curr_basis)
+    return curr_reduced_embeds.get_embed(year)
+
 
 class SlidersApp(HBox):
     """An example of a browser-based, interactive plot with slider controls."""
@@ -28,12 +48,10 @@ class SlidersApp(HBox):
 
     inputs = Instance(VBoxForm)
     text = Instance(TextInput)
-
     year = Instance(Slider)
-
+    basis = Instance(Slider)
     plot = Instance(Plot)
     source = Instance(ColumnDataSource)
-    embeds = SequentialEmbedding(range(1980,2009))
 
     @classmethod
     def create(cls):
@@ -51,8 +69,13 @@ class SlidersApp(HBox):
         )
 
         obj.year = Slider(
-            title="Year", name='year',
-            value=1980, start=1980, end=2008, step=1
+            title="Display Year", name='year',
+            value=1900, start=1900, end=2000, step=5
+        )
+
+        obj.basis = Slider(
+            title="Basis Year", name='basis',
+            value=2000, start=1900, end=2000, step=5
         )
 
         toolset = "crosshair,pan,reset,resize,save,wheel_zoom"
@@ -67,19 +90,22 @@ class SlidersApp(HBox):
         )
 
   #      plot.line("x", "y", source=obj.source)
-        glyph = Text(x="x", y="y", text="text")
+        glyph = Text(x="x", y="y", text="text", text_color="#96deb3")
         plot.add_glyph(obj.source, glyph)
+        glypht = Text(x="tx", y="ty", text="ttext")
+        plot.add_glyph(obj.source, glypht)
+
 
         obj.plot = plot
-        obj.update_data()
+        obj.update_data(True, True)
 
         obj.inputs = VBoxForm(
-            children=[obj.text, obj.year]
+            children=[obj.text, obj.year, obj.basis]
         )
 
         obj.children.append(obj.inputs)
         obj.children.append(obj.plot)
-
+    
         return obj
 
     def setup_events(self):
@@ -97,6 +123,8 @@ class SlidersApp(HBox):
         # Slider event registration:
         getattr(self, 'year').on_change('value', self, 'input_change')
 
+        getattr(self, 'basis').on_change('value', self, 'input_change')
+
     def input_change(self, obj, attrname, old, new):
         """Executes whenever the input form changes.
 
@@ -108,25 +136,35 @@ class SlidersApp(HBox):
             old : old value of attr
             new : new value of attr
         """
-        self.update_data(obj == self.text)
+        self.update_data(obj == self.text, obj == self.basis)
 
-    def update_data(self, word_change):
+    def update_data(self, word_change, basis_change):
         """Called each time that any watched property changes.
 
         This updates the sin wave data with the most recent values of the
         sliders. This is stored as two numpy arrays in a dict into the app's
         data source property.
         """
+        word = None
+        basis = None
         if word_change:
-            self.curr_reduced_embeds = self.embeds.get_reduced_word_subembeds(self.text.value)
+            word = self.text.value
+        if basis_change: 
+            basis = self.basis.value
         year = self.year.value  
-        year_embed = self.curr_reduced_embeds.get_embed(year)
-        self.source.data = dict(x=year_embed.m[:,0].flatten().tolist(), 
-                y=year_embed.m[:,1].flatten().tolist(), 
-                text=year_embed.iw)
+        year_embed = get_data(year, word, basis)
+        year_embed.m -= year_embed.represent(self.text.value)
+        t = year_embed.represent(self.text.value)
+        tind = year_embed.wi[self.text.value]
+        all_but = np.delete(year_embed.m, tind, 0)
+        all_but_words = [neighbour for neighbour in year_embed.iw if not neighbour == self.text.value]
+        self.source.data = dict(x=all_but[:,0].flatten().tolist(), 
+                y=all_but[:,1].flatten().tolist(), 
+                text=all_but_words,
+                tx=[t[0]], ty=[t[1]], ttext=[self.text.value])
 
 
-@bokeh_app.route("/bokeh/semchange/")
+@bokeh_app.route("/bokeh/neighchange/")
 @object_page("sin")
 def make_sliders():
     app = SlidersApp.create()
