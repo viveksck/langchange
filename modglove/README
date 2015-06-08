@@ -1,3 +1,9 @@
+** This is a modified version of the original GloVe code. The code now optionally accepts a binary initialization file for the word vectors **
+
+Author of modifications: William Hamilton (wleif@stanford.edu)
+
+** The original README is below **
+
 GloVe: Global Vectors for Word Representation
 _____________________________________________________
 

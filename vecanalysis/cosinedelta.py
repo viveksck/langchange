@@ -6,14 +6,14 @@ from googlengram import util
 from vecanalysis.representations.representation_factory import simple_create_representation
 
 DATA_DIR = "/dfs/scratch0/google_ngrams/"
-INPUT_PATH = DATA_DIR + "5grams_ppmi_lsmooth_fixed/{year}.bin"
-TMP_DIR = '/lfs/rulk/0/will/google_ngrams/tmp/'
-OUTPUT_PREFIX = DATA_DIR + "stats/ppmi_lfixed_cosine_f1900-int"
+INPUT_PATH = DATA_DIR + "vecs-svd-seq-aligned/{year}-300vecs"
+TMP_DIR = '/lfs/madmax4/0/will/google_ngrams/tmp/'
+OUTPUT_PREFIX = DATA_DIR + "stats/svd_cosine_f1900"
 
 YEARS = range(1901, 2001)
 CONTEXT_WORDS = context_words = util.load_pickle("/dfs/scratch0/google_ngrams/info/interestingwords.pkl")
 WORDS = util.load_pickle("/dfs/scratch0/google_ngrams/info/interestingwords.pkl")
-REP_TYPE = "PPMI"
+REP_TYPE = "SKIPGRAM"
 
 DISPLACEMENT_BASE = simple_create_representation(REP_TYPE, INPUT_PATH.format(year=1900), restricted_context=CONTEXT_WORDS)
 

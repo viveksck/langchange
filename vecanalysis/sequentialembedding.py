@@ -5,13 +5,13 @@ from sklearn.decomposition import PCA
 
 from vecanalysis.representations.embedding import Embedding
 from vecanalysis.dimreduce import reduce_dim
-from vecanalysis.alignment import smart_procrustes_align, intersection_align
+from vecanalysis.alignment import smart_procrustes_align
 
 INPUT_PATH = "/dfs/scratch0/google_ngrams/sglove-vecs-smallrel-aligned-seq/{year}-300vecs"
 
 class SequentialEmbedding:
 
-    def __init__(self, years):
+    def __init__(self, years, top_freq=None):
         self.embeds = collections.OrderedDict()
         for year in years:
             self.embeds[year] = Embedding.load(INPUT_PATH.format(year=year))

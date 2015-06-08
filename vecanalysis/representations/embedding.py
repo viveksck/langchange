@@ -1,8 +1,10 @@
 import heapq
 
 import numpy as np
+from sklearn import preprocessing
 
 from vecanalysis.representations.matrix_serializer import load_vocabulary
+
 
 
 class Embedding:
@@ -37,8 +39,7 @@ class Embedding:
         return Embedding(new_mat, [neighbour for _, neighbour in neighbours]) 
 
     def normalize(self):
-        norm = np.sqrt(np.sum(self.m * self.m, axis=1))
-        self.m = self.m / norm[:, np.newaxis]
+        preprocessing.normalize(self.m, copy=False)
 
     def oov(self, w):
         return not (w in self.wi)

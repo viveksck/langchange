@@ -1,3 +1,3 @@
-from vecanalysis.scripts.seq_procrustes import align_years
+from vecanalysis.scripts.makereducedvecs import run_parallel
 
-align_years(range(1900, 2001))
+run_parallel(40)
