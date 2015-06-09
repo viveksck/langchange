@@ -13,7 +13,7 @@ cimport numpy as np
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
 INPUT_DIR = DATA_DIR + '/5grams_merged/'
 OUTPUT_FILE = DATA_DIR + "/info/interestingfreqs.pkl"
-TMP_DIR = '/lfs/rulk/0/will/google_ngrams/tmp/'
+TMP_DIR = '/dfs/scratch0/wleif/tmp/'
 WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
 
 WORDS = util.load_pickle(WORD_FILE) 
@@ -84,3 +84,6 @@ def run_parallel(num_procs):
         p.join()
     print "Merging"
     merge()
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Get frequency information")

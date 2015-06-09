@@ -6,9 +6,11 @@ from scipy.sparse import coo_matrix
 import numpy as np
 cimport numpy as np
 
-NGRAM_DIM = 739547
+"""Fast Cython methods for loading and storing matrices
+"""
 
-def export_cooccurrence(year_counts, output_dir):
+
+def export_mat(year_counts, output_dir):
     cdef FILE* fout
     cdef int word1
     cdef int word2
@@ -27,7 +29,7 @@ def export_cooccurrence(year_counts, output_dir):
             fwrite(&val, sizeof(double), 1, fout) 
         fclose(fout)
 
-def export_cooccurrence_eff(row_d, col_d, data_d, year, output_dir):
+def export_mat_eff(row_d, col_d, data_d, year, output_dir):
     cdef FILE* fout
     cdef int word1
     cdef int word2
@@ -48,7 +50,7 @@ def export_cooccurrence_eff(row_d, col_d, data_d, year, output_dir):
         fwrite(&val, sizeof(double), 1, fout) 
     fclose(fout)
 
-def retrieve_cooccurrence(filename):
+def retrieve_mat(filename):
     cdef FILE* fin
     cdef int word1
     cdef int word2
@@ -65,14 +67,14 @@ def retrieve_cooccurrence(filename):
     fclose(fin)
     return year_count
 
-def retrieve_cooccurrence_as_coo(matfn):
+def retrieve_mat_as_coo(matfn):
     cdef FILE* fin
     cdef int word1, word2, ret
     cdef double val
     cdef char* fn
     fn = matfn
     fin = fopen(fn, 'r')
-    cdef int size = (os.path.getsize(matfn) / 16) + 1
+    cdef int size = (os.path.getsize(matfn) / 16)
     cdef np.ndarray[np.int32_t, ndim=1] row = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.int32_t, ndim=1] col = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.float64_t, ndim=1] data = np.empty(size, dtype=np.float64)
@@ -88,19 +90,16 @@ def retrieve_cooccurrence_as_coo(matfn):
         data[i] = val
         i += 1
     fclose(fin)
-    data[-1] = 0
-    row[-1] = NGRAM_DIM
-    col[-1] = NGRAM_DIM
     return coo_matrix((data, (row, col)), dtype=np.float64)
 
-def retrieve_cooccurrence_as_coo_thresh(matfn, thresh):
+def retrieve_mat_as_coo_thresh(matfn, thresh):
     cdef FILE* fin
     cdef int word1, word2, ret
     cdef double val
     cdef char* fn
     fn = matfn
     fin = fopen(fn, 'r')
-    cdef int size = (os.path.getsize(matfn) / 16) + 1
+    cdef int size = (os.path.getsize(matfn) / 16) 
     cdef np.ndarray[np.int32_t, ndim=1] row = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.int32_t, ndim=1] col = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.float64_t, ndim=1] data = np.empty(size, dtype=np.float64)
@@ -118,7 +117,4 @@ def retrieve_cooccurrence_as_coo_thresh(matfn, thresh):
         data[i] = val
         i += 1
     fclose(fin)
-    data[-1] = 0
-    row[-1] = NGRAM_DIM
-    col[-1] = NGRAM_DIM
     return coo_matrix((data, (row, col)), dtype=np.float64)
