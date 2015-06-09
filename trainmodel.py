@@ -8,6 +8,8 @@ DATA_DIR = '/dfs/scratch0/google_ngrams/'
 OUTPUT_FILE = DATA_DIR + "info/simplemodel-5-5000000-5-100000-500.pkl"
 COST_OUTPUT_FILE = DATA_DIR + "info/simplemodelcost-5-5000000-5-100000-500.pkl"
 
+# CODE FOR TRAINING NN MODELS
+
 def rand_minibatch_sched(X, k, Nk):
         num = 0
         while num < Nk:

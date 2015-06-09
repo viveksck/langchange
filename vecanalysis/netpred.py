@@ -3,6 +3,8 @@ from vecanalysis.nn.misc import random_weight_matrix
 import numpy as np
 import numexpr as ne
 
+# Basic two-layer NN.
+
 class DenseEncodeDecode(NNBase):
 
     def __init__(self, dims=[300, 300, 300, 300],
