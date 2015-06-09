@@ -1,3 +1,3 @@
-from vecanalysis.scripts.makereducedvecs import run_parallel
+from statutils.degreestats import run_parallel
 
-run_parallel(40)
+run_parallel(50)

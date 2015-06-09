@@ -7,9 +7,9 @@ from googlengram import matstore, util
 import numpy as np
 
 DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed/'
-OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-neigh-fixed-intcontext"
-TMP_DIR = '/lfs/madmax5/0/will/google_ngrams/tmp/'
+INPUT_DIR = DATA_DIR + '/5grams_ppmi_lsmooth_fixed9/'
+OUTPUT_PREFIX = DATA_DIR + "/stats/interesting-neigh-fixed9-intcontext"
+TMP_DIR = '/lfs/madmax4/0/will/google_ngrams/tmp/'
 WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
 
 def get_word_indices(word_list):
