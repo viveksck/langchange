@@ -248,8 +248,8 @@ class __Pyx_FakeReference {
 #define _USE_MATH_DEFINES
 #endif
 #include <math.h>
-#define __PYX_HAVE__freqgrabscript
-#define __PYX_HAVE_API__freqgrabscript
+#define __PYX_HAVE__googlengram__pullscripts__freqgrabscript
+#define __PYX_HAVE_API__googlengram__pullscripts__freqgrabscript
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -432,7 +432,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "freqgrabscript.pyx",
+  "googlengram/pullscripts/freqgrabscript.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -658,15 +658,15 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'freqgrabscript' */
-#define __Pyx_MODULE_NAME "freqgrabscript"
-int __pyx_module_is_main_freqgrabscript = 0;
+/* Module declarations from 'googlengram.pullscripts.freqgrabscript' */
+#define __Pyx_MODULE_NAME "googlengram.pullscripts.freqgrabscript"
+int __pyx_module_is_main_googlengram__pullscripts__freqgrabscript = 0;
 
-/* Implementation of 'freqgrabscript' */
+/* Implementation of 'googlengram.pullscripts.freqgrabscript' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_open;
-static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static char __pyx_k_d[] = "-d";
 static char __pyx_k_f[] = "f";
 static char __pyx_k_l[] = "l";
@@ -759,16 +759,16 @@ static char __pyx_k_DOWNLOAD_DIR[] = "DOWNLOAD_DIR";
 static char __pyx_k_write_pickle[] = "write_pickle";
 static char __pyx_k_5grams_merged[] = "/5grams_merged/";
 static char __pyx_k_Going_through[] = "Going through";
-static char __pyx_k_freqgrabscript[] = "freqgrabscript";
 static char __pyx_k_merged_indices[] = "merged_indices";
 static char __pyx_k_multiprocessing[] = "multiprocessing";
 static char __pyx_k_merged_index_pkl[] = "merged_index.pkl";
 static char __pyx_k_href_s_s_s_csv_zip[] = "href='(.*%s-%s-%s-.*\\.csv.zip)";
 static char __pyx_k_word_to_static_id_pass[] = "word_to_static_id_pass";
 static char __pyx_k_dfs_scratch0_google_ngrams[] = "/dfs/scratch0/google_ngrams/";
-static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/google-ngram-downloader/freqgrabscript.pyx";
+static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/googlengram/pullscripts/freqgrabscript.pyx";
 static char __pyx_k_lfs_madmax4_0_will_google_ngram[] = "/lfs/madmax4/0/will/google_ngrams/tmp/";
 static char __pyx_k_Finished_Number_of_unmapped_word[] = "Finished. Number of unmapped words: ";
+static char __pyx_k_googlengram_pullscripts_freqgrab[] = "googlengram.pullscripts.freqgrabscript";
 static char __pyx_k_http_storage_googleapis_com_book[] = "http://storage.googleapis.com/books/ngrams/books/datasetsv2.html";
 static PyObject *__pyx_kp_s_1gram;
 static PyObject *__pyx_kp_s_1grams;
@@ -813,10 +813,10 @@ static PyObject *__pyx_n_s_exit;
 static PyObject *__pyx_n_s_f;
 static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_findall;
-static PyObject *__pyx_n_s_freqgrabscript;
 static PyObject *__pyx_kp_s_freqs_pkl;
 static PyObject *__pyx_n_s_get;
 static PyObject *__pyx_kp_s_googlebooks;
+static PyObject *__pyx_n_s_googlengram_pullscripts_freqgrab;
 static PyObject *__pyx_n_s_group;
 static PyObject *__pyx_kp_s_href_s_s_s_csv_zip;
 static PyObject *__pyx_kp_s_http_storage_googleapis_com_book;
@@ -890,7 +890,7 @@ static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_codeobj__13;
 static PyObject *__pyx_codeobj__14;
 
-/* "freqgrabscript.pyx":20
+/* "googlengram/pullscripts/freqgrabscript.pyx":20
  * INDEX_DIR = DATA_DIR + '/5grams_merged/'
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -899,20 +899,20 @@ static PyObject *__pyx_codeobj__14;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14freqgrabscript_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_14freqgrabscript_1main = {"main", (PyCFunction)__pyx_pw_14freqgrabscript_1main, METH_NOARGS, 0};
-static PyObject *__pyx_pw_14freqgrabscript_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14freqgrabscript_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_11googlengram_11pullscripts_14freqgrabscript_1main = {"main", (PyCFunction)__pyx_pw_11googlengram_11pullscripts_14freqgrabscript_1main, METH_NOARGS, 0};
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14freqgrabscript_1main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("main (wrapper)", 0);
-  __pyx_r = __pyx_pf_14freqgrabscript_main(__pyx_self);
+  __pyx_r = __pyx_pf_11googlengram_11pullscripts_14freqgrabscript_main(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_v_num_unk;
   PyObject *__pyx_v_merged_indices = NULL;
   PyObject *__pyx_v_page = NULL;
@@ -961,7 +961,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "freqgrabscript.pyx":21
+  /* "googlengram/pullscripts/freqgrabscript.pyx":21
  * 
  * def main():
  *     cdef int num_unk = 0             # <<<<<<<<<<<<<<
@@ -970,7 +970,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
   __pyx_v_num_unk = 0;
 
-  /* "freqgrabscript.pyx":22
+  /* "googlengram/pullscripts/freqgrabscript.pyx":22
  * def main():
  *     cdef int num_unk = 0
  *     merged_indices  = util.load_pickle(INDEX_DIR + "merged_index.pkl")             # <<<<<<<<<<<<<<
@@ -1016,7 +1016,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_merged_indices = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":23
+  /* "googlengram/pullscripts/freqgrabscript.pyx":23
  *     cdef int num_unk = 0
  *     merged_indices  = util.load_pickle(INDEX_DIR + "merged_index.pkl")
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")             # <<<<<<<<<<<<<<
@@ -1034,7 +1034,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_page = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":24
+  /* "googlengram/pullscripts/freqgrabscript.pyx":24
  *     merged_indices  = util.load_pickle(INDEX_DIR + "merged_index.pkl")
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))             # <<<<<<<<<<<<<<
@@ -1095,7 +1095,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_pattern = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":25
+  /* "googlengram/pullscripts/freqgrabscript.pyx":25
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))
  *     urls = pattern.findall(page.text)             # <<<<<<<<<<<<<<
@@ -1135,7 +1135,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_urls = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":26
+  /* "googlengram/pullscripts/freqgrabscript.pyx":26
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))
  *     urls = pattern.findall(page.text)
  *     del page             # <<<<<<<<<<<<<<
@@ -1145,7 +1145,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_v_page);
   __pyx_v_page = NULL;
 
-  /* "freqgrabscript.pyx":28
+  /* "googlengram/pullscripts/freqgrabscript.pyx":28
  *     del page
  * 
  *     year_freqs = {}             # <<<<<<<<<<<<<<
@@ -1157,7 +1157,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_year_freqs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":29
+  /* "googlengram/pullscripts/freqgrabscript.pyx":29
  * 
  *     year_freqs = {}
  *     for year in YEARS:             # <<<<<<<<<<<<<<
@@ -1207,7 +1207,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_year, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "freqgrabscript.pyx":30
+    /* "googlengram/pullscripts/freqgrabscript.pyx":30
  *     year_freqs = {}
  *     for year in YEARS:
  *         year_freqs[year] = {}             # <<<<<<<<<<<<<<
@@ -1219,7 +1219,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (unlikely(PyDict_SetItem(__pyx_v_year_freqs, __pyx_v_year, __pyx_t_1) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 30; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "freqgrabscript.pyx":29
+    /* "googlengram/pullscripts/freqgrabscript.pyx":29
  * 
  *     year_freqs = {}
  *     for year in YEARS:             # <<<<<<<<<<<<<<
@@ -1229,7 +1229,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "freqgrabscript.pyx":32
+  /* "googlengram/pullscripts/freqgrabscript.pyx":32
  *         year_freqs[year] = {}
  * 
  *     print "Start loop"             # <<<<<<<<<<<<<<
@@ -1238,7 +1238,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
   if (__Pyx_PrintOne(0, __pyx_kp_s_Start_loop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 32; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":33
+  /* "googlengram/pullscripts/freqgrabscript.pyx":33
  * 
  *     print "Start loop"
  *     for url in urls:             # <<<<<<<<<<<<<<
@@ -1285,7 +1285,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_url, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "freqgrabscript.pyx":34
+    /* "googlengram/pullscripts/freqgrabscript.pyx":34
  *     print "Start loop"
  *     for url in urls:
  *         name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)             # <<<<<<<<<<<<<<
@@ -1338,7 +1338,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "freqgrabscript.pyx":36
+    /* "googlengram/pullscripts/freqgrabscript.pyx":36
  *         name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)
  * 
  *         print "Name", name             # <<<<<<<<<<<<<<
@@ -1356,7 +1356,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "freqgrabscript.pyx":37
+    /* "googlengram/pullscripts/freqgrabscript.pyx":37
  * 
  *         print "Name", name
  *         loc_dir = TMP_DIR + "/" + name + "/"             # <<<<<<<<<<<<<<
@@ -1377,7 +1377,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_loc_dir, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "freqgrabscript.pyx":38
+    /* "googlengram/pullscripts/freqgrabscript.pyx":38
  *         print "Name", name
  *         loc_dir = TMP_DIR + "/" + name + "/"
  *         util.mkdir(loc_dir)             # <<<<<<<<<<<<<<
@@ -1416,7 +1416,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "freqgrabscript.pyx":40
+    /* "googlengram/pullscripts/freqgrabscript.pyx":40
  *         util.mkdir(loc_dir)
  * 
  *         print  "Downloading", name             # <<<<<<<<<<<<<<
@@ -1434,7 +1434,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_4, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 40; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "freqgrabscript.pyx":42
+    /* "googlengram/pullscripts/freqgrabscript.pyx":42
  *         print  "Downloading", name
  * 
  *         success = False             # <<<<<<<<<<<<<<
@@ -1443,7 +1443,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
     __pyx_v_success = 0;
 
-    /* "freqgrabscript.pyx":43
+    /* "googlengram/pullscripts/freqgrabscript.pyx":43
  * 
  *         success = False
  *         while not success:             # <<<<<<<<<<<<<<
@@ -1454,7 +1454,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_t_10 = ((!(__pyx_v_success != 0)) != 0);
       if (!__pyx_t_10) break;
 
-      /* "freqgrabscript.pyx":44
+      /* "googlengram/pullscripts/freqgrabscript.pyx":44
  *         success = False
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:             # <<<<<<<<<<<<<<
@@ -1513,7 +1513,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "freqgrabscript.pyx":45
+              /* "googlengram/pullscripts/freqgrabscript.pyx":45
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:
  *                 try:             # <<<<<<<<<<<<<<
@@ -1527,7 +1527,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XGOTREF(__pyx_t_17);
                 /*try:*/ {
 
-                  /* "freqgrabscript.pyx":46
+                  /* "googlengram/pullscripts/freqgrabscript.pyx":46
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:
  *                 try:
  *                     f.write(urllib2.urlopen(url, timeout=60).read())             # <<<<<<<<<<<<<<
@@ -1603,7 +1603,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                  /* "freqgrabscript.pyx":47
+                  /* "googlengram/pullscripts/freqgrabscript.pyx":47
  *                 try:
  *                     f.write(urllib2.urlopen(url, timeout=60).read())
  *                     success = True             # <<<<<<<<<<<<<<
@@ -1625,7 +1625,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                /* "freqgrabscript.pyx":48
+                /* "googlengram/pullscripts/freqgrabscript.pyx":48
  *                     f.write(urllib2.urlopen(url, timeout=60).read())
  *                     success = True
  *                 except:             # <<<<<<<<<<<<<<
@@ -1633,13 +1633,13 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  * 
  */
                 /*except:*/ {
-                  __Pyx_AddTraceback("freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+                  __Pyx_AddTraceback("googlengram.pullscripts.freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
                   if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L25_except_error;}
                   __Pyx_GOTREF(__pyx_t_2);
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_GOTREF(__pyx_t_19);
 
-                  /* "freqgrabscript.pyx":49
+                  /* "googlengram/pullscripts/freqgrabscript.pyx":49
  *                     success = True
  *                 except:
  *                     continue             # <<<<<<<<<<<<<<
@@ -1681,7 +1681,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
 
-            /* "freqgrabscript.pyx":44
+            /* "googlengram/pullscripts/freqgrabscript.pyx":44
  *         success = False
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:             # <<<<<<<<<<<<<<
@@ -1689,7 +1689,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  *                     f.write(urllib2.urlopen(url, timeout=60).read())
  */
             /*except:*/ {
-              __Pyx_AddTraceback("freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+              __Pyx_AddTraceback("googlengram.pullscripts.freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
               if (__Pyx_GetException(&__pyx_t_19, &__pyx_t_3, &__pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 44; __pyx_clineno = __LINE__; goto __pyx_L17_except_error;}
               __Pyx_GOTREF(__pyx_t_19);
               __Pyx_GOTREF(__pyx_t_3);
@@ -1770,7 +1770,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_L7_continue:;
     }
 
-    /* "freqgrabscript.pyx":51
+    /* "googlengram/pullscripts/freqgrabscript.pyx":51
  *                     continue
  * 
  *         print  "Unzipping", name             # <<<<<<<<<<<<<<
@@ -1788,7 +1788,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_2, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "freqgrabscript.pyx":52
+    /* "googlengram/pullscripts/freqgrabscript.pyx":52
  * 
  *         print  "Unzipping", name
  *         subprocess.call(['unzip', '-o', loc_dir + name + '.csv.zip', '-d', loc_dir])             # <<<<<<<<<<<<<<
@@ -1850,7 +1850,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "freqgrabscript.pyx":53
+    /* "googlengram/pullscripts/freqgrabscript.pyx":53
  *         print  "Unzipping", name
  *         subprocess.call(['unzip', '-o', loc_dir + name + '.csv.zip', '-d', loc_dir])
  *         subprocess.call(['mv', loc_dir + 'googlebooks-' + SOURCE + '-' +  TYPE + '-' + VERSION + '-' + name + '.csv', loc_dir + name])             # <<<<<<<<<<<<<<
@@ -1938,7 +1938,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "freqgrabscript.pyx":55
+    /* "googlengram/pullscripts/freqgrabscript.pyx":55
  *         subprocess.call(['mv', loc_dir + 'googlebooks-' + SOURCE + '-' +  TYPE + '-' + VERSION + '-' + name + '.csv', loc_dir + name])
  * 
  *         print  "Going through", name             # <<<<<<<<<<<<<<
@@ -1956,7 +1956,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_2, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "freqgrabscript.pyx":56
+    /* "googlengram/pullscripts/freqgrabscript.pyx":56
  * 
  *         print  "Going through", name
  *         with open(loc_dir + name) as f:             # <<<<<<<<<<<<<<
@@ -2009,7 +2009,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
             __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_19);
             __pyx_t_19 = 0;
 
-            /* "freqgrabscript.pyx":57
+            /* "googlengram/pullscripts/freqgrabscript.pyx":57
  *         print  "Going through", name
  *         with open(loc_dir + name) as f:
  *             for l in f:             # <<<<<<<<<<<<<<
@@ -2056,7 +2056,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_l, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "freqgrabscript.pyx":58
+              /* "googlengram/pullscripts/freqgrabscript.pyx":58
  *         with open(loc_dir + name) as f:
  *             for l in f:
  *                 split = l.strip().split('\t')             # <<<<<<<<<<<<<<
@@ -2092,7 +2092,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_split, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "freqgrabscript.pyx":59
+              /* "googlengram/pullscripts/freqgrabscript.pyx":59
  *             for l in f:
  *                 split = l.strip().split('\t')
  *                 word = split[0].decode('utf-8').lower()             # <<<<<<<<<<<<<<
@@ -2131,7 +2131,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "freqgrabscript.pyx":60
+              /* "googlengram/pullscripts/freqgrabscript.pyx":60
  *                 split = l.strip().split('\t')
  *                 word = split[0].decode('utf-8').lower()
  *                 year = int(split[1])             # <<<<<<<<<<<<<<
@@ -2146,7 +2146,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_year, __pyx_t_4);
               __pyx_t_4 = 0;
 
-              /* "freqgrabscript.pyx":61
+              /* "googlengram/pullscripts/freqgrabscript.pyx":61
  *                 word = split[0].decode('utf-8').lower()
  *                 year = int(split[1])
  *                 count = int(split[2])             # <<<<<<<<<<<<<<
@@ -2161,7 +2161,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_count, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "freqgrabscript.pyx":62
+              /* "googlengram/pullscripts/freqgrabscript.pyx":62
  *                 year = int(split[1])
  *                 count = int(split[2])
  *                 doc_count = int(split[4])             # <<<<<<<<<<<<<<
@@ -2176,7 +2176,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_doc_count, __pyx_t_4);
               __pyx_t_4 = 0;
 
-              /* "freqgrabscript.pyx":63
+              /* "googlengram/pullscripts/freqgrabscript.pyx":63
  *                 count = int(split[2])
  *                 doc_count = int(split[4])
  *                 word_id = util.word_to_static_id_pass(word, merged_indices)             # <<<<<<<<<<<<<<
@@ -2218,7 +2218,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_word_id, __pyx_t_4);
               __pyx_t_4 = 0;
 
-              /* "freqgrabscript.pyx":64
+              /* "googlengram/pullscripts/freqgrabscript.pyx":64
  *                 doc_count = int(split[4])
  *                 word_id = util.word_to_static_id_pass(word, merged_indices)
  *                 if word_id == -1:             # <<<<<<<<<<<<<<
@@ -2230,7 +2230,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
               if (__pyx_t_20) {
 
-                /* "freqgrabscript.pyx":65
+                /* "googlengram/pullscripts/freqgrabscript.pyx":65
  *                 word_id = util.word_to_static_id_pass(word, merged_indices)
  *                 if word_id == -1:
  *                     num_unk += 1             # <<<<<<<<<<<<<<
@@ -2239,7 +2239,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
                 __pyx_v_num_unk = (__pyx_v_num_unk + 1);
 
-                /* "freqgrabscript.pyx":66
+                /* "googlengram/pullscripts/freqgrabscript.pyx":66
  *                 if word_id == -1:
  *                     num_unk += 1
  *                     continue             # <<<<<<<<<<<<<<
@@ -2249,7 +2249,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 goto __pyx_L51_continue;
               }
 
-              /* "freqgrabscript.pyx":67
+              /* "googlengram/pullscripts/freqgrabscript.pyx":67
  *                     num_unk += 1
  *                     continue
  *                 if not year in YEARS:             # <<<<<<<<<<<<<<
@@ -2263,7 +2263,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __pyx_t_10 = (__pyx_t_20 != 0);
               if (__pyx_t_10) {
 
-                /* "freqgrabscript.pyx":68
+                /* "googlengram/pullscripts/freqgrabscript.pyx":68
  *                     continue
  *                 if not year in YEARS:
  *                     continue             # <<<<<<<<<<<<<<
@@ -2273,7 +2273,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 goto __pyx_L51_continue;
               }
 
-              /* "freqgrabscript.pyx":69
+              /* "googlengram/pullscripts/freqgrabscript.pyx":69
  *                 if not year in YEARS:
  *                     continue
  *                 if not word_id in year_freqs[year]:             # <<<<<<<<<<<<<<
@@ -2287,7 +2287,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __pyx_t_20 = (__pyx_t_10 != 0);
               if (__pyx_t_20) {
 
-                /* "freqgrabscript.pyx":70
+                /* "googlengram/pullscripts/freqgrabscript.pyx":70
  *                     continue
  *                 if not word_id in year_freqs[year]:
  *                     year_freqs[year][word_id] = (count, doc_count)             # <<<<<<<<<<<<<<
@@ -2311,7 +2311,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               }
               /*else*/ {
 
-                /* "freqgrabscript.pyx":72
+                /* "googlengram/pullscripts/freqgrabscript.pyx":72
  *                     year_freqs[year][word_id] = (count, doc_count)
  *                 else:
  *                     old_counts = year_freqs[year][word_id]             # <<<<<<<<<<<<<<
@@ -2326,7 +2326,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XDECREF_SET(__pyx_v_old_counts, __pyx_t_18);
                 __pyx_t_18 = 0;
 
-                /* "freqgrabscript.pyx":73
+                /* "googlengram/pullscripts/freqgrabscript.pyx":73
  *                 else:
  *                     old_counts = year_freqs[year][word_id]
  *                     year_freqs[year][word_id] = (old_counts[0] + count, old_counts[1] + count)             # <<<<<<<<<<<<<<
@@ -2359,7 +2359,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               }
               __pyx_L55:;
 
-              /* "freqgrabscript.pyx":57
+              /* "googlengram/pullscripts/freqgrabscript.pyx":57
  *         print  "Going through", name
  *         with open(loc_dir + name) as f:
  *             for l in f:             # <<<<<<<<<<<<<<
@@ -2383,7 +2383,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
           __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
           __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
 
-          /* "freqgrabscript.pyx":56
+          /* "googlengram/pullscripts/freqgrabscript.pyx":56
  * 
  *         print  "Going through", name
  *         with open(loc_dir + name) as f:             # <<<<<<<<<<<<<<
@@ -2391,7 +2391,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  *                 split = l.strip().split('\t')
  */
           /*except:*/ {
-            __Pyx_AddTraceback("freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+            __Pyx_AddTraceback("googlengram.pullscripts.freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
             if (__Pyx_GetException(&__pyx_t_19, &__pyx_t_18, &__pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L45_except_error;}
             __Pyx_GOTREF(__pyx_t_19);
             __Pyx_GOTREF(__pyx_t_18);
@@ -2454,7 +2454,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_L59:;
     }
 
-    /* "freqgrabscript.pyx":75
+    /* "googlengram/pullscripts/freqgrabscript.pyx":75
  *                     year_freqs[year][word_id] = (old_counts[0] + count, old_counts[1] + count)
  * 
  *         print "Deleting", name             # <<<<<<<<<<<<<<
@@ -2472,7 +2472,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_3, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "freqgrabscript.pyx":76
+    /* "googlengram/pullscripts/freqgrabscript.pyx":76
  * 
  *         print "Deleting", name
  *         try:             # <<<<<<<<<<<<<<
@@ -2486,7 +2486,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XGOTREF(__pyx_t_13);
       /*try:*/ {
 
-        /* "freqgrabscript.pyx":77
+        /* "googlengram/pullscripts/freqgrabscript.pyx":77
  *         print "Deleting", name
  *         try:
  *             os.remove(loc_dir + name)             # <<<<<<<<<<<<<<
@@ -2528,7 +2528,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
         __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "freqgrabscript.pyx":78
+        /* "googlengram/pullscripts/freqgrabscript.pyx":78
  *         try:
  *             os.remove(loc_dir + name)
  *             os.remove(loc_dir + name + '.csv.zip')             # <<<<<<<<<<<<<<
@@ -2586,7 +2586,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "freqgrabscript.pyx":79
+      /* "googlengram/pullscripts/freqgrabscript.pyx":79
  *             os.remove(loc_dir + name)
  *             os.remove(loc_dir + name + '.csv.zip')
  *         except:             # <<<<<<<<<<<<<<
@@ -2605,7 +2605,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_L67_try_end:;
     }
 
-    /* "freqgrabscript.pyx":33
+    /* "googlengram/pullscripts/freqgrabscript.pyx":33
  * 
  *     print "Start loop"
  *     for url in urls:             # <<<<<<<<<<<<<<
@@ -2615,7 +2615,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "freqgrabscript.pyx":82
+  /* "googlengram/pullscripts/freqgrabscript.pyx":82
  *             pass
  * 
  *     print "Writing..."             # <<<<<<<<<<<<<<
@@ -2624,7 +2624,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
   if (__Pyx_PrintOne(0, __pyx_kp_s_Writing) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":83
+  /* "googlengram/pullscripts/freqgrabscript.pyx":83
  * 
  *     print "Writing..."
  *     for year in YEARS:             # <<<<<<<<<<<<<<
@@ -2674,7 +2674,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_year, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "freqgrabscript.pyx":84
+    /* "googlengram/pullscripts/freqgrabscript.pyx":84
  *     print "Writing..."
  *     for year in YEARS:
  *         util.write_pickle(year_freqs[year], DOWNLOAD_DIR + str(year) + "-freqs.pkl")             # <<<<<<<<<<<<<<
@@ -2734,7 +2734,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "freqgrabscript.pyx":83
+    /* "googlengram/pullscripts/freqgrabscript.pyx":83
  * 
  *     print "Writing..."
  *     for year in YEARS:             # <<<<<<<<<<<<<<
@@ -2744,7 +2744,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "freqgrabscript.pyx":86
+  /* "googlengram/pullscripts/freqgrabscript.pyx":86
  *         util.write_pickle(year_freqs[year], DOWNLOAD_DIR + str(year) + "-freqs.pkl")
  * 
  *     print "Finished. Number of unmapped words: ", num_unk             # <<<<<<<<<<<<<<
@@ -2764,7 +2764,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   if (__Pyx_Print(0, __pyx_t_5, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "freqgrabscript.pyx":20
+  /* "googlengram/pullscripts/freqgrabscript.pyx":20
  * INDEX_DIR = DATA_DIR + '/5grams_merged/'
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -2784,7 +2784,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_18);
   __Pyx_XDECREF(__pyx_t_19);
-  __Pyx_AddTraceback("freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.freqgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_merged_indices);
@@ -2809,7 +2809,7 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "freqgrabscript.pyx":88
+/* "googlengram/pullscripts/freqgrabscript.pyx":88
  *     print "Finished. Number of unmapped words: ", num_unk
  * 
  * def run():             # <<<<<<<<<<<<<<
@@ -2818,20 +2818,20 @@ static PyObject *__pyx_pf_14freqgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14freqgrabscript_3run(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_14freqgrabscript_3run = {"run", (PyCFunction)__pyx_pw_14freqgrabscript_3run, METH_NOARGS, 0};
-static PyObject *__pyx_pw_14freqgrabscript_3run(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14freqgrabscript_3run(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_11googlengram_11pullscripts_14freqgrabscript_3run = {"run", (PyCFunction)__pyx_pw_11googlengram_11pullscripts_14freqgrabscript_3run, METH_NOARGS, 0};
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14freqgrabscript_3run(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("run (wrapper)", 0);
-  __pyx_r = __pyx_pf_14freqgrabscript_2run(__pyx_self);
+  __pyx_r = __pyx_pf_11googlengram_11pullscripts_14freqgrabscript_2run(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2844,7 +2844,7 @@ static PyObject *__pyx_pf_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run", 0);
 
-  /* "freqgrabscript.pyx":89
+  /* "googlengram/pullscripts/freqgrabscript.pyx":89
  * 
  * def run():
  *     util.mkdir(TMP_DIR)             # <<<<<<<<<<<<<<
@@ -2885,7 +2885,7 @@ static PyObject *__pyx_pf_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":90
+  /* "googlengram/pullscripts/freqgrabscript.pyx":90
  * def run():
  *     util.mkdir(TMP_DIR)
  *     main()             # <<<<<<<<<<<<<<
@@ -2912,7 +2912,7 @@ static PyObject *__pyx_pf_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":88
+  /* "googlengram/pullscripts/freqgrabscript.pyx":88
  *     print "Finished. Number of unmapped words: ", num_unk
  * 
  * def run():             # <<<<<<<<<<<<<<
@@ -2929,7 +2929,7 @@ static PyObject *__pyx_pf_14freqgrabscript_2run(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("freqgrabscript.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.freqgrabscript.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3003,10 +3003,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_f, __pyx_k_f, sizeof(__pyx_k_f), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_findall, __pyx_k_findall, sizeof(__pyx_k_findall), 0, 0, 1, 1},
-  {&__pyx_n_s_freqgrabscript, __pyx_k_freqgrabscript, sizeof(__pyx_k_freqgrabscript), 0, 0, 1, 1},
   {&__pyx_kp_s_freqs_pkl, __pyx_k_freqs_pkl, sizeof(__pyx_k_freqs_pkl), 0, 0, 1, 0},
   {&__pyx_n_s_get, __pyx_k_get, sizeof(__pyx_k_get), 0, 0, 1, 1},
   {&__pyx_kp_s_googlebooks, __pyx_k_googlebooks, sizeof(__pyx_k_googlebooks), 0, 0, 1, 0},
+  {&__pyx_n_s_googlengram_pullscripts_freqgrab, __pyx_k_googlengram_pullscripts_freqgrab, sizeof(__pyx_k_googlengram_pullscripts_freqgrab), 0, 0, 1, 1},
   {&__pyx_n_s_group, __pyx_k_group, sizeof(__pyx_k_group), 0, 0, 1, 1},
   {&__pyx_kp_s_href_s_s_s_csv_zip, __pyx_k_href_s_s_s_csv_zip, sizeof(__pyx_k_href_s_s_s_csv_zip), 0, 0, 1, 0},
   {&__pyx_kp_s_http_storage_googleapis_com_book, __pyx_k_http_storage_googleapis_com_book, sizeof(__pyx_k_http_storage_googleapis_com_book), 0, 0, 1, 0},
@@ -3077,7 +3077,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "freqgrabscript.pyx":23
+  /* "googlengram/pullscripts/freqgrabscript.pyx":23
  *     cdef int num_unk = 0
  *     merged_indices  = util.load_pickle(INDEX_DIR + "merged_index.pkl")
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")             # <<<<<<<<<<<<<<
@@ -3088,7 +3088,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "freqgrabscript.pyx":34
+  /* "googlengram/pullscripts/freqgrabscript.pyx":34
  *     print "Start loop"
  *     for url in urls:
  *         name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)             # <<<<<<<<<<<<<<
@@ -3099,7 +3099,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "freqgrabscript.pyx":44
+  /* "googlengram/pullscripts/freqgrabscript.pyx":44
  *         success = False
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:             # <<<<<<<<<<<<<<
@@ -3113,7 +3113,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "freqgrabscript.pyx":58
+  /* "googlengram/pullscripts/freqgrabscript.pyx":58
  *         with open(loc_dir + name) as f:
  *             for l in f:
  *                 split = l.strip().split('\t')             # <<<<<<<<<<<<<<
@@ -3124,7 +3124,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "freqgrabscript.pyx":59
+  /* "googlengram/pullscripts/freqgrabscript.pyx":59
  *             for l in f:
  *                 split = l.strip().split('\t')
  *                 word = split[0].decode('utf-8').lower()             # <<<<<<<<<<<<<<
@@ -3135,7 +3135,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "freqgrabscript.pyx":56
+  /* "googlengram/pullscripts/freqgrabscript.pyx":56
  * 
  *         print  "Going through", name
  *         with open(loc_dir + name) as f:             # <<<<<<<<<<<<<<
@@ -3146,7 +3146,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "freqgrabscript.pyx":17
+  /* "googlengram/pullscripts/freqgrabscript.pyx":17
  * DOWNLOAD_DIR = DATA_DIR + '/1grams/'
  * TMP_DIR = '/lfs/madmax4/0/will/google_ngrams/tmp/'
  * YEARS = range(1700, 2009)             # <<<<<<<<<<<<<<
@@ -3157,7 +3157,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "freqgrabscript.pyx":20
+  /* "googlengram/pullscripts/freqgrabscript.pyx":20
  * INDEX_DIR = DATA_DIR + '/5grams_merged/'
  * 
  * def main():             # <<<<<<<<<<<<<<
@@ -3169,7 +3169,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__12);
   __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(0, 0, 19, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_main, 20, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":88
+  /* "googlengram/pullscripts/freqgrabscript.pyx":88
  *     print "Finished. Number of unmapped words: ", num_unk
  * 
  * def run():             # <<<<<<<<<<<<<<
@@ -3258,14 +3258,14 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  if (__pyx_module_is_main_freqgrabscript) {
+  if (__pyx_module_is_main_googlengram__pullscripts__freqgrabscript) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!PyDict_GetItemString(modules, "freqgrabscript")) {
-      if (unlikely(PyDict_SetItemString(modules, "freqgrabscript", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!PyDict_GetItemString(modules, "googlengram.pullscripts.freqgrabscript")) {
+      if (unlikely(PyDict_SetItemString(modules, "googlengram.pullscripts.freqgrabscript", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
@@ -3282,7 +3282,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   /*--- Function import code ---*/
   /*--- Execution code ---*/
 
-  /* "freqgrabscript.pyx":1
+  /* "googlengram/pullscripts/freqgrabscript.pyx":1
  * import requests             # <<<<<<<<<<<<<<
  * import urllib2
  * import re
@@ -3292,7 +3292,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_requests, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":2
+  /* "googlengram/pullscripts/freqgrabscript.pyx":2
  * import requests
  * import urllib2             # <<<<<<<<<<<<<<
  * import re
@@ -3303,7 +3303,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_urllib2, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":3
+  /* "googlengram/pullscripts/freqgrabscript.pyx":3
  * import requests
  * import urllib2
  * import re             # <<<<<<<<<<<<<<
@@ -3315,7 +3315,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":4
+  /* "googlengram/pullscripts/freqgrabscript.pyx":4
  * import urllib2
  * import re
  * import os             # <<<<<<<<<<<<<<
@@ -3327,7 +3327,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":5
+  /* "googlengram/pullscripts/freqgrabscript.pyx":5
  * import re
  * import os
  * import subprocess             # <<<<<<<<<<<<<<
@@ -3339,7 +3339,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_subprocess, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":6
+  /* "googlengram/pullscripts/freqgrabscript.pyx":6
  * import os
  * import subprocess
  * import collections             # <<<<<<<<<<<<<<
@@ -3351,7 +3351,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_collections, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 6; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":7
+  /* "googlengram/pullscripts/freqgrabscript.pyx":7
  * import subprocess
  * import collections
  * import matstore             # <<<<<<<<<<<<<<
@@ -3363,7 +3363,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_matstore, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 7; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":8
+  /* "googlengram/pullscripts/freqgrabscript.pyx":8
  * import collections
  * import matstore
  * import util             # <<<<<<<<<<<<<<
@@ -3375,7 +3375,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_util, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":9
+  /* "googlengram/pullscripts/freqgrabscript.pyx":9
  * import matstore
  * import util
  * from multiprocessing import Process, Lock             # <<<<<<<<<<<<<<
@@ -3403,7 +3403,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "freqgrabscript.pyx":11
+  /* "googlengram/pullscripts/freqgrabscript.pyx":11
  * from multiprocessing import Process, Lock
  * 
  * DATA_DIR = '/dfs/scratch0/google_ngrams/'             # <<<<<<<<<<<<<<
@@ -3412,7 +3412,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_DATA_DIR, __pyx_kp_s_dfs_scratch0_google_ngrams) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 11; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":12
+  /* "googlengram/pullscripts/freqgrabscript.pyx":12
  * 
  * DATA_DIR = '/dfs/scratch0/google_ngrams/'
  * SOURCE = 'eng-all'             # <<<<<<<<<<<<<<
@@ -3421,7 +3421,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_SOURCE, __pyx_kp_s_eng_all) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 12; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":13
+  /* "googlengram/pullscripts/freqgrabscript.pyx":13
  * DATA_DIR = '/dfs/scratch0/google_ngrams/'
  * SOURCE = 'eng-all'
  * VERSION = '20090715'#'20120701'             # <<<<<<<<<<<<<<
@@ -3430,7 +3430,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_VERSION, __pyx_kp_s_20090715) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":14
+  /* "googlengram/pullscripts/freqgrabscript.pyx":14
  * SOURCE = 'eng-all'
  * VERSION = '20090715'#'20120701'
  * TYPE = '1gram'             # <<<<<<<<<<<<<<
@@ -3439,7 +3439,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_TYPE, __pyx_kp_s_1gram) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":15
+  /* "googlengram/pullscripts/freqgrabscript.pyx":15
  * VERSION = '20090715'#'20120701'
  * TYPE = '1gram'
  * DOWNLOAD_DIR = DATA_DIR + '/1grams/'             # <<<<<<<<<<<<<<
@@ -3454,7 +3454,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_DOWNLOAD_DIR, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 15; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":16
+  /* "googlengram/pullscripts/freqgrabscript.pyx":16
  * TYPE = '1gram'
  * DOWNLOAD_DIR = DATA_DIR + '/1grams/'
  * TMP_DIR = '/lfs/madmax4/0/will/google_ngrams/tmp/'             # <<<<<<<<<<<<<<
@@ -3463,7 +3463,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_TMP_DIR, __pyx_kp_s_lfs_madmax4_0_will_google_ngram) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 16; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "freqgrabscript.pyx":17
+  /* "googlengram/pullscripts/freqgrabscript.pyx":17
  * DOWNLOAD_DIR = DATA_DIR + '/1grams/'
  * TMP_DIR = '/lfs/madmax4/0/will/google_ngrams/tmp/'
  * YEARS = range(1700, 2009)             # <<<<<<<<<<<<<<
@@ -3475,7 +3475,7 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_YEARS, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 17; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "freqgrabscript.pyx":18
+  /* "googlengram/pullscripts/freqgrabscript.pyx":18
  * TMP_DIR = '/lfs/madmax4/0/will/google_ngrams/tmp/'
  * YEARS = range(1700, 2009)
  * INDEX_DIR = DATA_DIR + '/5grams_merged/'             # <<<<<<<<<<<<<<
@@ -3490,31 +3490,31 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_INDEX_DIR, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "freqgrabscript.pyx":20
+  /* "googlengram/pullscripts/freqgrabscript.pyx":20
  * INDEX_DIR = DATA_DIR + '/5grams_merged/'
  * 
  * def main():             # <<<<<<<<<<<<<<
  *     cdef int num_unk = 0
  *     merged_indices  = util.load_pickle(INDEX_DIR + "merged_index.pkl")
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14freqgrabscript_1main, NULL, __pyx_n_s_freqgrabscript); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11googlengram_11pullscripts_14freqgrabscript_1main, NULL, __pyx_n_s_googlengram_pullscripts_freqgrab); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_main, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "freqgrabscript.pyx":88
+  /* "googlengram/pullscripts/freqgrabscript.pyx":88
  *     print "Finished. Number of unmapped words: ", num_unk
  * 
  * def run():             # <<<<<<<<<<<<<<
  *     util.mkdir(TMP_DIR)
  *     main()
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_14freqgrabscript_3run, NULL, __pyx_n_s_freqgrabscript); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11googlengram_11pullscripts_14freqgrabscript_3run, NULL, __pyx_n_s_googlengram_pullscripts_freqgrab); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "freqgrabscript.pyx":1
+  /* "googlengram/pullscripts/freqgrabscript.pyx":1
  * import requests             # <<<<<<<<<<<<<<
  * import urllib2
  * import re
@@ -3532,11 +3532,11 @@ PyMODINIT_FUNC PyInit_freqgrabscript(void)
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init freqgrabscript", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init googlengram.pullscripts.freqgrabscript", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init freqgrabscript");
+    PyErr_SetString(PyExc_ImportError, "init googlengram.pullscripts.freqgrabscript");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

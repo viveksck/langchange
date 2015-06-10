@@ -248,8 +248,8 @@ class __Pyx_FakeReference {
 #define _USE_MATH_DEFINES
 #endif
 #include <math.h>
-#define __PYX_HAVE__gramgrabscript
-#define __PYX_HAVE_API__gramgrabscript
+#define __PYX_HAVE__googlengram__pullscripts__gramgrabscript
+#define __PYX_HAVE_API__googlengram__pullscripts__gramgrabscript
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -432,7 +432,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "gramgrabscript.pyx",
+  "googlengram/pullscripts/gramgrabscript.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -683,15 +683,15 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'gramgrabscript' */
-#define __Pyx_MODULE_NAME "gramgrabscript"
-int __pyx_module_is_main_gramgrabscript = 0;
+/* Module declarations from 'googlengram.pullscripts.gramgrabscript' */
+#define __Pyx_MODULE_NAME "googlengram.pullscripts.gramgrabscript"
+int __pyx_module_is_main_googlengram__pullscripts__gramgrabscript = 0;
 
-/* Implementation of 'gramgrabscript' */
+/* Implementation of 'googlengram.pullscripts.gramgrabscript' */
 static PyObject *__pyx_builtin_open;
 static PyObject *__pyx_builtin_range;
-static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock); /* proto */
-static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_processes); /* proto */
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock); /* proto */
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_processes); /* proto */
 static char __pyx_k_d[] = "-d";
 static char __pyx_k_f[] = "f";
 static char __pyx_k_i[] = "i";
@@ -803,11 +803,11 @@ static char __pyx_k_run_parallel[] = "run_parallel";
 static char __pyx_k_write_pickle[] = "write_pickle";
 static char __pyx_k_Going_through[] = "Going through";
 static char __pyx_k_num_processes[] = "num_processes";
-static char __pyx_k_gramgrabscript[] = "gramgrabscript";
 static char __pyx_k_multiprocessing[] = "multiprocessing";
 static char __pyx_k_href_s_s_s_csv_zip[] = "href='(.*%s-%s-%s-.*\\.csv.zip)";
-static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/google-ngram-scripts/gramgrabscript.pyx";
+static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/googlengram/pullscripts/gramgrabscript.pyx";
 static char __pyx_k_dfs_scratch0_google_ngrams_bywo[] = "/dfs/scratch0/google_ngrams/byword5grams_raw/";
+static char __pyx_k_googlengram_pullscripts_gramgrab[] = "googlengram.pullscripts.gramgrabscript";
 static char __pyx_k_http_storage_googleapis_com_book[] = "http://storage.googleapis.com/books/ngrams/books/datasetsv2.html";
 static PyObject *__pyx_kp_s_20090715;
 static PyObject *__pyx_kp_s_5gram;
@@ -856,7 +856,7 @@ static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_findall;
 static PyObject *__pyx_n_s_get;
 static PyObject *__pyx_kp_s_googlebooks;
-static PyObject *__pyx_n_s_gramgrabscript;
+static PyObject *__pyx_n_s_googlengram_pullscripts_gramgrab;
 static PyObject *__pyx_n_s_group;
 static PyObject *__pyx_kp_s_href_s_s_s_csv_zip;
 static PyObject *__pyx_kp_s_http_storage_googleapis_com_book;
@@ -941,7 +941,7 @@ static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_codeobj__13;
 static PyObject *__pyx_codeobj__15;
 
-/* "gramgrabscript.pyx":19
+/* "googlengram/pullscripts/gramgrabscript.pyx":19
  * STOPWORDS = set(stopwords.words('english'))
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
@@ -950,9 +950,9 @@ static PyObject *__pyx_codeobj__15;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14gramgrabscript_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_14gramgrabscript_1main = {"main", (PyCFunction)__pyx_pw_14gramgrabscript_1main, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_14gramgrabscript_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14gramgrabscript_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_11googlengram_11pullscripts_14gramgrabscript_1main = {"main", (PyCFunction)__pyx_pw_11googlengram_11pullscripts_14gramgrabscript_1main, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14gramgrabscript_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_proc_num = 0;
   PyObject *__pyx_v_lock = 0;
   int __pyx_lineno = 0;
@@ -1000,18 +1000,18 @@ static PyObject *__pyx_pw_14gramgrabscript_1main(PyObject *__pyx_self, PyObject 
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("main", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14gramgrabscript_main(__pyx_self, __pyx_v_proc_num, __pyx_v_lock);
+  __pyx_r = __pyx_pf_11googlengram_11pullscripts_14gramgrabscript_main(__pyx_self, __pyx_v_proc_num, __pyx_v_lock);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock) {
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock) {
   PyObject *__pyx_v_page = NULL;
   PyObject *__pyx_v_pattern = NULL;
   PyObject *__pyx_v_urls = NULL;
@@ -1060,7 +1060,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "gramgrabscript.pyx":20
+  /* "googlengram/pullscripts/gramgrabscript.pyx":20
  * 
  * def main(proc_num, lock):
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")             # <<<<<<<<<<<<<<
@@ -1078,7 +1078,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_page = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":21
+  /* "googlengram/pullscripts/gramgrabscript.pyx":21
  * def main(proc_num, lock):
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))             # <<<<<<<<<<<<<<
@@ -1139,7 +1139,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_pattern = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":22
+  /* "googlengram/pullscripts/gramgrabscript.pyx":22
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))
  *     urls = pattern.findall(page.text)             # <<<<<<<<<<<<<<
@@ -1179,7 +1179,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_urls = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":23
+  /* "googlengram/pullscripts/gramgrabscript.pyx":23
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))
  *     urls = pattern.findall(page.text)
  *     del page             # <<<<<<<<<<<<<<
@@ -1189,7 +1189,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_v_page);
   __pyx_v_page = NULL;
 
-  /* "gramgrabscript.pyx":25
+  /* "googlengram/pullscripts/gramgrabscript.pyx":25
  *     del page
  * 
  *     print proc_num, "Start loop"             # <<<<<<<<<<<<<<
@@ -1207,7 +1207,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":26
+  /* "googlengram/pullscripts/gramgrabscript.pyx":26
  * 
  *     print proc_num, "Start loop"
  *     while True:             # <<<<<<<<<<<<<<
@@ -1216,7 +1216,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
   while (1) {
 
-    /* "gramgrabscript.pyx":27
+    /* "googlengram/pullscripts/gramgrabscript.pyx":27
  *     print proc_num, "Start loop"
  *     while True:
  *         lock.acquire()             # <<<<<<<<<<<<<<
@@ -1245,7 +1245,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "gramgrabscript.pyx":28
+    /* "googlengram/pullscripts/gramgrabscript.pyx":28
  *     while True:
  *         lock.acquire()
  *         work_left = False             # <<<<<<<<<<<<<<
@@ -1254,7 +1254,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
     __pyx_v_work_left = 0;
 
-    /* "gramgrabscript.pyx":29
+    /* "googlengram/pullscripts/gramgrabscript.pyx":29
  *         lock.acquire()
  *         work_left = False
  *         for url in urls:             # <<<<<<<<<<<<<<
@@ -1301,7 +1301,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF_SET(__pyx_v_url, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "gramgrabscript.pyx":30
+      /* "googlengram/pullscripts/gramgrabscript.pyx":30
  *         work_left = False
  *         for url in urls:
  *             name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)             # <<<<<<<<<<<<<<
@@ -1354,7 +1354,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "gramgrabscript.pyx":31
+      /* "googlengram/pullscripts/gramgrabscript.pyx":31
  *         for url in urls:
  *             name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)
  *             dirs = set(os.listdir(DOWNLOAD_DIR))             # <<<<<<<<<<<<<<
@@ -1400,7 +1400,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF_SET(__pyx_v_dirs, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "gramgrabscript.pyx":32
+      /* "googlengram/pullscripts/gramgrabscript.pyx":32
  *             name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)
  *             dirs = set(os.listdir(DOWNLOAD_DIR))
  *             if name in dirs:             # <<<<<<<<<<<<<<
@@ -1411,7 +1411,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_t_11 = (__pyx_t_10 != 0);
       if (__pyx_t_11) {
 
-        /* "gramgrabscript.pyx":33
+        /* "googlengram/pullscripts/gramgrabscript.pyx":33
  *             dirs = set(os.listdir(DOWNLOAD_DIR))
  *             if name in dirs:
  *                 continue             # <<<<<<<<<<<<<<
@@ -1421,7 +1421,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
         goto __pyx_L5_continue;
       }
 
-      /* "gramgrabscript.pyx":35
+      /* "googlengram/pullscripts/gramgrabscript.pyx":35
  *                 continue
  * 
  *             work_left = True             # <<<<<<<<<<<<<<
@@ -1430,7 +1430,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
       __pyx_v_work_left = 1;
 
-      /* "gramgrabscript.pyx":36
+      /* "googlengram/pullscripts/gramgrabscript.pyx":36
  * 
  *             work_left = True
  *             print proc_num, "Name", name             # <<<<<<<<<<<<<<
@@ -1451,7 +1451,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       if (__Pyx_Print(0, __pyx_t_2, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "gramgrabscript.pyx":37
+      /* "googlengram/pullscripts/gramgrabscript.pyx":37
  *             work_left = True
  *             print proc_num, "Name", name
  *             loc_dir = DOWNLOAD_DIR + "/" + name + "/"             # <<<<<<<<<<<<<<
@@ -1472,7 +1472,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF_SET(__pyx_v_loc_dir, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "gramgrabscript.pyx":38
+      /* "googlengram/pullscripts/gramgrabscript.pyx":38
  *             print proc_num, "Name", name
  *             loc_dir = DOWNLOAD_DIR + "/" + name + "/"
  *             util.mkdir(loc_dir)             # <<<<<<<<<<<<<<
@@ -1511,7 +1511,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "gramgrabscript.pyx":39
+      /* "googlengram/pullscripts/gramgrabscript.pyx":39
  *             loc_dir = DOWNLOAD_DIR + "/" + name + "/"
  *             util.mkdir(loc_dir)
  *             break             # <<<<<<<<<<<<<<
@@ -1520,7 +1520,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
       goto __pyx_L6_break;
 
-      /* "gramgrabscript.pyx":29
+      /* "googlengram/pullscripts/gramgrabscript.pyx":29
  *         lock.acquire()
  *         work_left = False
  *         for url in urls:             # <<<<<<<<<<<<<<
@@ -1532,7 +1532,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_L6_break:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "gramgrabscript.pyx":40
+    /* "googlengram/pullscripts/gramgrabscript.pyx":40
  *             util.mkdir(loc_dir)
  *             break
  *         lock.release()             # <<<<<<<<<<<<<<
@@ -1561,7 +1561,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "gramgrabscript.pyx":41
+    /* "googlengram/pullscripts/gramgrabscript.pyx":41
  *             break
  *         lock.release()
  *         if not work_left:             # <<<<<<<<<<<<<<
@@ -1571,7 +1571,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_t_11 = ((!(__pyx_v_work_left != 0)) != 0);
     if (__pyx_t_11) {
 
-      /* "gramgrabscript.pyx":42
+      /* "googlengram/pullscripts/gramgrabscript.pyx":42
  *         lock.release()
  *         if not work_left:
  *             print proc_num, "Finished"             # <<<<<<<<<<<<<<
@@ -1589,7 +1589,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 42; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "gramgrabscript.pyx":43
+      /* "googlengram/pullscripts/gramgrabscript.pyx":43
  *         if not work_left:
  *             print proc_num, "Finished"
  *             break             # <<<<<<<<<<<<<<
@@ -1599,7 +1599,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       goto __pyx_L4_break;
     }
 
-    /* "gramgrabscript.pyx":45
+    /* "googlengram/pullscripts/gramgrabscript.pyx":45
  *             break
  * 
  *         print proc_num, "Downloading", name             # <<<<<<<<<<<<<<
@@ -1621,7 +1621,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "gramgrabscript.pyx":47
+    /* "googlengram/pullscripts/gramgrabscript.pyx":47
  *         print proc_num, "Downloading", name
  * 
  *         success = False             # <<<<<<<<<<<<<<
@@ -1630,7 +1630,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
     __pyx_v_success = 0;
 
-    /* "gramgrabscript.pyx":48
+    /* "googlengram/pullscripts/gramgrabscript.pyx":48
  * 
  *         success = False
  *         while not success:             # <<<<<<<<<<<<<<
@@ -1641,7 +1641,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_t_11 = ((!(__pyx_v_success != 0)) != 0);
       if (!__pyx_t_11) break;
 
-      /* "gramgrabscript.pyx":49
+      /* "googlengram/pullscripts/gramgrabscript.pyx":49
  *         success = False
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:             # <<<<<<<<<<<<<<
@@ -1702,7 +1702,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_6);
               __pyx_t_6 = 0;
 
-              /* "gramgrabscript.pyx":50
+              /* "googlengram/pullscripts/gramgrabscript.pyx":50
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:
  *                 try:             # <<<<<<<<<<<<<<
@@ -1716,7 +1716,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XGOTREF(__pyx_t_18);
                 /*try:*/ {
 
-                  /* "gramgrabscript.pyx":51
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":51
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:
  *                 try:
  *                     f.write(urllib2.urlopen(url, timeout=60).read())             # <<<<<<<<<<<<<<
@@ -1793,7 +1793,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
                   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-                  /* "gramgrabscript.pyx":52
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":52
  *                 try:
  *                     f.write(urllib2.urlopen(url, timeout=60).read())
  *                     success = True             # <<<<<<<<<<<<<<
@@ -1815,7 +1815,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-                /* "gramgrabscript.pyx":53
+                /* "googlengram/pullscripts/gramgrabscript.pyx":53
  *                     f.write(urllib2.urlopen(url, timeout=60).read())
  *                     success = True
  *                 except:             # <<<<<<<<<<<<<<
@@ -1823,13 +1823,13 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  * 
  */
                 /*except:*/ {
-                  __Pyx_AddTraceback("gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+                  __Pyx_AddTraceback("googlengram.pullscripts.gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
                   if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_3, &__pyx_t_19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L27_except_error;}
                   __Pyx_GOTREF(__pyx_t_6);
                   __Pyx_GOTREF(__pyx_t_3);
                   __Pyx_GOTREF(__pyx_t_19);
 
-                  /* "gramgrabscript.pyx":54
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":54
  *                     success = True
  *                 except:
  *                     continue             # <<<<<<<<<<<<<<
@@ -1871,7 +1871,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
 
-            /* "gramgrabscript.pyx":49
+            /* "googlengram/pullscripts/gramgrabscript.pyx":49
  *         success = False
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:             # <<<<<<<<<<<<<<
@@ -1879,7 +1879,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  *                     f.write(urllib2.urlopen(url, timeout=60).read())
  */
             /*except:*/ {
-              __Pyx_AddTraceback("gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+              __Pyx_AddTraceback("googlengram.pullscripts.gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
               if (__Pyx_GetException(&__pyx_t_19, &__pyx_t_3, &__pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L19_except_error;}
               __Pyx_GOTREF(__pyx_t_19);
               __Pyx_GOTREF(__pyx_t_3);
@@ -1960,7 +1960,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_L9_continue:;
     }
 
-    /* "gramgrabscript.pyx":56
+    /* "googlengram/pullscripts/gramgrabscript.pyx":56
  *                     continue
  * 
  *         print proc_num, "Unzipping", name             # <<<<<<<<<<<<<<
@@ -1982,7 +1982,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_6, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":57
+    /* "googlengram/pullscripts/gramgrabscript.pyx":57
  * 
  *         print proc_num, "Unzipping", name
  *         subprocess.call(['unzip', '-o', loc_dir + name + '.csv.zip', '-d', loc_dir])             # <<<<<<<<<<<<<<
@@ -2047,7 +2047,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":58
+    /* "googlengram/pullscripts/gramgrabscript.pyx":58
  *         print proc_num, "Unzipping", name
  *         subprocess.call(['unzip', '-o', loc_dir + name + '.csv.zip', '-d', loc_dir])
  *         subprocess.call(['mv', loc_dir + 'googlebooks-' + SOURCE + '-' +  TYPE + '-' + VERSION + '-' + name + '.csv', loc_dir + name])             # <<<<<<<<<<<<<<
@@ -2139,7 +2139,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":60
+    /* "googlengram/pullscripts/gramgrabscript.pyx":60
  *         subprocess.call(['mv', loc_dir + 'googlebooks-' + SOURCE + '-' +  TYPE + '-' + VERSION + '-' + name + '.csv', loc_dir + name])
  * 
  *         print proc_num, "Going through", name             # <<<<<<<<<<<<<<
@@ -2161,7 +2161,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_6, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 60; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":61
+    /* "googlengram/pullscripts/gramgrabscript.pyx":61
  * 
  *         print proc_num, "Going through", name
  *         index = collections.OrderedDict()             # <<<<<<<<<<<<<<
@@ -2194,7 +2194,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_index, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":62
+    /* "googlengram/pullscripts/gramgrabscript.pyx":62
  *         print proc_num, "Going through", name
  *         index = collections.OrderedDict()
  *         year_grams = collections.defaultdict(dict)             # <<<<<<<<<<<<<<
@@ -2234,7 +2234,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF_SET(__pyx_v_year_grams, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":63
+    /* "googlengram/pullscripts/gramgrabscript.pyx":63
  *         index = collections.OrderedDict()
  *         year_grams = collections.defaultdict(dict)
  *         n = 0             # <<<<<<<<<<<<<<
@@ -2243,7 +2243,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
     __pyx_v_n = 0;
 
-    /* "gramgrabscript.pyx":64
+    /* "googlengram/pullscripts/gramgrabscript.pyx":64
  *         year_grams = collections.defaultdict(dict)
  *         n = 0
  *         with open(loc_dir + name) as f:             # <<<<<<<<<<<<<<
@@ -2298,7 +2298,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
             __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "gramgrabscript.pyx":65
+            /* "googlengram/pullscripts/gramgrabscript.pyx":65
  *         n = 0
  *         with open(loc_dir + name) as f:
  *             for l in f:             # <<<<<<<<<<<<<<
@@ -2345,7 +2345,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_l, __pyx_t_6);
               __pyx_t_6 = 0;
 
-              /* "gramgrabscript.pyx":66
+              /* "googlengram/pullscripts/gramgrabscript.pyx":66
  *         with open(loc_dir + name) as f:
  *             for l in f:
  *                 l = l.decode('utf-8').lower()             # <<<<<<<<<<<<<<
@@ -2381,7 +2381,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_DECREF_SET(__pyx_v_l, __pyx_t_6);
               __pyx_t_6 = 0;
 
-              /* "gramgrabscript.pyx":67
+              /* "googlengram/pullscripts/gramgrabscript.pyx":67
  *             for l in f:
  *                 l = l.decode('utf-8').lower()
  *                 split = l.strip().split('\t')             # <<<<<<<<<<<<<<
@@ -2417,7 +2417,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
               __Pyx_XDECREF_SET(__pyx_v_split, __pyx_t_6);
               __pyx_t_6 = 0;
 
-              /* "gramgrabscript.pyx":68
+              /* "googlengram/pullscripts/gramgrabscript.pyx":68
  *                 l = l.decode('utf-8').lower()
  *                 split = l.strip().split('\t')
  *                 try:             # <<<<<<<<<<<<<<
@@ -2431,7 +2431,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XGOTREF(__pyx_t_16);
                 /*try:*/ {
 
-                  /* "gramgrabscript.pyx":69
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":69
  *                 split = l.strip().split('\t')
  *                 try:
  *                     ngram = split[0].split()             # <<<<<<<<<<<<<<
@@ -2464,7 +2464,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_XDECREF_SET(__pyx_v_ngram, __pyx_t_6);
                   __pyx_t_6 = 0;
 
-                  /* "gramgrabscript.pyx":70
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":70
  *                 try:
  *                     ngram = split[0].split()
  *                     middle_index = len(ngram) // 2             # <<<<<<<<<<<<<<
@@ -2474,7 +2474,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __pyx_t_9 = PyObject_Length(__pyx_v_ngram); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L55_error;}
                   __pyx_v_middle_index = __Pyx_div_Py_ssize_t(__pyx_t_9, 2);
 
-                  /* "gramgrabscript.pyx":71
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":71
  *                     ngram = split[0].split()
  *                     middle_index = len(ngram) // 2
  *                     item = ngram[middle_index]             # <<<<<<<<<<<<<<
@@ -2486,7 +2486,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_XDECREF_SET(__pyx_v_item, __pyx_t_6);
                   __pyx_t_6 = 0;
 
-                  /* "gramgrabscript.pyx":72
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":72
  *                     middle_index = len(ngram) // 2
  *                     item = ngram[middle_index]
  *                     if (not item.isalpha()) or item in STOPWORDS:             # <<<<<<<<<<<<<<
@@ -2530,7 +2530,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __pyx_L64_bool_binop_done:;
                   if (__pyx_t_10) {
 
-                    /* "gramgrabscript.pyx":73
+                    /* "googlengram/pullscripts/gramgrabscript.pyx":73
  *                     item = ngram[middle_index]
  *                     if (not item.isalpha()) or item in STOPWORDS:
  *                         continue             # <<<<<<<<<<<<<<
@@ -2540,7 +2540,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                     goto __pyx_L61_try_continue;
                   }
 
-                  /* "gramgrabscript.pyx":74
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":74
  *                     if (not item.isalpha()) or item in STOPWORDS:
  *                         continue
  *                     year = split[1]             # <<<<<<<<<<<<<<
@@ -2552,7 +2552,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_XDECREF_SET(__pyx_v_year, __pyx_t_6);
                   __pyx_t_6 = 0;
 
-                  /* "gramgrabscript.pyx":75
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":75
  *                         continue
  *                     year = split[1]
  *                     count = int(split[2])             # <<<<<<<<<<<<<<
@@ -2567,7 +2567,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_XDECREF_SET(__pyx_v_count, __pyx_t_19);
                   __pyx_t_19 = 0;
 
-                  /* "gramgrabscript.pyx":76
+                  /* "googlengram/pullscripts/gramgrabscript.pyx":76
  *                     year = split[1]
  *                     count = int(split[2])
  *                     if item not in year_grams[year]:             # <<<<<<<<<<<<<<
@@ -2581,7 +2581,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   __pyx_t_11 = (__pyx_t_10 != 0);
                   if (__pyx_t_11) {
 
-                    /* "gramgrabscript.pyx":77
+                    /* "googlengram/pullscripts/gramgrabscript.pyx":77
  *                     count = int(split[2])
  *                     if item not in year_grams[year]:
  *                         year_grams[year][item] = [(l, count)]             # <<<<<<<<<<<<<<
@@ -2610,7 +2610,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                   }
                   /*else*/ {
 
-                    /* "gramgrabscript.pyx":79
+                    /* "googlengram/pullscripts/gramgrabscript.pyx":79
  *                         year_grams[year][item] = [(l, count)]
  *                     else:
  *                         year_grams[year][item].append((l, count))             # <<<<<<<<<<<<<<
@@ -2648,7 +2648,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
                 __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-                /* "gramgrabscript.pyx":80
+                /* "googlengram/pullscripts/gramgrabscript.pyx":80
  *                     else:
  *                         year_grams[year][item].append((l, count))
  *                 except:             # <<<<<<<<<<<<<<
@@ -2673,7 +2673,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
                 __pyx_L62_try_end:;
               }
 
-              /* "gramgrabscript.pyx":65
+              /* "googlengram/pullscripts/gramgrabscript.pyx":65
  *         n = 0
  *         with open(loc_dir + name) as f:
  *             for l in f:             # <<<<<<<<<<<<<<
@@ -2697,7 +2697,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "gramgrabscript.pyx":64
+          /* "googlengram/pullscripts/gramgrabscript.pyx":64
  *         year_grams = collections.defaultdict(dict)
  *         n = 0
  *         with open(loc_dir + name) as f:             # <<<<<<<<<<<<<<
@@ -2705,7 +2705,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  *                 l = l.decode('utf-8').lower()
  */
           /*except:*/ {
-            __Pyx_AddTraceback("gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+            __Pyx_AddTraceback("googlengram.pullscripts.gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
             if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_6, &__pyx_t_19) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L47_except_error;}
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_GOTREF(__pyx_t_6);
@@ -2768,7 +2768,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_L70:;
     }
 
-    /* "gramgrabscript.pyx":84
+    /* "googlengram/pullscripts/gramgrabscript.pyx":84
  *                     pass
  * 
  *         print proc_num, "Writing", name, n             # <<<<<<<<<<<<<<
@@ -2795,7 +2795,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_6, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":85
+    /* "googlengram/pullscripts/gramgrabscript.pyx":85
  * 
  *         print proc_num, "Writing", name, n
  *         for year in year_grams:             # <<<<<<<<<<<<<<
@@ -2842,7 +2842,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF_SET(__pyx_v_year, __pyx_t_19);
       __pyx_t_19 = 0;
 
-      /* "gramgrabscript.pyx":86
+      /* "googlengram/pullscripts/gramgrabscript.pyx":86
  *         print proc_num, "Writing", name, n
  *         for year in year_grams:
  *             util.write_pickle(year_grams[year], loc_dir + str(year) + ".pkl")             # <<<<<<<<<<<<<<
@@ -2900,7 +2900,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
 
-      /* "gramgrabscript.pyx":85
+      /* "googlengram/pullscripts/gramgrabscript.pyx":85
  * 
  *         print proc_num, "Writing", name, n
  *         for year in year_grams:             # <<<<<<<<<<<<<<
@@ -2910,7 +2910,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":88
+    /* "googlengram/pullscripts/gramgrabscript.pyx":88
  *             util.write_pickle(year_grams[year], loc_dir + str(year) + ".pkl")
  * 
  *         print proc_num, "Deleting", name             # <<<<<<<<<<<<<<
@@ -2932,7 +2932,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
     if (__Pyx_Print(0, __pyx_t_6, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "gramgrabscript.pyx":89
+    /* "googlengram/pullscripts/gramgrabscript.pyx":89
  * 
  *         print proc_num, "Deleting", name
  *         try:             # <<<<<<<<<<<<<<
@@ -2946,7 +2946,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XGOTREF(__pyx_t_14);
       /*try:*/ {
 
-        /* "gramgrabscript.pyx":90
+        /* "googlengram/pullscripts/gramgrabscript.pyx":90
  *         print proc_num, "Deleting", name
  *         try:
  *             os.remove(loc_dir + name)             # <<<<<<<<<<<<<<
@@ -2990,7 +2990,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "gramgrabscript.pyx":91
+        /* "googlengram/pullscripts/gramgrabscript.pyx":91
  *         try:
  *             os.remove(loc_dir + name)
  *             os.remove(loc_dir + name + '.csv.zip')             # <<<<<<<<<<<<<<
@@ -3050,7 +3050,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "gramgrabscript.pyx":92
+      /* "googlengram/pullscripts/gramgrabscript.pyx":92
  *             os.remove(loc_dir + name)
  *             os.remove(loc_dir + name + '.csv.zip')
  *         except:             # <<<<<<<<<<<<<<
@@ -3071,7 +3071,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   }
   __pyx_L4_break:;
 
-  /* "gramgrabscript.pyx":19
+  /* "googlengram/pullscripts/gramgrabscript.pyx":19
  * STOPWORDS = set(stopwords.words('english'))
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
@@ -3090,7 +3090,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_19);
-  __Pyx_AddTraceback("gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.gramgrabscript.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_page);
@@ -3114,7 +3114,7 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "gramgrabscript.pyx":96
+/* "googlengram/pullscripts/gramgrabscript.pyx":96
  * 
  * 
  * def run_parallel(num_processes):             # <<<<<<<<<<<<<<
@@ -3123,20 +3123,20 @@ static PyObject *__pyx_pf_14gramgrabscript_main(CYTHON_UNUSED PyObject *__pyx_se
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14gramgrabscript_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_processes); /*proto*/
-static PyMethodDef __pyx_mdef_14gramgrabscript_3run_parallel = {"run_parallel", (PyCFunction)__pyx_pw_14gramgrabscript_3run_parallel, METH_O, 0};
-static PyObject *__pyx_pw_14gramgrabscript_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_processes) {
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14gramgrabscript_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_processes); /*proto*/
+static PyMethodDef __pyx_mdef_11googlengram_11pullscripts_14gramgrabscript_3run_parallel = {"run_parallel", (PyCFunction)__pyx_pw_11googlengram_11pullscripts_14gramgrabscript_3run_parallel, METH_O, 0};
+static PyObject *__pyx_pw_11googlengram_11pullscripts_14gramgrabscript_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_processes) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("run_parallel (wrapper)", 0);
-  __pyx_r = __pyx_pf_14gramgrabscript_2run_parallel(__pyx_self, ((PyObject *)__pyx_v_num_processes));
+  __pyx_r = __pyx_pf_11googlengram_11pullscripts_14gramgrabscript_2run_parallel(__pyx_self, ((PyObject *)__pyx_v_num_processes));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_processes) {
+static PyObject *__pyx_pf_11googlengram_11pullscripts_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_processes) {
   PyObject *__pyx_v_lock = NULL;
   PyObject *__pyx_v_procs = NULL;
   PyObject *__pyx_v_p = NULL;
@@ -3155,7 +3155,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run_parallel", 0);
 
-  /* "gramgrabscript.pyx":97
+  /* "googlengram/pullscripts/gramgrabscript.pyx":97
  * 
  * def run_parallel(num_processes):
  *     util.mkdir(DATA_DIR + '/' + SOURCE)             # <<<<<<<<<<<<<<
@@ -3206,7 +3206,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":98
+  /* "googlengram/pullscripts/gramgrabscript.pyx":98
  * def run_parallel(num_processes):
  *     util.mkdir(DATA_DIR + '/' + SOURCE)
  *     util.mkdir(DATA_DIR + '/' + SOURCE + '/' + VERSION)             # <<<<<<<<<<<<<<
@@ -3266,7 +3266,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":99
+  /* "googlengram/pullscripts/gramgrabscript.pyx":99
  *     util.mkdir(DATA_DIR + '/' + SOURCE)
  *     util.mkdir(DATA_DIR + '/' + SOURCE + '/' + VERSION)
  *     util.mkdir(DOWNLOAD_DIR)             # <<<<<<<<<<<<<<
@@ -3308,7 +3308,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":100
+  /* "googlengram/pullscripts/gramgrabscript.pyx":100
  *     util.mkdir(DATA_DIR + '/' + SOURCE + '/' + VERSION)
  *     util.mkdir(DOWNLOAD_DIR)
  *     lock = Lock()             # <<<<<<<<<<<<<<
@@ -3338,7 +3338,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   __pyx_v_lock = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":101
+  /* "googlengram/pullscripts/gramgrabscript.pyx":101
  *     util.mkdir(DOWNLOAD_DIR)
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_processes)]             # <<<<<<<<<<<<<<
@@ -3424,7 +3424,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   __pyx_v_procs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":102
+  /* "googlengram/pullscripts/gramgrabscript.pyx":102
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_processes)]
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -3442,7 +3442,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "gramgrabscript.pyx":103
+    /* "googlengram/pullscripts/gramgrabscript.pyx":103
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_processes)]
  *     for p in procs:
  *         p.start()             # <<<<<<<<<<<<<<
@@ -3471,7 +3471,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "gramgrabscript.pyx":102
+    /* "googlengram/pullscripts/gramgrabscript.pyx":102
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_processes)]
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -3481,7 +3481,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":104
+  /* "googlengram/pullscripts/gramgrabscript.pyx":104
  *     for p in procs:
  *         p.start()
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -3498,7 +3498,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "gramgrabscript.pyx":105
+    /* "googlengram/pullscripts/gramgrabscript.pyx":105
  *         p.start()
  *     for p in procs:
  *         p.join()             # <<<<<<<<<<<<<<
@@ -3525,7 +3525,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "gramgrabscript.pyx":104
+    /* "googlengram/pullscripts/gramgrabscript.pyx":104
  *     for p in procs:
  *         p.start()
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -3534,7 +3534,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":96
+  /* "googlengram/pullscripts/gramgrabscript.pyx":96
  * 
  * 
  * def run_parallel(num_processes):             # <<<<<<<<<<<<<<
@@ -3551,7 +3551,7 @@ static PyObject *__pyx_pf_14gramgrabscript_2run_parallel(CYTHON_UNUSED PyObject 
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("gramgrabscript.run_parallel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.gramgrabscript.run_parallel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_lock);
@@ -3633,7 +3633,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_findall, __pyx_k_findall, sizeof(__pyx_k_findall), 0, 0, 1, 1},
   {&__pyx_n_s_get, __pyx_k_get, sizeof(__pyx_k_get), 0, 0, 1, 1},
   {&__pyx_kp_s_googlebooks, __pyx_k_googlebooks, sizeof(__pyx_k_googlebooks), 0, 0, 1, 0},
-  {&__pyx_n_s_gramgrabscript, __pyx_k_gramgrabscript, sizeof(__pyx_k_gramgrabscript), 0, 0, 1, 1},
+  {&__pyx_n_s_googlengram_pullscripts_gramgrab, __pyx_k_googlengram_pullscripts_gramgrab, sizeof(__pyx_k_googlengram_pullscripts_gramgrab), 0, 0, 1, 1},
   {&__pyx_n_s_group, __pyx_k_group, sizeof(__pyx_k_group), 0, 0, 1, 1},
   {&__pyx_kp_s_href_s_s_s_csv_zip, __pyx_k_href_s_s_s_csv_zip, sizeof(__pyx_k_href_s_s_s_csv_zip), 0, 0, 1, 0},
   {&__pyx_kp_s_http_storage_googleapis_com_book, __pyx_k_http_storage_googleapis_com_book, sizeof(__pyx_k_http_storage_googleapis_com_book), 0, 0, 1, 0},
@@ -3717,7 +3717,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "gramgrabscript.pyx":20
+  /* "googlengram/pullscripts/gramgrabscript.pyx":20
  * 
  * def main(proc_num, lock):
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")             # <<<<<<<<<<<<<<
@@ -3728,7 +3728,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "gramgrabscript.pyx":30
+  /* "googlengram/pullscripts/gramgrabscript.pyx":30
  *         work_left = False
  *         for url in urls:
  *             name = re.search('%s-(.*).csv.zip' % VERSION, url).group(1)             # <<<<<<<<<<<<<<
@@ -3739,7 +3739,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "gramgrabscript.pyx":49
+  /* "googlengram/pullscripts/gramgrabscript.pyx":49
  *         success = False
  *         while not success:
  *             with open(loc_dir + name + '.csv.zip', 'w') as f:             # <<<<<<<<<<<<<<
@@ -3753,7 +3753,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "gramgrabscript.pyx":66
+  /* "googlengram/pullscripts/gramgrabscript.pyx":66
  *         with open(loc_dir + name) as f:
  *             for l in f:
  *                 l = l.decode('utf-8').lower()             # <<<<<<<<<<<<<<
@@ -3764,7 +3764,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "gramgrabscript.pyx":67
+  /* "googlengram/pullscripts/gramgrabscript.pyx":67
  *             for l in f:
  *                 l = l.decode('utf-8').lower()
  *                 split = l.strip().split('\t')             # <<<<<<<<<<<<<<
@@ -3775,7 +3775,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "gramgrabscript.pyx":64
+  /* "googlengram/pullscripts/gramgrabscript.pyx":64
  *         year_grams = collections.defaultdict(dict)
  *         n = 0
  *         with open(loc_dir + name) as f:             # <<<<<<<<<<<<<<
@@ -3786,7 +3786,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "gramgrabscript.pyx":17
+  /* "googlengram/pullscripts/gramgrabscript.pyx":17
  * TYPE = '5gram'
  * DOWNLOAD_DIR = DATA_DIR + '/' + SOURCE + '/' + VERSION + '/' + TYPE + '/'
  * STOPWORDS = set(stopwords.words('english'))             # <<<<<<<<<<<<<<
@@ -3797,7 +3797,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "gramgrabscript.pyx":19
+  /* "googlengram/pullscripts/gramgrabscript.pyx":19
  * STOPWORDS = set(stopwords.words('english'))
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
@@ -3809,7 +3809,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__12);
   __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 22, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_main, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "gramgrabscript.pyx":96
+  /* "googlengram/pullscripts/gramgrabscript.pyx":96
  * 
  * 
  * def run_parallel(num_processes):             # <<<<<<<<<<<<<<
@@ -3899,14 +3899,14 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  if (__pyx_module_is_main_gramgrabscript) {
+  if (__pyx_module_is_main_googlengram__pullscripts__gramgrabscript) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!PyDict_GetItemString(modules, "gramgrabscript")) {
-      if (unlikely(PyDict_SetItemString(modules, "gramgrabscript", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!PyDict_GetItemString(modules, "googlengram.pullscripts.gramgrabscript")) {
+      if (unlikely(PyDict_SetItemString(modules, "googlengram.pullscripts.gramgrabscript", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
@@ -3923,7 +3923,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   /*--- Function import code ---*/
   /*--- Execution code ---*/
 
-  /* "gramgrabscript.pyx":1
+  /* "googlengram/pullscripts/gramgrabscript.pyx":1
  * import requests             # <<<<<<<<<<<<<<
  * import urllib2
  * import re
@@ -3933,7 +3933,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_requests, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":2
+  /* "googlengram/pullscripts/gramgrabscript.pyx":2
  * import requests
  * import urllib2             # <<<<<<<<<<<<<<
  * import re
@@ -3944,7 +3944,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_urllib2, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":3
+  /* "googlengram/pullscripts/gramgrabscript.pyx":3
  * import requests
  * import urllib2
  * import re             # <<<<<<<<<<<<<<
@@ -3956,7 +3956,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":4
+  /* "googlengram/pullscripts/gramgrabscript.pyx":4
  * import urllib2
  * import re
  * import os             # <<<<<<<<<<<<<<
@@ -3968,7 +3968,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":5
+  /* "googlengram/pullscripts/gramgrabscript.pyx":5
  * import re
  * import os
  * import subprocess             # <<<<<<<<<<<<<<
@@ -3980,7 +3980,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_subprocess, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":6
+  /* "googlengram/pullscripts/gramgrabscript.pyx":6
  * import os
  * import subprocess
  * import collections             # <<<<<<<<<<<<<<
@@ -3992,7 +3992,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_collections, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 6; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":7
+  /* "googlengram/pullscripts/gramgrabscript.pyx":7
  * import subprocess
  * import collections
  * import matstore             # <<<<<<<<<<<<<<
@@ -4004,7 +4004,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_matstore, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 7; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":8
+  /* "googlengram/pullscripts/gramgrabscript.pyx":8
  * import collections
  * import matstore
  * import util             # <<<<<<<<<<<<<<
@@ -4016,7 +4016,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_util, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":9
+  /* "googlengram/pullscripts/gramgrabscript.pyx":9
  * import matstore
  * import util
  * from multiprocessing import Process, Lock             # <<<<<<<<<<<<<<
@@ -4044,7 +4044,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gramgrabscript.pyx":10
+  /* "googlengram/pullscripts/gramgrabscript.pyx":10
  * import util
  * from multiprocessing import Process, Lock
  * from nltk.corpus import stopwords             # <<<<<<<<<<<<<<
@@ -4065,7 +4065,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":12
+  /* "googlengram/pullscripts/gramgrabscript.pyx":12
  * from nltk.corpus import stopwords
  * 
  * DATA_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/'             # <<<<<<<<<<<<<<
@@ -4074,7 +4074,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_DATA_DIR, __pyx_kp_s_dfs_scratch0_google_ngrams_bywo) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 12; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "gramgrabscript.pyx":13
+  /* "googlengram/pullscripts/gramgrabscript.pyx":13
  * 
  * DATA_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/'
  * SOURCE = 'eng-all'             # <<<<<<<<<<<<<<
@@ -4083,7 +4083,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_SOURCE, __pyx_kp_s_eng_all) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "gramgrabscript.pyx":14
+  /* "googlengram/pullscripts/gramgrabscript.pyx":14
  * DATA_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/'
  * SOURCE = 'eng-all'
  * VERSION = '20090715'#'20120701'             # <<<<<<<<<<<<<<
@@ -4092,7 +4092,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_VERSION, __pyx_kp_s_20090715) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "gramgrabscript.pyx":15
+  /* "googlengram/pullscripts/gramgrabscript.pyx":15
  * SOURCE = 'eng-all'
  * VERSION = '20090715'#'20120701'
  * TYPE = '5gram'             # <<<<<<<<<<<<<<
@@ -4101,7 +4101,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_TYPE, __pyx_kp_s_5gram) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 15; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "gramgrabscript.pyx":16
+  /* "googlengram/pullscripts/gramgrabscript.pyx":16
  * VERSION = '20090715'#'20120701'
  * TYPE = '5gram'
  * DOWNLOAD_DIR = DATA_DIR + '/' + SOURCE + '/' + VERSION + '/' + TYPE + '/'             # <<<<<<<<<<<<<<
@@ -4143,7 +4143,7 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_DOWNLOAD_DIR, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 16; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gramgrabscript.pyx":17
+  /* "googlengram/pullscripts/gramgrabscript.pyx":17
  * TYPE = '5gram'
  * DOWNLOAD_DIR = DATA_DIR + '/' + SOURCE + '/' + VERSION + '/' + TYPE + '/'
  * STOPWORDS = set(stopwords.words('english'))             # <<<<<<<<<<<<<<
@@ -4164,31 +4164,31 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_STOPWORDS, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 17; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":19
+  /* "googlengram/pullscripts/gramgrabscript.pyx":19
  * STOPWORDS = set(stopwords.words('english'))
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
  *     page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
  *     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.csv.zip)' % (SOURCE, TYPE, VERSION))
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14gramgrabscript_1main, NULL, __pyx_n_s_gramgrabscript); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11googlengram_11pullscripts_14gramgrabscript_1main, NULL, __pyx_n_s_googlengram_pullscripts_gramgrab); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_main, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":96
+  /* "googlengram/pullscripts/gramgrabscript.pyx":96
  * 
  * 
  * def run_parallel(num_processes):             # <<<<<<<<<<<<<<
  *     util.mkdir(DATA_DIR + '/' + SOURCE)
  *     util.mkdir(DATA_DIR + '/' + SOURCE + '/' + VERSION)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14gramgrabscript_3run_parallel, NULL, __pyx_n_s_gramgrabscript); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11googlengram_11pullscripts_14gramgrabscript_3run_parallel, NULL, __pyx_n_s_googlengram_pullscripts_gramgrab); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_parallel, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gramgrabscript.pyx":1
+  /* "googlengram/pullscripts/gramgrabscript.pyx":1
  * import requests             # <<<<<<<<<<<<<<
  * import urllib2
  * import re
@@ -4207,11 +4207,11 @@ PyMODINIT_FUNC PyInit_gramgrabscript(void)
   __Pyx_XDECREF(__pyx_t_3);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init gramgrabscript", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init googlengram.pullscripts.gramgrabscript", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init gramgrabscript");
+    PyErr_SetString(PyExc_ImportError, "init googlengram.pullscripts.gramgrabscript");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

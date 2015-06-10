@@ -1,11 +1,13 @@
 import random
 import os
 import random
+import argparse
+import scipy as sp
 from multiprocessing import Process, Lock
 from sklearn.preprocessing import normalize
-import scipy as sp
 
-from googlengram import matstore, util
+import ioutils
+from cooccurrence import matstore
 
 import numpy as np
 cimport numpy as np
@@ -16,8 +18,8 @@ OUTPUT_FILE = DATA_DIR + "/info/interestingfreqs.pkl"
 TMP_DIR = '/dfs/scratch0/wleif/tmp/'
 WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
 
-WORDS = util.load_pickle(WORD_FILE) 
-MERGED_INDEX = util.load_pickle(DATA_DIR + "5grams_merged/merged_index.pkl")
+WORDS = ioutils.load_pickle(WORD_FILE) 
+MERGED_INDEX = ioutils.load_pickle(DATA_DIR + "5grams_merged/merged_index.pkl")
 YEARS = range(1850, 2009)
 
 def compute_word_stats(mat, word):
@@ -31,11 +33,11 @@ def merge():
     for word in WORDS:
         yearstats[word] = {}
     for year in YEARS:
-        yearstat = util.load_pickle(TMP_DIR + str(year) + "-freqs.pkl")
+        yearstat = ioutils.load_pickle(TMP_DIR + str(year) + "-freqs.pkl")
         for word in WORDS:
             yearstats[word][year] = yearstat[word]
         os.remove(TMP_DIR + str(year) + "-freqs.pkl")
-    util.write_pickle(yearstats, OUTPUT_FILE)
+    ioutils.write_pickle(yearstats, OUTPUT_FILE)
 
 def main(proc_num, lock):
     cdef int i
@@ -72,7 +74,7 @@ def main(proc_num, lock):
             word_stats[word] = compute_word_stats(mat, word)
 
         print proc_num, "Writing stats for year", year
-        util.write_pickle(word_stats, TMP_DIR + str(year) + "-freqs.pkl")
+        ioutils.write_pickle(word_stats, TMP_DIR + str(year) + "-freqs.pkl")
 
 
 def run_parallel(num_procs):

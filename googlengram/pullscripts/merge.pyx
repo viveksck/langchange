@@ -1,13 +1,11 @@
 import collections
-import matstore
-import util
 import os
 from multiprocessing import Process, Lock
 
-INPUT_DIR = '/lfs/madmax5/0/will/google_ngrams/unmerged/eng-all/20090715/5gram/'
-OUTPUT_DIR = '/dfs/scratch0/google_ngrams/year_counts/'
-YEARS = range(1700, 2009)
-NUM_CHUNKS = 800
+from cooccurrence import matstore, indexing
+import ioutils
+
+YEARS = range(1800, 2001)
 
 def main(proc_num, lock):
     print proc_num, "Start loop"
@@ -15,13 +13,13 @@ def main(proc_num, lock):
         lock.acquire()
         work_left = False
         for year in YEARS:
-            dirs = set(os.listdir(OUTPUT_DIR))
+            dirs = set(os.listdir(out_dir))
             if str(year) + ".bin" in dirs:
                 continue
             
             work_left = True
             print proc_num, "year", year
-            fname = OUTPUT_DIR + str(year) + ".bin"
+            fname = out_dir + str(year) + ".bin"
             with open(fname, "w") as fp:
                 fp.write("")
             fp.close()
@@ -34,30 +32,39 @@ def main(proc_num, lock):
         print proc_num, "Merging counts for year", year
         full_counts = collections.defaultdict(float)
         merged_index = collections.OrderedDict()
-        for chunk_num in range(NUM_CHUNKS): 
-            chunk_name = INPUT_DIR + str(chunk_num) + "/" + str(year) + ".bin"
+        for chunk_num in os.listdir(in_dir): 
+            chunk_name = in_dir + str(chunk_num) + "/" + str(year) + ".bin"
             if not os.path.isfile(chunk_name):
                 continue
-            chunk_counts = matstore.retrieve_cooccurrence(chunk_name)
-            chunk_index = util.load_pickle(INPUT_DIR + str(chunk_num) + "/index.pkl") 
+            chunk_counts = matstore.retrieve_mat_as_dict(chunk_name)
+            chunk_index = ioutils.load_pickle(in_dir + str(chunk_num) + "/index.pkl") 
             chunk_index = list(chunk_index)
             for pair, count in chunk_counts.iteritems():
                 i_word = chunk_index[pair[0]]
                 c_word = chunk_index[pair[1]]
-                new_pair = (util.word_to_cached_id(i_word, merged_index), 
-                        util.word_to_cached_id(c_word, merged_index))
+                new_pair = (indexing.word_to_cached_id(i_word, merged_index), 
+                        indexing.word_to_cached_id(c_word, merged_index))
                 full_counts[new_pair] += count
         
         print proc_num, "Writing counts for year", year
-        matstore.export_cooccurrence({str(year) : full_counts}, OUTPUT_DIR)
-        util.write_pickle(merged_index, OUTPUT_DIR + str(year) + "-index.pkl")
+        matstore.export_cooccurrence({str(year) : full_counts}, out_dir)
+        ioutils.write_pickle(merged_index, out_dir + str(year) + "-index.pkl")
+        ioutils.write_pickle(list(merged_index), out_dir + str(year) + "-list.pkl")
 
-def run_parallel(num_procs):
+def run_parallel(num_procs, out_dir, in_dir):
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, lock, out_dir, in_dir]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
         p.join()   
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Merges years of raw 5gram data.")
+    parser.add_argument("out_dir", help="directory where data will be stored")
+    parser.add_argument("in_dir", help="path to unmerged data")
+    parser.add_argument("num_procs", type=int, help="number of processes to spawn")
+    args = parser.parse_args()
+    run_parallel(args.num_procs, args.out_dir, args.in_dir)       
 
 

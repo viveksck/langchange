@@ -248,8 +248,8 @@ class __Pyx_FakeReference {
 #define _USE_MATH_DEFINES
 #endif
 #include <math.h>
-#define __PYX_HAVE__grammerge
-#define __PYX_HAVE_API__grammerge
+#define __PYX_HAVE__googlengram__pullscripts__grammerge
+#define __PYX_HAVE_API__googlengram__pullscripts__grammerge
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -432,7 +432,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "grammerge.pyx",
+  "googlengram/pullscripts/grammerge.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -728,15 +728,15 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'grammerge' */
-#define __Pyx_MODULE_NAME "grammerge"
-int __pyx_module_is_main_grammerge = 0;
+/* Module declarations from 'googlengram.pullscripts.grammerge' */
+#define __Pyx_MODULE_NAME "googlengram.pullscripts.grammerge"
+int __pyx_module_is_main_googlengram__pullscripts__grammerge = 0;
 
-/* Implementation of 'grammerge' */
+/* Implementation of 'googlengram.pullscripts.grammerge' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_open;
-static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock); /* proto */
-static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_procs); /* proto */
+static PyObject *__pyx_pf_11googlengram_11pullscripts_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock); /* proto */
+static PyObject *__pyx_pf_11googlengram_11pullscripts_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_procs); /* proto */
 static char __pyx_k_[] = "";
 static char __pyx_k_i[] = "i";
 static char __pyx_k_p[] = "p";
@@ -794,7 +794,6 @@ static char __pyx_k_proc_num[] = "proc_num";
 static char __pyx_k_INPUT_DIR[] = "INPUT_DIR";
 static char __pyx_k_chunk_num[] = "chunk_num";
 static char __pyx_k_gram_info[] = "gram_info";
-static char __pyx_k_grammerge[] = "grammerge";
 static char __pyx_k_info_list[] = "info_list";
 static char __pyx_k_iteritems[] = "iteritems";
 static char __pyx_k_num_procs[] = "num_procs";
@@ -815,8 +814,9 @@ static char __pyx_k_ascii_lowercase[] = "ascii_lowercase";
 static char __pyx_k_multiprocessing[] = "multiprocessing";
 static char __pyx_k_Merging_grams_for_year[] = "Merging grams for year";
 static char __pyx_k_Writing_counts_for_year[] = "Writing counts for year";
-static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/google-ngram-scripts/grammerge.pyx";
+static char __pyx_k_afs_cs_stanford_edu_u_williamle[] = "/afs/cs.stanford.edu/u/williamleif/langchange/googlengram/pullscripts/grammerge.pyx";
 static char __pyx_k_dfs_scratch0_google_ngrams_bywo[] = "/dfs/scratch0/google_ngrams/byword5grams_raw/eng-all/20090715/5gram/";
+static char __pyx_k_googlengram_pullscripts_grammerg[] = "googlengram.pullscripts.grammerge";
 static char __pyx_k_dfs_scratch0_google_ngrams_bywo_2[] = "/dfs/scratch0/google_ngrams/byword5grams/";
 static PyObject *__pyx_kp_s_;
 static PyObject *__pyx_n_s_Finished;
@@ -853,8 +853,8 @@ static PyObject *__pyx_n_s_exit;
 static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_fname;
 static PyObject *__pyx_n_s_fp;
+static PyObject *__pyx_n_s_googlengram_pullscripts_grammerg;
 static PyObject *__pyx_n_s_gram_info;
-static PyObject *__pyx_n_s_grammerge;
 static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_info;
@@ -911,7 +911,7 @@ static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_codeobj__10;
 static PyObject *__pyx_codeobj__12;
 
-/* "grammerge.pyx":14
+/* "googlengram/pullscripts/grammerge.pyx":14
  * NUM_CHUNKS = 800
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
@@ -920,9 +920,9 @@ static PyObject *__pyx_codeobj__12;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9grammerge_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_9grammerge_1main = {"main", (PyCFunction)__pyx_pw_9grammerge_1main, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_9grammerge_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11googlengram_11pullscripts_9grammerge_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_11googlengram_11pullscripts_9grammerge_1main = {"main", (PyCFunction)__pyx_pw_11googlengram_11pullscripts_9grammerge_1main, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11googlengram_11pullscripts_9grammerge_1main(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_proc_num = 0;
   PyObject *__pyx_v_lock = 0;
   int __pyx_lineno = 0;
@@ -970,18 +970,18 @@ static PyObject *__pyx_pw_9grammerge_1main(PyObject *__pyx_self, PyObject *__pyx
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("main", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("grammerge.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.grammerge.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9grammerge_main(__pyx_self, __pyx_v_proc_num, __pyx_v_lock);
+  __pyx_r = __pyx_pf_11googlengram_11pullscripts_9grammerge_main(__pyx_self, __pyx_v_proc_num, __pyx_v_lock);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock) {
+static PyObject *__pyx_pf_11googlengram_11pullscripts_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_proc_num, PyObject *__pyx_v_lock) {
   PyObject *__pyx_v_years = NULL;
   int __pyx_v_work_left;
   PyObject *__pyx_v_year = NULL;
@@ -1029,7 +1029,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "grammerge.pyx":15
+  /* "googlengram/pullscripts/grammerge.pyx":15
  * 
  * def main(proc_num, lock):
  *     years = YEARS             # <<<<<<<<<<<<<<
@@ -1041,7 +1041,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   __pyx_v_years = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":16
+  /* "googlengram/pullscripts/grammerge.pyx":16
  * def main(proc_num, lock):
  *     years = YEARS
  *     random.shuffle(years)             # <<<<<<<<<<<<<<
@@ -1080,7 +1080,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":17
+  /* "googlengram/pullscripts/grammerge.pyx":17
  *     years = YEARS
  *     random.shuffle(years)
  *     print proc_num, "Start loop"             # <<<<<<<<<<<<<<
@@ -1098,7 +1098,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 17; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":18
+  /* "googlengram/pullscripts/grammerge.pyx":18
  *     random.shuffle(years)
  *     print proc_num, "Start loop"
  *     while True:             # <<<<<<<<<<<<<<
@@ -1107,7 +1107,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
  */
   while (1) {
 
-    /* "grammerge.pyx":19
+    /* "googlengram/pullscripts/grammerge.pyx":19
  *     print proc_num, "Start loop"
  *     while True:
  *         lock.acquire()             # <<<<<<<<<<<<<<
@@ -1136,7 +1136,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "grammerge.pyx":20
+    /* "googlengram/pullscripts/grammerge.pyx":20
  *     while True:
  *         lock.acquire()
  *         work_left = False             # <<<<<<<<<<<<<<
@@ -1145,7 +1145,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
  */
     __pyx_v_work_left = 0;
 
-    /* "grammerge.pyx":21
+    /* "googlengram/pullscripts/grammerge.pyx":21
  *         lock.acquire()
  *         work_left = False
  *         for year in years:             # <<<<<<<<<<<<<<
@@ -1192,7 +1192,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_year, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "grammerge.pyx":22
+      /* "googlengram/pullscripts/grammerge.pyx":22
  *         work_left = False
  *         for year in years:
  *             dirs = set(os.listdir(OUTPUT_DIR))             # <<<<<<<<<<<<<<
@@ -1238,7 +1238,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_dirs, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "grammerge.pyx":23
+      /* "googlengram/pullscripts/grammerge.pyx":23
  *         for year in years:
  *             dirs = set(os.listdir(OUTPUT_DIR))
  *             if str(year) + ".bin" in dirs:             # <<<<<<<<<<<<<<
@@ -1261,7 +1261,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __pyx_t_10 = (__pyx_t_9 != 0);
       if (__pyx_t_10) {
 
-        /* "grammerge.pyx":24
+        /* "googlengram/pullscripts/grammerge.pyx":24
  *             dirs = set(os.listdir(OUTPUT_DIR))
  *             if str(year) + ".bin" in dirs:
  *                 continue             # <<<<<<<<<<<<<<
@@ -1271,7 +1271,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
         goto __pyx_L5_continue;
       }
 
-      /* "grammerge.pyx":26
+      /* "googlengram/pullscripts/grammerge.pyx":26
  *                 continue
  * 
  *             work_left = True             # <<<<<<<<<<<<<<
@@ -1280,7 +1280,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
  */
       __pyx_v_work_left = 1;
 
-      /* "grammerge.pyx":27
+      /* "googlengram/pullscripts/grammerge.pyx":27
  * 
  *             work_left = True
  *             print proc_num, "year", year             # <<<<<<<<<<<<<<
@@ -1301,7 +1301,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       if (__Pyx_Print(0, __pyx_t_2, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "grammerge.pyx":28
+      /* "googlengram/pullscripts/grammerge.pyx":28
  *             work_left = True
  *             print proc_num, "year", year
  *             fname = OUTPUT_DIR + str(year) + ".bin"             # <<<<<<<<<<<<<<
@@ -1328,7 +1328,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_fname, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "grammerge.pyx":29
+      /* "googlengram/pullscripts/grammerge.pyx":29
  *             print proc_num, "year", year
  *             fname = OUTPUT_DIR + str(year) + ".bin"
  *             with open(fname, "w") as fp:             # <<<<<<<<<<<<<<
@@ -1382,7 +1382,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
               __Pyx_XDECREF_SET(__pyx_v_fp, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "grammerge.pyx":30
+              /* "googlengram/pullscripts/grammerge.pyx":30
  *             fname = OUTPUT_DIR + str(year) + ".bin"
  *             with open(fname, "w") as fp:
  *                 fp.write("")             # <<<<<<<<<<<<<<
@@ -1407,7 +1407,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "grammerge.pyx":29
+            /* "googlengram/pullscripts/grammerge.pyx":29
  *             print proc_num, "year", year
  *             fname = OUTPUT_DIR + str(year) + ".bin"
  *             with open(fname, "w") as fp:             # <<<<<<<<<<<<<<
@@ -1415,7 +1415,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
  *             fp.close()
  */
             /*except:*/ {
-              __Pyx_AddTraceback("grammerge.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+              __Pyx_AddTraceback("googlengram.pullscripts.grammerge.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
               if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_8) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 29; __pyx_clineno = __LINE__; goto __pyx_L16_except_error;}
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_GOTREF(__pyx_t_2);
@@ -1478,7 +1478,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
         __pyx_L25:;
       }
 
-      /* "grammerge.pyx":31
+      /* "googlengram/pullscripts/grammerge.pyx":31
  *             with open(fname, "w") as fp:
  *                 fp.write("")
  *             fp.close()             # <<<<<<<<<<<<<<
@@ -1508,7 +1508,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "grammerge.pyx":32
+      /* "googlengram/pullscripts/grammerge.pyx":32
  *                 fp.write("")
  *             fp.close()
  *             break             # <<<<<<<<<<<<<<
@@ -1517,7 +1517,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
  */
       goto __pyx_L6_break;
 
-      /* "grammerge.pyx":21
+      /* "googlengram/pullscripts/grammerge.pyx":21
  *         lock.acquire()
  *         work_left = False
  *         for year in years:             # <<<<<<<<<<<<<<
@@ -1529,7 +1529,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     __pyx_L6_break:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "grammerge.pyx":33
+    /* "googlengram/pullscripts/grammerge.pyx":33
  *             fp.close()
  *             break
  *         lock.release()             # <<<<<<<<<<<<<<
@@ -1558,7 +1558,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "grammerge.pyx":34
+    /* "googlengram/pullscripts/grammerge.pyx":34
  *             break
  *         lock.release()
  *         if not work_left:             # <<<<<<<<<<<<<<
@@ -1568,7 +1568,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     __pyx_t_9 = ((!(__pyx_v_work_left != 0)) != 0);
     if (__pyx_t_9) {
 
-      /* "grammerge.pyx":35
+      /* "googlengram/pullscripts/grammerge.pyx":35
  *         lock.release()
  *         if not work_left:
  *             print proc_num, "Finished"             # <<<<<<<<<<<<<<
@@ -1586,7 +1586,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 35; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "grammerge.pyx":36
+      /* "googlengram/pullscripts/grammerge.pyx":36
  *         if not work_left:
  *             print proc_num, "Finished"
  *             break             # <<<<<<<<<<<<<<
@@ -1596,7 +1596,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       goto __pyx_L4_break;
     }
 
-    /* "grammerge.pyx":38
+    /* "googlengram/pullscripts/grammerge.pyx":38
  *             break
  * 
  *         print proc_num, "Merging grams for year", year             # <<<<<<<<<<<<<<
@@ -1618,7 +1618,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     if (__Pyx_Print(0, __pyx_t_1, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "grammerge.pyx":39
+    /* "googlengram/pullscripts/grammerge.pyx":39
  * 
  *         print proc_num, "Merging grams for year", year
  *         year_grams = {}             # <<<<<<<<<<<<<<
@@ -1630,7 +1630,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     __Pyx_XDECREF_SET(__pyx_v_year_grams, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "grammerge.pyx":40
+    /* "googlengram/pullscripts/grammerge.pyx":40
  *         print proc_num, "Merging grams for year", year
  *         year_grams = {}
  *         for letter in string.ascii_lowercase:             # <<<<<<<<<<<<<<
@@ -1683,7 +1683,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_letter, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "grammerge.pyx":41
+      /* "googlengram/pullscripts/grammerge.pyx":41
  *         year_grams = {}
  *         for letter in string.ascii_lowercase:
  *             year_grams[letter] = collections.defaultdict(list)             # <<<<<<<<<<<<<<
@@ -1723,7 +1723,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       if (unlikely(PyDict_SetItem(__pyx_v_year_grams, __pyx_v_letter, __pyx_t_8) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 41; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "grammerge.pyx":40
+      /* "googlengram/pullscripts/grammerge.pyx":40
  *         print proc_num, "Merging grams for year", year
  *         year_grams = {}
  *         for letter in string.ascii_lowercase:             # <<<<<<<<<<<<<<
@@ -1733,7 +1733,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "grammerge.pyx":42
+    /* "googlengram/pullscripts/grammerge.pyx":42
  *         for letter in string.ascii_lowercase:
  *             year_grams[letter] = collections.defaultdict(list)
  *         for chunk_num in range(NUM_CHUNKS):             # <<<<<<<<<<<<<<
@@ -1791,7 +1791,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_chunk_num, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "grammerge.pyx":43
+      /* "googlengram/pullscripts/grammerge.pyx":43
  *             year_grams[letter] = collections.defaultdict(list)
  *         for chunk_num in range(NUM_CHUNKS):
  *             chunk_name = INPUT_DIR + str(chunk_num) + "/" + str(year) + ".pkl"             # <<<<<<<<<<<<<<
@@ -1834,7 +1834,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_chunk_name, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "grammerge.pyx":44
+      /* "googlengram/pullscripts/grammerge.pyx":44
  *         for chunk_num in range(NUM_CHUNKS):
  *             chunk_name = INPUT_DIR + str(chunk_num) + "/" + str(year) + ".pkl"
  *             if not os.path.isfile(chunk_name):             # <<<<<<<<<<<<<<
@@ -1879,7 +1879,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __pyx_t_10 = ((!__pyx_t_9) != 0);
       if (__pyx_t_10) {
 
-        /* "grammerge.pyx":45
+        /* "googlengram/pullscripts/grammerge.pyx":45
  *             chunk_name = INPUT_DIR + str(chunk_num) + "/" + str(year) + ".pkl"
  *             if not os.path.isfile(chunk_name):
  *                 continue             # <<<<<<<<<<<<<<
@@ -1889,7 +1889,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
         goto __pyx_L29_continue;
       }
 
-      /* "grammerge.pyx":46
+      /* "googlengram/pullscripts/grammerge.pyx":46
  *             if not os.path.isfile(chunk_name):
  *                 continue
  *             chunk_counts = util.load_pickle(chunk_name)             # <<<<<<<<<<<<<<
@@ -1929,7 +1929,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_chunk_counts, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "grammerge.pyx":47
+      /* "googlengram/pullscripts/grammerge.pyx":47
  *                 continue
  *             chunk_counts = util.load_pickle(chunk_name)
  *             for word, info_list in chunk_counts.iteritems():             # <<<<<<<<<<<<<<
@@ -1957,7 +1957,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
         __Pyx_XDECREF_SET(__pyx_v_info_list, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "grammerge.pyx":48
+        /* "googlengram/pullscripts/grammerge.pyx":48
  *             chunk_counts = util.load_pickle(chunk_name)
  *             for word, info_list in chunk_counts.iteritems():
  *                 if word[0] not in year_grams:             # <<<<<<<<<<<<<<
@@ -1971,7 +1971,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
         __pyx_t_9 = (__pyx_t_10 != 0);
         if (__pyx_t_9) {
 
-          /* "grammerge.pyx":49
+          /* "googlengram/pullscripts/grammerge.pyx":49
  *             for word, info_list in chunk_counts.iteritems():
  *                 if word[0] not in year_grams:
  *                     continue             # <<<<<<<<<<<<<<
@@ -1981,7 +1981,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
           goto __pyx_L32_continue;
         }
 
-        /* "grammerge.pyx":50
+        /* "googlengram/pullscripts/grammerge.pyx":50
  *                 if word[0] not in year_grams:
  *                     continue
  *                 for info in info_list:             # <<<<<<<<<<<<<<
@@ -2028,7 +2028,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
           __Pyx_XDECREF_SET(__pyx_v_info, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "grammerge.pyx":51
+          /* "googlengram/pullscripts/grammerge.pyx":51
  *                     continue
  *                 for info in info_list:
  *                     gram_info = info[0]             # <<<<<<<<<<<<<<
@@ -2040,7 +2040,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
           __Pyx_XDECREF_SET(__pyx_v_gram_info, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "grammerge.pyx":52
+          /* "googlengram/pullscripts/grammerge.pyx":52
  *                 for info in info_list:
  *                     gram_info = info[0]
  *                     gram_info = gram_info.split("\t")             # <<<<<<<<<<<<<<
@@ -2055,7 +2055,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
           __Pyx_DECREF_SET(__pyx_v_gram_info, __pyx_t_3);
           __pyx_t_3 = 0;
 
-          /* "grammerge.pyx":53
+          /* "googlengram/pullscripts/grammerge.pyx":53
  *                     gram_info = info[0]
  *                     gram_info = gram_info.split("\t")
  *                     if len(gram_info[0].split()) != 5:             # <<<<<<<<<<<<<<
@@ -2090,7 +2090,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
           __pyx_t_9 = ((__pyx_t_22 != 5) != 0);
           if (__pyx_t_9) {
 
-            /* "grammerge.pyx":54
+            /* "googlengram/pullscripts/grammerge.pyx":54
  *                     gram_info = gram_info.split("\t")
  *                     if len(gram_info[0].split()) != 5:
  *                         continue             # <<<<<<<<<<<<<<
@@ -2100,7 +2100,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
             goto __pyx_L35_continue;
           }
 
-          /* "grammerge.pyx":55
+          /* "googlengram/pullscripts/grammerge.pyx":55
  *                     if len(gram_info[0].split()) != 5:
  *                         continue
  *                     year_grams[word[0]][word].append((gram_info[0], info[1]))             # <<<<<<<<<<<<<<
@@ -2131,7 +2131,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
 
-          /* "grammerge.pyx":50
+          /* "googlengram/pullscripts/grammerge.pyx":50
  *                 if word[0] not in year_grams:
  *                     continue
  *                 for info in info_list:             # <<<<<<<<<<<<<<
@@ -2145,7 +2145,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "grammerge.pyx":42
+      /* "googlengram/pullscripts/grammerge.pyx":42
  *         for letter in string.ascii_lowercase:
  *             year_grams[letter] = collections.defaultdict(list)
  *         for chunk_num in range(NUM_CHUNKS):             # <<<<<<<<<<<<<<
@@ -2156,7 +2156,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "grammerge.pyx":57
+    /* "googlengram/pullscripts/grammerge.pyx":57
  *                     year_grams[word[0]][word].append((gram_info[0], info[1]))
  * 
  *         print proc_num, "Writing counts for year", year             # <<<<<<<<<<<<<<
@@ -2178,7 +2178,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
     if (__Pyx_Print(0, __pyx_t_8, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 57; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "grammerge.pyx":58
+    /* "googlengram/pullscripts/grammerge.pyx":58
  * 
  *         print proc_num, "Writing counts for year", year
  *         for letter, letter_grams in year_grams.iteritems():             # <<<<<<<<<<<<<<
@@ -2202,7 +2202,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
       __Pyx_XDECREF_SET(__pyx_v_letter_grams, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "grammerge.pyx":59
+      /* "googlengram/pullscripts/grammerge.pyx":59
  *         print proc_num, "Writing counts for year", year
  *         for letter, letter_grams in year_grams.iteritems():
  *              util.write_pickle(letter_grams, OUTPUT_DIR + str(year) + "-" + letter + ".pkl")             # <<<<<<<<<<<<<<
@@ -2271,7 +2271,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   }
   __pyx_L4_break:;
 
-  /* "grammerge.pyx":14
+  /* "googlengram/pullscripts/grammerge.pyx":14
  * NUM_CHUNKS = 800
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
@@ -2290,7 +2290,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_23);
-  __Pyx_AddTraceback("grammerge.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.grammerge.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_years);
@@ -2313,7 +2313,7 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
   return __pyx_r;
 }
 
-/* "grammerge.pyx":61
+/* "googlengram/pullscripts/grammerge.pyx":61
  *              util.write_pickle(letter_grams, OUTPUT_DIR + str(year) + "-" + letter + ".pkl")
  * 
  * def run_parallel(num_procs):             # <<<<<<<<<<<<<<
@@ -2322,20 +2322,20 @@ static PyObject *__pyx_pf_9grammerge_main(CYTHON_UNUSED PyObject *__pyx_self, Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9grammerge_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_procs); /*proto*/
-static PyMethodDef __pyx_mdef_9grammerge_3run_parallel = {"run_parallel", (PyCFunction)__pyx_pw_9grammerge_3run_parallel, METH_O, 0};
-static PyObject *__pyx_pw_9grammerge_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_procs) {
+static PyObject *__pyx_pw_11googlengram_11pullscripts_9grammerge_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_procs); /*proto*/
+static PyMethodDef __pyx_mdef_11googlengram_11pullscripts_9grammerge_3run_parallel = {"run_parallel", (PyCFunction)__pyx_pw_11googlengram_11pullscripts_9grammerge_3run_parallel, METH_O, 0};
+static PyObject *__pyx_pw_11googlengram_11pullscripts_9grammerge_3run_parallel(PyObject *__pyx_self, PyObject *__pyx_v_num_procs) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("run_parallel (wrapper)", 0);
-  __pyx_r = __pyx_pf_9grammerge_2run_parallel(__pyx_self, ((PyObject *)__pyx_v_num_procs));
+  __pyx_r = __pyx_pf_11googlengram_11pullscripts_9grammerge_2run_parallel(__pyx_self, ((PyObject *)__pyx_v_num_procs));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_procs) {
+static PyObject *__pyx_pf_11googlengram_11pullscripts_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_num_procs) {
   PyObject *__pyx_v_lock = NULL;
   PyObject *__pyx_v_procs = NULL;
   PyObject *__pyx_v_p = NULL;
@@ -2354,7 +2354,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run_parallel", 0);
 
-  /* "grammerge.pyx":62
+  /* "googlengram/pullscripts/grammerge.pyx":62
  * 
  * def run_parallel(num_procs):
  *     lock = Lock()             # <<<<<<<<<<<<<<
@@ -2384,7 +2384,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_lock = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":63
+  /* "googlengram/pullscripts/grammerge.pyx":63
  * def run_parallel(num_procs):
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]             # <<<<<<<<<<<<<<
@@ -2470,7 +2470,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_procs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":64
+  /* "googlengram/pullscripts/grammerge.pyx":64
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -2488,7 +2488,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "grammerge.pyx":65
+    /* "googlengram/pullscripts/grammerge.pyx":65
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
  *     for p in procs:
  *         p.start()             # <<<<<<<<<<<<<<
@@ -2517,7 +2517,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "grammerge.pyx":64
+    /* "googlengram/pullscripts/grammerge.pyx":64
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -2527,7 +2527,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":66
+  /* "googlengram/pullscripts/grammerge.pyx":66
  *     for p in procs:
  *         p.start()
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -2545,7 +2545,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "grammerge.pyx":67
+    /* "googlengram/pullscripts/grammerge.pyx":67
  *         p.start()
  *     for p in procs:
  *         p.join()             # <<<<<<<<<<<<<<
@@ -2574,7 +2574,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "grammerge.pyx":66
+    /* "googlengram/pullscripts/grammerge.pyx":66
  *     for p in procs:
  *         p.start()
  *     for p in procs:             # <<<<<<<<<<<<<<
@@ -2584,7 +2584,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":61
+  /* "googlengram/pullscripts/grammerge.pyx":61
  *              util.write_pickle(letter_grams, OUTPUT_DIR + str(year) + "-" + letter + ".pkl")
  * 
  * def run_parallel(num_procs):             # <<<<<<<<<<<<<<
@@ -2601,7 +2601,7 @@ static PyObject *__pyx_pf_9grammerge_2run_parallel(CYTHON_UNUSED PyObject *__pyx
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("grammerge.run_parallel", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("googlengram.pullscripts.grammerge.run_parallel", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_lock);
@@ -2671,8 +2671,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_fname, __pyx_k_fname, sizeof(__pyx_k_fname), 0, 0, 1, 1},
   {&__pyx_n_s_fp, __pyx_k_fp, sizeof(__pyx_k_fp), 0, 0, 1, 1},
+  {&__pyx_n_s_googlengram_pullscripts_grammerg, __pyx_k_googlengram_pullscripts_grammerg, sizeof(__pyx_k_googlengram_pullscripts_grammerg), 0, 0, 1, 1},
   {&__pyx_n_s_gram_info, __pyx_k_gram_info, sizeof(__pyx_k_gram_info), 0, 0, 1, 1},
-  {&__pyx_n_s_grammerge, __pyx_k_grammerge, sizeof(__pyx_k_grammerge), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_info, __pyx_k_info, sizeof(__pyx_k_info), 0, 0, 1, 1},
@@ -2731,7 +2731,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "grammerge.pyx":30
+  /* "googlengram/pullscripts/grammerge.pyx":30
  *             fname = OUTPUT_DIR + str(year) + ".bin"
  *             with open(fname, "w") as fp:
  *                 fp.write("")             # <<<<<<<<<<<<<<
@@ -2742,7 +2742,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "grammerge.pyx":29
+  /* "googlengram/pullscripts/grammerge.pyx":29
  *             print proc_num, "year", year
  *             fname = OUTPUT_DIR + str(year) + ".bin"
  *             with open(fname, "w") as fp:             # <<<<<<<<<<<<<<
@@ -2753,7 +2753,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "grammerge.pyx":52
+  /* "googlengram/pullscripts/grammerge.pyx":52
  *                 for info in info_list:
  *                     gram_info = info[0]
  *                     gram_info = gram_info.split("\t")             # <<<<<<<<<<<<<<
@@ -2764,7 +2764,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "grammerge.pyx":11
+  /* "googlengram/pullscripts/grammerge.pyx":11
  * INPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/eng-all/20090715/5gram/'
  * OUTPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams/'
  * YEARS = range(1700, 2009)             # <<<<<<<<<<<<<<
@@ -2775,7 +2775,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "grammerge.pyx":14
+  /* "googlengram/pullscripts/grammerge.pyx":14
  * NUM_CHUNKS = 800
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
@@ -2787,7 +2787,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__9);
   __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(2, 0, 18, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_afs_cs_stanford_edu_u_williamle, __pyx_n_s_main, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "grammerge.pyx":61
+  /* "googlengram/pullscripts/grammerge.pyx":61
  *              util.write_pickle(letter_grams, OUTPUT_DIR + str(year) + "-" + letter + ".pkl")
  * 
  * def run_parallel(num_procs):             # <<<<<<<<<<<<<<
@@ -2877,14 +2877,14 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  if (__pyx_module_is_main_grammerge) {
+  if (__pyx_module_is_main_googlengram__pullscripts__grammerge) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!PyDict_GetItemString(modules, "grammerge")) {
-      if (unlikely(PyDict_SetItemString(modules, "grammerge", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!PyDict_GetItemString(modules, "googlengram.pullscripts.grammerge")) {
+      if (unlikely(PyDict_SetItemString(modules, "googlengram.pullscripts.grammerge", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
@@ -2901,7 +2901,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   /*--- Function import code ---*/
   /*--- Execution code ---*/
 
-  /* "grammerge.pyx":1
+  /* "googlengram/pullscripts/grammerge.pyx":1
  * import collections             # <<<<<<<<<<<<<<
  * import matstore
  * import util
@@ -2911,7 +2911,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_collections, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":2
+  /* "googlengram/pullscripts/grammerge.pyx":2
  * import collections
  * import matstore             # <<<<<<<<<<<<<<
  * import util
@@ -2922,7 +2922,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_matstore, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":3
+  /* "googlengram/pullscripts/grammerge.pyx":3
  * import collections
  * import matstore
  * import util             # <<<<<<<<<<<<<<
@@ -2934,7 +2934,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_util, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":4
+  /* "googlengram/pullscripts/grammerge.pyx":4
  * import matstore
  * import util
  * import os             # <<<<<<<<<<<<<<
@@ -2946,7 +2946,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_os, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":5
+  /* "googlengram/pullscripts/grammerge.pyx":5
  * import util
  * import os
  * import string             # <<<<<<<<<<<<<<
@@ -2958,7 +2958,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_string, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":6
+  /* "googlengram/pullscripts/grammerge.pyx":6
  * import os
  * import string
  * import random             # <<<<<<<<<<<<<<
@@ -2970,7 +2970,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 6; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grammerge.pyx":7
+  /* "googlengram/pullscripts/grammerge.pyx":7
  * import string
  * import random
  * from multiprocessing import Process, Lock             # <<<<<<<<<<<<<<
@@ -2998,7 +2998,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "grammerge.pyx":9
+  /* "googlengram/pullscripts/grammerge.pyx":9
  * from multiprocessing import Process, Lock
  * 
  * INPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/eng-all/20090715/5gram/'             # <<<<<<<<<<<<<<
@@ -3007,7 +3007,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_INPUT_DIR, __pyx_kp_s_dfs_scratch0_google_ngrams_bywo) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "grammerge.pyx":10
+  /* "googlengram/pullscripts/grammerge.pyx":10
  * 
  * INPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/eng-all/20090715/5gram/'
  * OUTPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams/'             # <<<<<<<<<<<<<<
@@ -3016,7 +3016,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_OUTPUT_DIR, __pyx_kp_s_dfs_scratch0_google_ngrams_bywo_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 10; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "grammerge.pyx":11
+  /* "googlengram/pullscripts/grammerge.pyx":11
  * INPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams_raw/eng-all/20090715/5gram/'
  * OUTPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams/'
  * YEARS = range(1700, 2009)             # <<<<<<<<<<<<<<
@@ -3028,7 +3028,7 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_YEARS, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 11; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "grammerge.pyx":12
+  /* "googlengram/pullscripts/grammerge.pyx":12
  * OUTPUT_DIR = '/dfs/scratch0/google_ngrams/byword5grams/'
  * YEARS = range(1700, 2009)
  * NUM_CHUNKS = 800             # <<<<<<<<<<<<<<
@@ -3037,31 +3037,31 @@ PyMODINIT_FUNC PyInit_grammerge(void)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_NUM_CHUNKS, __pyx_int_800) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 12; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "grammerge.pyx":14
+  /* "googlengram/pullscripts/grammerge.pyx":14
  * NUM_CHUNKS = 800
  * 
  * def main(proc_num, lock):             # <<<<<<<<<<<<<<
  *     years = YEARS
  *     random.shuffle(years)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9grammerge_1main, NULL, __pyx_n_s_grammerge); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11googlengram_11pullscripts_9grammerge_1main, NULL, __pyx_n_s_googlengram_pullscripts_grammerg); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_main, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "grammerge.pyx":61
+  /* "googlengram/pullscripts/grammerge.pyx":61
  *              util.write_pickle(letter_grams, OUTPUT_DIR + str(year) + "-" + letter + ".pkl")
  * 
  * def run_parallel(num_procs):             # <<<<<<<<<<<<<<
  *     lock = Lock()
  *     procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9grammerge_3run_parallel, NULL, __pyx_n_s_grammerge); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11googlengram_11pullscripts_9grammerge_3run_parallel, NULL, __pyx_n_s_googlengram_pullscripts_grammerg); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_parallel, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "grammerge.pyx":1
+  /* "googlengram/pullscripts/grammerge.pyx":1
  * import collections             # <<<<<<<<<<<<<<
  * import matstore
  * import util
@@ -3079,11 +3079,11 @@ PyMODINIT_FUNC PyInit_grammerge(void)
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init grammerge", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init googlengram.pullscripts.grammerge", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init grammerge");
+    PyErr_SetString(PyExc_ImportError, "init googlengram.pullscripts.grammerge");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

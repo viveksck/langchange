@@ -125,7 +125,7 @@ def main(proc_num, lock):
         util.write_pickle(deg_word_stats, TMP_DIR + str(year) + "-deg.pkl")
         util.write_pickle(sum_word_stats, TMP_DIR + str(year) + "-sum.pkl")
 
-def run_parallel(num_procs):
+def run_parallel(num_procs, out_pref, in_dir, years):
     lock = Lock()
     procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
     for p in procs:
@@ -134,3 +134,16 @@ def run_parallel(num_procs):
         p.join()
     print "Merging"
     merge()
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Merges years of raw 5gram data.")
+    parser.add_argument("out_pref", help="output prefix")
+    parser.add_argument("in_dir", help="path to unmerged data")
+    parser.add_argument("num_procs", type=int, help="number of processes to spawn")
+    parser.add_argument("--start-year", type=int, help="start year (inclusive)", default=START_YEAR)
+    parser.add_argument("--end-year", type=int, help="start year (inclusive)", default=END_YEAR)
+    args = parser.parse_args()
+    years = range(args.start_year, args.end_year + 1)
+    smooth = 10.0**(float(args.smooth))
+    run_parallel(args.num_procs, args.out_pref, args.in_dir, years)       
+

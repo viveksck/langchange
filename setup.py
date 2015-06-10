@@ -4,6 +4,6 @@ import numpy
 
 setup(
     name = "Goole N-Gram Downloader",
-    ext_modules = cythonize(["googlengram/*.pyx", "googlengram/statpullscripts/*.pyx", "statutils/*.pyx"]),
+    ext_modules = cythonize(["googlengram/pullscripts/*.pyx", "cooccurrence/*.pyx"]),
     include_dirs = [numpy.get_include()]
 )

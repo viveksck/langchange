@@ -1,6 +1,6 @@
 from libc.stdio cimport FILE, fopen, fwrite, fclose, feof, fread
 import collections
-import util
+import ioutils
 import os
 from scipy.sparse import coo_matrix
 import numpy as np
@@ -9,8 +9,7 @@ cimport numpy as np
 """Fast Cython methods for loading and storing matrices
 """
 
-
-def export_mat(year_counts, output_dir):
+def export_mats_from_dicts(year_counts, output_dir):
     cdef FILE* fout
     cdef int word1
     cdef int word2
@@ -50,7 +49,7 @@ def export_mat_eff(row_d, col_d, data_d, year, output_dir):
         fwrite(&val, sizeof(double), 1, fout) 
     fclose(fout)
 
-def retrieve_mat(filename):
+def retrieve_mat_as_dict(filename):
     cdef FILE* fin
     cdef int word1
     cdef int word2
