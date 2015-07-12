@@ -34,25 +34,24 @@ def compute_word_stats(mat, word, word_index):
     sum = vec.sum()
     return  {"deg" : deg, "sum" : sum, "bclust" : binary, "wclust" : weighted}
 
-def merge(out_pref, years, full_word_list):
+def merge(out_pref, years, full_word_list, id):
     merged_word_stats = {}
     for stat in STATS:
         merged_word_stats[stat] = {}
         for word in full_word_list:
             merged_word_stats[stat][word] = {}
     for year in years:
-        year_stats = ioutils.load_pickle(out_pref + str(year) + "-tmp.pkl")
+        year_stats = ioutils.load_pickle(out_pref + str(year) + "-tmp" + str(id) + ".pkl")
         for stat, stat_vals in year_stats.iteritems():
             for word in full_word_list:
                 if not word in stat_vals:
-                    merged_word_stats[stat][word] = NAN
+                    merged_word_stats[stat][word][year] = NAN
                 else:
                     merged_word_stats[stat][word][year] = stat_vals[word]
-        os.remove(out_pref + str(year) + "-tmp.pkl")
-    for stat, word_year_vals in merged_word_stats:
-        ioutils.write_pickle(word_year_vals, out_pref + "-" + stat + ".pkl")
+        os.remove(out_pref + str(year) + "-tmp" + str(id) + ".pkl")
+    ioutils.write_pickle(merged_word_stats, out_pref + "-" + str(id) + ".pkl")
 
-def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size):
+def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, id):
     years = word_infos.keys()
     random.shuffle(years)
     print proc_num, "Start loop"
@@ -61,7 +60,7 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
         work_left = False
         for year in years:
             existing_files = set(os.listdir(in_dir + "/bootstats"))
-            fname = out_pref.split("/")[-1] + str(year) + "-tmp.pkl"
+            fname = out_pref.split("/")[-1] + str(year) + "-tmp" + str(id) + ".pkl"
             if fname in existing_files:
                 continue
             work_left = True
@@ -106,15 +105,10 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
                 for stat in single_word_stats:
                     word_stat_vecs[stat][word][boot_iter] = single_word_stats[stat]
         
-        word_stats = {stat:collections.defaultdict(dict) for stat in STATS}
-        for stat, word_vecs in word_stat_vecs.iteritems():
-            for word, vec in word_vecs.iteritems():
-                word_stats[stat][word] = vec.mean()
-
         print proc_num, "Writing stats for year", year
-        ioutils.write_pickle(word_stats, out_pref + str(year) + "-tmp.pkl")
+        ioutils.write_pickle(word_stat_vecs, out_pref + str(year) + "-tmp" + str(id) + ".pkl")
 
-def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size):
+def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, id):
     word_set = set([])
     word_indices = {}
     for year, year_info in year_indexes.iteritems():
@@ -122,10 +116,10 @@ def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, e
         word_indices[year] = year_info[1]
     word_list = list(word_set)
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, id]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
         p.join()
     print "Merging"
-    merge(out_pref, year_indexes.keys(), word_list)
+    merge(out_pref, year_indexes.keys(), word_list, id)
