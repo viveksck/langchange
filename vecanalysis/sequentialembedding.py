@@ -7,7 +7,7 @@ from vecanalysis.representations.embedding import Embedding
 from vecanalysis.dimreduce import reduce_dim
 from vecanalysis.alignment import smart_procrustes_align
 
-INPUT_PATH = "/dfs/scratch0/google_ngrams/sglove-vecs-smallrel-aligned-seq/{year}-300vecs"
+INPUT_PATH = "/dfs/scratch0/googlengrams/archive/sglove-vecs-smallrel-aligned-seq/{year}-300vecs"
 
 class SequentialEmbedding:
 

@@ -2,12 +2,12 @@ from nltk.corpus import brown
 from nltk.tag import UnigramTagger
 import cPickle as pickle
 
-VERBS = set(['VB','VBD','VBG','VBN','VBP','VBZ'])
-NOUNS = set(['NN', 'NP', 'NN$', 'NP', 'NP$', 'NPS', 'NPS$', 'NR'])
-ADJECTIVES = set(['JJ', 'JJR', 'JJS', 'JJT'])
-ADVERBS = set(['RB', 'RBR', 'RT'])
+VERBS = set(['VB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VBP'])
+NOUNS = set(['NN', 'NNS'])
+ADJECTIVES = set(['JJ', 'JJS', 'JJT'])
+ADVERBS = set(['RB'])
 
-INPUT_FILE = "/dfs/scratch0/google_ngrams/info/interestingwords.pkl"
+INPUT_FILE = "/dfs/scratch0/googlengrams/2012-eng-fic/info/commonnonstop-1900-2000-8-6.pkl"
 
 def write_word_list(filename, word_list):
     out_fp = open(filename, "w")

@@ -4,7 +4,7 @@ from scipy.sparse import csr_matrix
 from sklearn import preprocessing
 import numpy as np
 
-from vecanalysis.representations.matrix_serializer import load_shared_vocabulary, load_matrix
+from vecanalysis.representations.matrix_serializer import load_vocabulary, load_matrix
 
 
 class Explicit:
@@ -25,12 +25,19 @@ class Explicit:
             self.normalize()
 
     @classmethod
-    def load(cls, path, normalize=True, restricted_context=None):
-        mat = load_matrix(path)
-        word_vocab, context_vocab = load_shared_vocabulary(mat)
+    def load(cls, path, normalize=True, restricted_context=None, thresh=None):
+        mat = load_matrix(path, thresh)
+        word_vocab, context_vocab = load_vocabulary(mat, path)
         return cls(mat, word_vocab, context_vocab, normalize, restricted_context)
 
+    def get_subembed(self, word_list):
+        new_indices = np.array([self.wi[word] for word in word_list])
+        new_m = self.m[new_indices, :]
+        new_m = new_m[:, new_indices]
+        return Explicit(new_m, word_list, word_list)
+
     def restrict_context(self, rel_words):
+        rel_words = [word for word in rel_words if word in self.ci]
         rel_indices = np.array([self.ci[rel_word] for rel_word in rel_words])
         self.m = self.m[:, rel_indices]
         self.ic = rel_words
@@ -46,6 +53,8 @@ class Explicit:
             return csr_matrix((1, len(self.ic)))
     
     def similarity_first_order(self, w, c):
+        if self.oov(w) or self.oov(c):
+            return 0.0
         return self.m[self.wi[w], self.ci[c]]
     
     def oov(self, w):
@@ -55,6 +64,8 @@ class Explicit:
         """
         Assumes the vectors have been normalized.
         """
+        if self.oov(w1) or self.oov(w2):
+            return 0.0
         return self.represent(w1).dot(self.represent(w2).T)[0, 0]
     
     def closest_contexts(self, w, n=10):
@@ -68,7 +79,15 @@ class Explicit:
         """
         Assumes the vectors have been normalized.
         """
+        if self.oov(w):
+            return []
         scores = self.m.dot(self.represent(w).T).T.tocsr()
+        return heapq.nlargest(n, zip(scores.data, [self.iw[i] for i in scores.indices]))
+
+    def closest_first_order(self, w, n=10):
+        if self.oov(w):
+            return []
+        scores = self.m[self.wi[w], :]
         return heapq.nlargest(n, zip(scores.data, [self.iw[i] for i in scores.indices]))
 
 class PositiveExplicit(Explicit):

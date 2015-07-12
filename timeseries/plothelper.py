@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def plot_nice_err(x, y, y_err, color='blue'):
+   plt.plot(x, y, color=color)
+   plt.fill_between(x, y-y_err, y+y_err, alpha=0.1, color=color)
+
 def plot_word_dist(info, words, start_year, end_year, one_minus=False, legend_loc='upper left'):
     colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
     plot_info = {}
@@ -19,6 +23,19 @@ def plot_word_dist(info, words, start_year, end_year, one_minus=False, legend_lo
         plt.scatter(x, y, marker='.', color=color)
     plt.legend(plot_info.keys(), loc=legend_loc)
     return plt
+
+def get_ccdf(deg_hist, x_min=1):
+    cum_counts = [0]
+    degs = range(x_min, np.max(deg_hist.keys()))
+    total_sum = 0
+    for deg in degs:
+        if deg in deg_hist:
+            deg_count = deg_hist[deg]
+        else:
+            deg_count = 0
+        total_sum += deg_count
+        cum_counts.append((cum_counts[-1] + deg_count))
+    return np.array(degs), 1 - np.array(cum_counts[1:]) / float(total_sum)
 
 def plot_word_basic(info, words, start_year, end_year, datatype):
     colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
@@ -48,9 +65,13 @@ def plot_basic(plot_info, start_year, end_year):
     plt.legend(plot_info.keys())
     plt.show()
 
+def plot_smooth(x, y, color='blue'):
+    plt.plot(x, smooth(np.array(y)), color=color)
+    plt.scatter(x, y, marker='.', color=color)
+
 import numpy
 
-def smooth(x,window_len=11,window='hanning'):
+def smooth(x,window_len=25,window='hanning'):
     """smooth the data using a window with requested size.
     
     This method is based on the convolution of a scaled window with the signal.

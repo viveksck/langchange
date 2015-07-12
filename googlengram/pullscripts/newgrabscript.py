@@ -28,7 +28,6 @@ def main(proc_num, lock, download_dir, source):
             if EXCLUDE_PATTERN.match(url):
                 continue
             name = re.search('%s-(.*).gz' % VERSION, url).group(1)
-            print url
             dirs = set(os.listdir(download_dir))
             if name in dirs:
                 continue

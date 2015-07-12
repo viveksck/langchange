@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ABS_THRESH	get_conabs_list.py	/^ABS_THRESH = 2.0$/;"	v
+ADJECTIVES	tag_pos.py	/^ADJECTIVES = set(['JJ', 'JJR', 'JJS', 'JJT'])$/;"	v
+ADVERBS	tag_pos.py	/^ADVERBS = set(['RB', 'RBR', 'RT'])$/;"	v
+CON_THRESH	get_conabs_list.py	/^CON_THRESH = 4.0$/;"	v
+INPUT_FILE	tag_pos.py	/^INPUT_FILE = "\/dfs\/scratch0\/google_ngrams\/info\/interestingwords.pkl"$/;"	v
+NOUNS	tag_pos.py	/^NOUNS = set(['NN', 'NP', 'NN$', 'NP', 'NP$', 'NPS', 'NPS$', 'NR'])$/;"	v
+UnigramTagger	tag_pos.py	/^from nltk.tag import UnigramTagger$/;"	i
+VERBS	tag_pos.py	/^VERBS = set(['VB','VBD','VBG','VBN','VBP','VBZ'])$/;"	v
+absfp	get_conabs_list.py	/^absfp = open("abstractwords.txt", "w")$/;"	v
+abstract	get_conabs_list.py	/^abstract = []$/;"	v
+adj_words	tag_pos.py	/^    adj_words = []$/;"	v
+adv_words	tag_pos.py	/^    adv_words = []$/;"	v
+brown	tag_pos.py	/^from nltk.corpus import brown$/;"	i
+concrete	get_conabs_list.py	/^concrete = []$/;"	v
+consfp	get_conabs_list.py	/^consfp = open("concretewords.txt", "w")$/;"	v
+in_fp	tag_pos.py	/^    in_fp = open(INPUT_FILE, "rb") $/;"	v
+infp	get_conabs_list.py	/^infp = open("concreteness_ratings.csv")$/;"	v
+infp	make_conabs_pkl.py	/^infp = open("concreteness_ratings.csv")$/;"	v
+line_info	get_conabs_list.py	/^    line_info = line.split(",")$/;"	v
+line_info	make_conabs_pkl.py	/^    line_info = line.split(",")$/;"	v
+noun_words	tag_pos.py	/^    noun_words = []$/;"	v
+outfp	make_conabs_pkl.py	/^outfp = open("\/dfs\/scratch0\/google_ngrams\/stats\/conabs-scores.pkl", "w")$/;"	v
+pickle	make_conabs_pkl.py	/^import cPickle as pickle$/;"	i
+pickle	tag_pos.py	/^import cPickle as pickle$/;"	i
+tag	tag_pos.py	/^        tag = tagger.tag([word])[0][1]$/;"	v
+tagger	tag_pos.py	/^    tagger = UnigramTagger(brown.tagged_sents())$/;"	v
+verb_words	tag_pos.py	/^    verb_words = []$/;"	v
+words	make_conabs_pkl.py	/^words = {}$/;"	v
+words	tag_pos.py	/^    words = pickle.load(in_fp)$/;"	v
+write_word_list	tag_pos.py	/^def write_word_list(filename, word_list):$/;"	f

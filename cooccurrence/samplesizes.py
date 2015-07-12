@@ -1,85 +1,45 @@
-import random
-import os
-import collections
-import numpy as np
-from multiprocessing import Process, Lock
+import argparse
 
-from googlengram import matstore, util
+import ioutils
+from cooccurrence import matstore
+from cooccurrence.indexing import get_word_indices
 
-DATA_DIR = '/dfs/scratch0/google_ngrams/'
-INPUT_DIR = DATA_DIR + '/5grams_merged/'
-OUTPUT_FILE = DATA_DIR + "/info/samplesizes.pkl"
-TMP_DIR = '/lfs/madmax5/0/will/google_ngrams/tmp/'
-INTER_WORD_FILE = DATA_DIR + "info/interestingwords.pkl"
-REL_WORD_FILE = DATA_DIR + "info/relevantwords.pkl"
-MERGED_INDEX = util.load_pickle(DATA_DIR + "5grams_merged/merged_index.pkl")
+START_YEAR = 1900
+END_YEAR = 2000
 
-def get_word_indices(word_file):
-    common_words = util.load_pickle(word_file) 
-    common_indices = []
-    for i in xrange(len(common_words)):
-        common_indices.append(MERGED_INDEX[common_words[i]])
-    return np.array(common_indices)
-INTER_INDICES = get_word_indices(INTER_WORD_FILE)
-REL_INDICES = get_word_indices(REL_WORD_FILE)
+INDEX_FILE = "/dfs/scratch0/googlengrams/2012-eng-fic/5grams/merged_index.pkl"
 
-YEARS = range(1850, 2009)
-
-def merge():
-    yearstats = collections.defaultdict(dict)
-    for year in YEARS:
-        yearstat = util.load_pickle(TMP_DIR + str(year) + "-sizes.pkl")
-        for stat in yearstat:
-            yearstats[stat][year] = yearstat[stat]
-        os.remove(TMP_DIR + str(year) + "-sizes.pkl")
-    util.write_pickle(yearstats, OUTPUT_FILE)
-
-def main(proc_num, lock):
-    years = range(YEARS[0], YEARS[-1] + 1)
-    random.shuffle(years)
-    print proc_num, "Start loop"
-    while True:
-        lock.acquire()
-        work_left = False
-        for year in years:
-            dirs = set(os.listdir(TMP_DIR))
-            if str(year) + "-sizes.pkl" in dirs:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            fname = TMP_DIR + str(year) + "-sizes.pkl"
-            with open(fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
-            print proc_num, "Finished"
-            break
-
-        print proc_num, "Retrieving mat for year", year
-        mat = matstore.retrieve_cooccurrence_as_coo(INPUT_DIR + str(year) + ".bin")
-        print proc_num, "Making inverse freq mat", year
+def run(out_file, in_dir, years, year_indices):
+    samplesizes = {}
+    for year in years:
+        print "Processing year", year
+        indices = year_indices[year]
+        mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin")
         mat = mat.tocsr()
-        single_year_stats = {}
-        print proc_num, "Getting stats for year", year
-        single_year_stats["total"] = mat.sum()
-        rel_col_mat = mat[:, REL_INDICES]
-        single_year_stats["rel-rel"] = rel_col_mat[REL_INDICES, :].sum()
-        single_year_stats["inter-rel"] = rel_col_mat[INTER_INDICES, :].sum()
-        inter_row_mat = mat[INTER_INDICES, :]
-        single_year_stats["inter-inter"] = inter_row_mat[:, INTER_INDICES].sum()
+        mat = mat[indices, :]
+        mat = mat[:, indices]
+        samplesizes[year] = mat.sum()
+    ioutils.write_pickle(samplesizes, out_file)
 
-        print proc_num, "Writing stats for year", year
-        util.write_pickle(single_year_stats, TMP_DIR + str(year) + "-sizes.pkl")
-
-
-def run_parallel(num_procs):
-    lock = Lock()
-    procs = [Process(target=main, args=[i, lock]) for i in range(num_procs)]
-    for p in procs:
-        p.start()
-    for p in procs:
-        p.join()
-    print "Merging"
-    merge()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="get sample sizes")
+    parser.add_argument("out_file", help="output file")
+    parser.add_argument("in_dir", help="input directory")
+    parser.add_argument("--word-file", help="path to sorted word file(s). Must also specify index.", default=None)
+    parser.add_argument("--num-words", type=int, help="Number of words (of decreasing average frequency) to include. Must also specifiy word file and index.", default=-1)
+    parser.add_argument("--start-year", type=int, help="start year (inclusive)", default=START_YEAR)
+    parser.add_argument("--end-year", type=int, help="start year (inclusive)", default=END_YEAR)
+    args = parser.parse_args()
+    years = range(args.start_year, args.end_year + 1)
+    index = ioutils.load_pickle(INDEX_FILE)
+    word_pickle = ioutils.load_pickle(args.word_file)
+    word_info = {}
+    if not args.start_year in word_pickle:
+        word_pickle = word_pickle[:args.num_words]
+        year_word_info = get_word_indices(word_pickle, index)[1] 
+        for year in years:
+            word_info[year] = year_word_info
+    else:
+        for year in years:
+            word_info[year] = get_word_indices(word_pickle[year][:args.num_words], index)[1]
+    run(args.out_file, args.in_dir + "/", years, word_info)

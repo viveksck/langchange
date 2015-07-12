@@ -3,6 +3,10 @@ from vecanalysis.representations.embedding import Embedding
 
 """ Some methods for aligning embeddings spaces """
 
+def explicit_intersection_align(embed1, embed2):
+    common_vocab = filter(set(embed1.iw).__contains__, embed2.iw) 
+    return embed1.get_subembed(common_vocab), embed2.get_subembed(common_vocab)
+    
 def intersection_align(embed1, embed2):
     """ 
         Get the intersection of two embeddings.

@@ -1,5 +1,6 @@
 import collections
 import os
+import random
 from multiprocessing import Process, Lock
 
 from cooccurrence import matstore, indexing
@@ -7,8 +8,9 @@ import ioutils
 
 YEARS = range(1800, 2001)
 
-def main(proc_num, lock):
+def main(proc_num, lock, out_dir, in_dir):
     print proc_num, "Start loop"
+    random.shuffle(YEARS)
     while True:
         lock.acquire()
         work_left = False
@@ -47,24 +49,14 @@ def main(proc_num, lock):
                 full_counts[new_pair] += count
         
         print proc_num, "Writing counts for year", year
-        matstore.export_cooccurrence({str(year) : full_counts}, out_dir)
+        matstore.export_mats_from_dicts({str(year) : full_counts}, out_dir)
         ioutils.write_pickle(merged_index, out_dir + str(year) + "-index.pkl")
         ioutils.write_pickle(list(merged_index), out_dir + str(year) + "-list.pkl")
 
 def run_parallel(num_procs, out_dir, in_dir):
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_dir, in_dir]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, lock, out_dir + "/", in_dir + "/"]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
         p.join()   
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Merges years of raw 5gram data.")
-    parser.add_argument("out_dir", help="directory where data will be stored")
-    parser.add_argument("in_dir", help="path to unmerged data")
-    parser.add_argument("num_procs", type=int, help="number of processes to spawn")
-    args = parser.parse_args()
-    run_parallel(args.num_procs, args.out_dir, args.in_dir)       
-
-

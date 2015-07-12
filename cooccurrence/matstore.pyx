@@ -42,8 +42,6 @@ def export_mat_eff(row_d, col_d, data_d, year, output_dir):
         word1 = row_d[i]
         word2  = col_d[i]
         val = data_d[i]
-        if val == 0:
-            continue
         fwrite(&word1, sizeof(int), 1, fout) 
         fwrite(&word2, sizeof(int), 1, fout) 
         fwrite(&val, sizeof(double), 1, fout) 
@@ -66,7 +64,7 @@ def retrieve_mat_as_dict(filename):
     fclose(fin)
     return year_count
 
-def retrieve_mat_as_coo(matfn):
+def retrieve_mat_as_coo(matfn, min_size=None):
     cdef FILE* fin
     cdef int word1, word2, ret
     cdef double val
@@ -74,6 +72,8 @@ def retrieve_mat_as_coo(matfn):
     fn = matfn
     fin = fopen(fn, 'r')
     cdef int size = (os.path.getsize(matfn) / 16)
+    if min_size != None:
+        size += 1
     cdef np.ndarray[np.int32_t, ndim=1] row = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.int32_t, ndim=1] col = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.float64_t, ndim=1] data = np.empty(size, dtype=np.float64)
@@ -89,16 +89,31 @@ def retrieve_mat_as_coo(matfn):
         data[i] = val
         i += 1
     fclose(fin)
+    if min_size != None:
+        row[-1] = min_size
+        col[-1] = min_size
+        data[-1] = 0
     return coo_matrix((data, (row, col)), dtype=np.float64)
 
-def retrieve_mat_as_coo_thresh(matfn, thresh):
+def retrieve_mat_as_sym_coo(matfn, minsize=None):
+    coo_mat = retrieve_mat_as_coo(matfn, minsize)
+    csr_mat = coo_mat.tocsr()
+    cdef size_t i
+    for i in xrange(len(coo_mat.data)):
+        if coo_mat.col[i] < csr_mat.shape[0] and coo_mat.row[i] < csr_mat.shape[1]:
+            coo_mat.data[i] = max(coo_mat.data[i], csr_mat[coo_mat.col[i], coo_mat.row[i]])
+    return coo_mat
+
+def retrieve_mat_as_coo_thresh(matfn, thresh, min_size=None):
     cdef FILE* fin
     cdef int word1, word2, ret
     cdef double val
     cdef char* fn
     fn = matfn
     fin = fopen(fn, 'r')
-    cdef int size = (os.path.getsize(matfn) / 16) 
+    cdef int size = (os.path.getsize(matfn) / 16)
+    if min_size != None:
+        size += 1
     cdef np.ndarray[np.int32_t, ndim=1] row = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.int32_t, ndim=1] col = np.empty(size, dtype=np.int32)
     cdef np.ndarray[np.float64_t, ndim=1] data = np.empty(size, dtype=np.float64)
@@ -110,10 +125,85 @@ def retrieve_mat_as_coo_thresh(matfn, thresh):
         if ret != 1:
             break
         if val < thresh:
-            continue
+            val = 0
+        else: 
+            val = val - thresh
         row[i] = word1
         col[i] = word2
         data[i] = val
         i += 1
+    if min_size != None:
+        row[-1] = min_size
+        col[-1] = min_size
+        data[-1] = 0
+    fclose(fin)
+    return coo_matrix((data, (row, col)), dtype=np.float64)
+
+def retrieve_mat_as_binary_coo_thresh(matfn, thresh, min_size=None):
+    cdef FILE* fin
+    cdef int word1, word2, ret
+    cdef double val
+    cdef char* fn
+    fn = matfn
+    fin = fopen(fn, 'r')
+    cdef int size = (os.path.getsize(matfn) / 16)
+    if min_size != None:
+        size += 1
+    cdef np.ndarray[np.int32_t, ndim=1] row = np.empty(size, dtype=np.int32)
+    cdef np.ndarray[np.int32_t, ndim=1] col = np.empty(size, dtype=np.int32)
+    cdef np.ndarray[np.float64_t, ndim=1] data = np.empty(size, dtype=np.float64)
+    cdef int i = 0
+    while not feof(fin):
+        fread(&word1, sizeof(int), 1, fin) 
+        fread(&word2, sizeof(int), 1, fin) 
+        ret = fread(&val, sizeof(double), 1, fin) 
+        if ret != 1:
+            break
+        if val < thresh:
+            val = 0
+        else: 
+            val = 1.0
+        row[i] = word1
+        col[i] = word2
+        data[i] = val
+        i += 1
+    if min_size != None:
+        row[-1] = min_size
+        col[-1] = min_size
+        data[-1] = 0
+    fclose(fin)
+    return coo_matrix((data, (row, col)), dtype=np.float64)
+
+
+def retrieve_mat_as_coo_percthresh(matfn, thresh, min_size=None):
+    cdef FILE* fin
+    cdef int word1, word2, ret
+    cdef double val
+    cdef char* fn
+    fn = matfn
+    fin = fopen(fn, 'r')
+    cdef int size = (os.path.getsize(matfn) / 16) + 1
+    if min_size != None:
+        size += 1
+    cdef np.ndarray[np.int32_t, ndim=1] row = np.empty(size, dtype=np.int32)
+    cdef np.ndarray[np.int32_t, ndim=1] col = np.empty(size, dtype=np.int32)
+    cdef np.ndarray[np.float64_t, ndim=1] data = np.empty(size, dtype=np.float64)
+    cdef int i = 0
+    while not feof(fin):
+        fread(&word1, sizeof(int), 1, fin) 
+        fread(&word2, sizeof(int), 1, fin) 
+        ret = fread(&val, sizeof(double), 1, fin) 
+        if ret != 1:
+            break
+        row[i] = word1
+        col[i] = word2
+        data[i] = val
+        i += 1
+    if min_size != None:
+        row[-1] = min_size
+        col[-1] = min_size
+        data[-1] = 0
+    data = data - np.percentile(data, 100 - thresh)
+    data[data < 0] = 0
     fclose(fin)
     return coo_matrix((data, (row, col)), dtype=np.float64)

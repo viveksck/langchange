@@ -1,8 +1,5 @@
 from embedding import SVDEmbedding, EnsembleEmbedding, Embedding
 from explicit import Explicit
-from googlengram import util
-
-CONTEXT_WORDS = context_words = util.load_pickle("/dfs/scratch0/google_ngrams/info/relevantwords.pkl")
 
 def create_representation(args):
     rep_type = args['<representation>']
@@ -28,8 +25,8 @@ def create_representation(args):
         else:
             return Embedding.load(path, True)
 
-def simple_create_representation(rep_type, path, restricted_context=None):
+def simple_create_representation(rep_type, path, restricted_context=None, thresh=None, normalize=True):
     if rep_type == 'PPMI':
-        return Explicit.load(path, True, restricted_context=context_words) 
+        return Explicit.load(path, normalize=normalize, restricted_context=restricted_context, thresh=thresh) 
     else:
         return Embedding.load(path, True)

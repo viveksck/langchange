@@ -1,21 +1,21 @@
 import random
 import os
-import collections
+import argparse
 from multiprocessing import Process, Lock
 
-from cooccurrence import matstore
+from cooccurrence import matstore, indexing
 import ioutils
 
 YEARS = range(1800, 2001)
 
 def main(proc_num, lock, out_dir, in_dir):
-    merged_index = ioutils.load_pickle(in_dir + "merged_index.pkl") 
-    random.shuffle(years)
+    merged_index = ioutils.load_pickle(out_dir + "merged_index.pkl") 
+    random.shuffle(YEARS)
     print proc_num, "Start loop"
     while True:
         lock.acquire()
         work_left = False
-        for year in years:
+        for year in YEARS:
             dirs = set(os.listdir(out_dir))
             if str(year) + ".bin" in dirs:
                 continue
@@ -43,7 +43,7 @@ def main(proc_num, lock, out_dir, in_dir):
             fixed_counts[new_pair] = count
         
         print proc_num, "Writing counts for year", year
-        matstore.export_mats_from_dict({str(year) : fixed_counts}, out_dir)
+        matstore.export_mats_from_dicts({str(year) : fixed_counts}, out_dir)
 
 def run_parallel(num_procs, out_dir, in_dir):
     lock = Lock()
@@ -59,5 +59,5 @@ if __name__ == '__main__':
     parser.add_argument("in_dir", help="path to unmerged data")
     parser.add_argument("num_procs", type=int, help="number of processes to spawn")
     args = parser.parse_args()
-    run_parallel(args.num_procs, args.out_dir, args.in_dir)       
+    run_parallel(args.num_procs, args.out_dir + "/", args.in_dir + "/")       
 
