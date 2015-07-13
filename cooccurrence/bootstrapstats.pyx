@@ -10,6 +10,7 @@ from scipy.sparse import coo_matrix
 import ioutils
 from cooccurrence import matstore
 from cooccurrence.laplaceppmigen import make_ppmi_mat
+from cooccurrence.symconf import make_conf_mat
 
 import numpy as np 
 cimport numpy as np
@@ -51,7 +52,7 @@ def merge(out_pref, years, full_word_list, id):
         os.remove(out_pref + str(year) + "-tmp" + str(id) + ".pkl")
     ioutils.write_pickle(merged_word_stats, out_pref + "-" + str(id) + ".pkl")
 
-def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, id):
+def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, alpha, id):
     years = word_infos.keys()
     random.shuffle(years)
     print proc_num, "Start loop"
@@ -95,7 +96,11 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
             boot_mat = old_mat.copy()
             boot_mat.data = np.random.multinomial(eff_sample_size, old_mat.data/old_mat.data.sum())
             boot_mat.data = boot_mat.data.astype(np.float64, copy=False)
-            row_d, col_d, data_d = make_ppmi_mat(boot_mat, None, smooth, eff_sample_size)
+            if alpha != None:
+                conf_mat = make_conf_mat(boot_mat, alpha, eff_sample_size, 0) 
+            else:
+                conf_mat = None
+            row_d, col_d, data_d = make_ppmi_mat(boot_mat, conf_mat, smooth, eff_sample_size)
             boot_mat = coo_matrix((data_d, (row_d, col_d)))
             boot_mat = boot_mat.tocsr()
 
@@ -108,7 +113,7 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
         print proc_num, "Writing stats for year", year
         ioutils.write_pickle(word_stat_vecs, out_pref + str(year) + "-tmp" + str(id) + ".pkl")
 
-def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, id):
+def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, id):
     word_set = set([])
     word_indices = {}
     for year, year_info in year_indexes.iteritems():
@@ -116,7 +121,7 @@ def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, e
         word_indices[year] = year_info[1]
     word_list = list(word_set)
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, id]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, id]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:

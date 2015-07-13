@@ -17,6 +17,7 @@ if __name__ == '__main__':
     parser.add_argument("--end-year", type=int, help="start year (inclusive)", default=2000)
     parser.add_argument("--num-boots", type=int, help="Number of bootstrap samples", default=10)
     parser.add_argument("--smooth", type=int, help="laplace smoothing factor", default=10)
+    parser.add_argument("--alpha", type=float, help="confidence threshold for edges", default=0.05)
     parser.add_argument("--id", type=int, help="run id", default=0)
     args = parser.parse_args()
     sample_sizes = ioutils.load_pickle(args.sample_file)
@@ -46,4 +47,4 @@ if __name__ == '__main__':
     if args.num_words != -1:
         outpref += "-top" + str(args.num_words)
     ioutils.mkdir(args.dir + "/bootstats")
-    run_parallel(args.num_procs, args.dir + outpref, args.dir + "/", word_infos, args.num_boots, smooth, eff_sample_size, args.id)       
+    run_parallel(args.num_procs, args.dir + outpref, args.dir + "/", word_infos, args.num_boots, smooth, eff_sample_size, args.alpha, args.id)       
