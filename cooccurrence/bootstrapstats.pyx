@@ -94,7 +94,7 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
             print proc_num, "Bootstrapping mat for year", year, "boot_iter", boot_iter
             boot_mat = old_mat.copy()
             boot_mat.data = np.random.multinomial(eff_sample_size, old_mat.data/old_mat.data.sum())
-            boot_mat.data = old_mat.data.astype(np.float64, copy=False)
+            boot_mat.data = boot_mat.data.astype(np.float64, copy=False)
             row_d, col_d, data_d = make_ppmi_mat(boot_mat, None, smooth, eff_sample_size)
             boot_mat = coo_matrix((data_d, (row_d, col_d)))
             boot_mat = boot_mat.tocsr()

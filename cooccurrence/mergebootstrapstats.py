@@ -8,26 +8,28 @@ def merge_bootstrap(out_pref):
     dir = "/".join(out_pref.split("/")[0:-1])
     bootfiles = os.listdir(dir)
     word_stat_lists = {}
+    first_file = True
+    file_num = 0
     for file in bootfiles:
-        first_file = True
-        if "-".join(file.split("-")[:-1]) != out_pref.split("/")[-1]:
-            print "skipping file", file
-            continue
         bootstats = ioutils.load_pickle(dir + "/" + file)
+        print "Processing file", file
         for stat, stat_vals in bootstats.iteritems():
-            word_stat_lists[stat] = {}
+            if first_file:
+                word_stat_lists[stat] = {}
             for word, val in stat_vals.iteritems():
                 year_vals = stat_vals[word]
-                word_stat_lists[stat][word] = {}
+                if first_file:
+                    word_stat_lists[stat][word] = {}
                 for year, val in year_vals.iteritems():
-                    if np.isnan(val):
+                    if type(val) == float and np.isnan(val):
                         word_stat_lists[stat][word][year] = float('nan')
                     else:
                         if first_file:
-                            word_stat_lists[stat][word][year] = val.tolist()
-                        else:
-                            word_stat_lists[stat][word][year].extend(val)
+                            word_stat_lists[stat][word][year] = np.empty((val.shape[0] * len(bootfiles)))
+                        word_stat_lists[stat][word][year][file_num * val.shape[0]:(file_num + 1) * val.shape[0]] = val[:]
         first_file = False
+        file_num += 1
+    print "Making means and stds"
     word_stat_means = {}
     word_stat_stds = {}
     for stat, stat_vals in word_stat_lists.iteritems():
@@ -37,13 +39,13 @@ def merge_bootstrap(out_pref):
             word_stat_means[stat][word] = {}
             word_stat_stds[stat][word] = {}
             for year, val in year_vals.iteritems():
-                if np.isnan(val):
+                if type(val) == float and np.isnan(val):
                     word_stat_means[stat][word][year] = float('nan')
                     word_stat_stds[stat][word][year] = float('nan')
                 else:
-                    word_stat_means[stat][word][year] = np.mean(val)
-                    word_stat_stds[stat][word][year] = np.std(val)
-
+                    word_stat_means[stat][word][year] = val.mean()
+                    word_stat_stds[stat][word][year] = val.std()
+    print "Writing data"
     for stat, mean_vals in word_stat_means.iteritems():
         ioutils.write_pickle(mean_vals, out_pref + "-" + stat + "-mean.pkl")
     for stat, std_vals in word_stat_stds.iteritems():
