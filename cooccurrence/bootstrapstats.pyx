@@ -96,8 +96,11 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
             boot_mat = old_mat.copy()
             boot_mat.data = np.random.multinomial(eff_sample_size, old_mat.data/old_mat.data.sum())
             boot_mat.data = boot_mat.data.astype(np.float64, copy=False)
+            boot_mat = (boot_mat + boot_mat.T) / 2.0
             if alpha != None:
-                conf_mat = make_conf_mat(boot_mat, alpha, eff_sample_size, 0) 
+                row_d, col_d, data_d = make_conf_mat(boot_mat, alpha, eff_sample_size, 0) 
+                conf_mat = coo_matrix((data_d, (row_d, col_d)))
+                conf_mat = conf_mat.tocsr()
             else:
                 conf_mat = None
             row_d, col_d, data_d = make_ppmi_mat(boot_mat, conf_mat, smooth, eff_sample_size)
