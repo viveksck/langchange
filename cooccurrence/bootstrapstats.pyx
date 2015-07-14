@@ -52,7 +52,7 @@ def merge(out_pref, years, full_word_list, id):
         os.remove(out_pref + str(year) + "-tmp" + str(id) + ".pkl")
     ioutils.write_pickle(merged_word_stats, out_pref + "-" + str(id) + ".pkl")
 
-def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, alpha, id):
+def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, alpha, fwer_control, id):
     years = word_infos.keys()
     random.shuffle(years)
     print proc_num, "Start loop"
@@ -60,13 +60,13 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
         lock.acquire()
         work_left = False
         for year in years:
-            existing_files = set(os.listdir(in_dir + "/bootstats"))
+            existing_files = set(os.listdir(in_dir + "/" + out_pref.split("/")[-2]))
             fname = out_pref.split("/")[-1] + str(year) + "-tmp" + str(id) + ".pkl"
             if fname in existing_files:
                 continue
             work_left = True
             print proc_num, "year", year
-            with open(in_dir + "/bootstats/"+ fname, "w") as fp:
+            with open(in_dir + "/" + out_pref.split("/")[-2] + "/"+ fname, "w") as fp:
                 fp.write("")
             fp.close()
             break
@@ -98,7 +98,7 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
             boot_mat.data = boot_mat.data.astype(np.float64, copy=False)
             boot_mat = (boot_mat + boot_mat.T) / 2.0
             if alpha != None:
-                row_d, col_d, data_d = make_conf_mat(boot_mat, alpha, eff_sample_size, 0) 
+                row_d, col_d, data_d = make_conf_mat(boot_mat, alpha, eff_sample_size, 0, fwer_control=fwer_control) 
                 conf_mat = coo_matrix((data_d, (row_d, col_d)))
                 conf_mat = conf_mat.tocsr()
             else:
@@ -116,7 +116,7 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
         print proc_num, "Writing stats for year", year
         ioutils.write_pickle(word_stat_vecs, out_pref + str(year) + "-tmp" + str(id) + ".pkl")
 
-def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, id):
+def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, fwer_control, id):
     word_set = set([])
     word_indices = {}
     for year, year_info in year_indexes.iteritems():
@@ -124,7 +124,7 @@ def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, e
         word_indices[year] = year_info[1]
     word_list = list(word_set)
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, id]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, fwer_control, id]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:

@@ -18,6 +18,7 @@ if __name__ == '__main__':
     parser.add_argument("--num-boots", type=int, help="Number of bootstrap samples", default=10)
     parser.add_argument("--smooth", type=int, help="laplace smoothing factor", default=10)
     parser.add_argument("--alpha", type=float, help="confidence threshold for edges", default=0.05)
+    parser.add_argument("--fwer-control", action='store_true', help="use Bonferroni")
     parser.add_argument("--id", type=int, help="run id", default=0)
     args = parser.parse_args()
     sample_sizes = ioutils.load_pickle(args.sample_file)
@@ -43,8 +44,8 @@ if __name__ == '__main__':
             word_list = word_list[:args.num_words]
         word_list, word_indices = get_word_indices(word_list, index)
         word_infos[year] = (word_list, word_indices)
-    outpref = "/bootstats/" + args.word_file.split("/")[-1].split(".")[0]
+    outpref = "/bootstats-" + str(args.alpha) + "-" + str(args.fwer_control) + "/" +  args.word_file.split("/")[-1].split(".")[0]
     if args.num_words != -1:
         outpref += "-top" + str(args.num_words)
-    ioutils.mkdir(args.dir + "/bootstats")
-    run_parallel(args.num_procs, args.dir + outpref, args.dir + "/", word_infos, args.num_boots, smooth, eff_sample_size, args.alpha, args.id)       
+    ioutils.mkdir(args.dir + "/" + outpref.split("/")[1])
+    run_parallel(args.num_procs, args.dir + outpref, args.dir + "/", word_infos, args.num_boots, smooth, eff_sample_size, args.alpha, args.fwer_control, args.id)       

@@ -22,7 +22,7 @@ def compute_rowcol_probs(csr_mat, smooth):
     row_probs /= row_probs.sum()
     return row_probs
 
-def make_conf_mat(old_mat, alpha, eff_sample_size, min_val):
+def make_conf_mat(old_mat, alpha, eff_sample_size, min_val, fwer_control=False):
     print "alpha:", alpha
 #    smooth = old_mat.sum() * 10 ** -10.0
     smooth = 0
@@ -38,6 +38,8 @@ def make_conf_mat(old_mat, alpha, eff_sample_size, min_val):
     sample_size = eff_sample_size
     print "Eff sample size: ", sample_size
     prob_norm = old_mat.sum() + smooth * old_mat.shape[0] ** 2.0
+    if fwer_control:
+        alpha = alpha / old_mat.nnz
     z = stat.norm.ppf(1 - alpha / 2.0)
     z2 = z ** 2.0
     for i in xrange(len(old_mat.data)):
