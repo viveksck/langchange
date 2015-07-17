@@ -29,6 +29,7 @@ def series_corr(word_year_series_1, word_year_series_2, year_words, start_year=1
         year_ps.append(p)
     return year_corrs, year_ps
 
+
 def get_series_mean_std(words_time_series, words, one_minus=False, start_year=1900, end_year=2000, exclude_partial_missing=False):
     """
     Return the mean and stderr arrays for the values of the words in the set words for the specified years 

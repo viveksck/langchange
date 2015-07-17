@@ -4,7 +4,8 @@ import argparse
 import collections 
 import sys
 
-from multiprocessing import Process, Lock
+from Queue import Empty
+from multiprocessing import Process, Queue
 from scipy.sparse import coo_matrix
 
 import ioutils
@@ -17,23 +18,6 @@ cimport numpy as np
 
 NAN = float('nan')
 STATS = ["deg", "sum", "bclust", "wclust"]
-
-def compute_word_stats(mat, word, word_index):
-    word_i = word_index[word] 
-    vec = mat[word_i, :]
-    indices = vec.nonzero()[1]
-    vec = vec[:, indices]
-    if len(indices) <= 1:
-        return {"deg" : len(indices), "sum" : vec.sum(), "bclust" : 0, "wclust" : 0}
-    weights = vec/vec.sum()
-    reduced = mat[indices, :]
-    reduced = reduced[:, indices]
-    reduced.eliminate_zeros()
-    weighted = (weights * reduced).sum() / (float(len(indices)) - 1)
-    binary = float(reduced.nnz) / (len(indices) * (len(indices) - 1)) 
-    deg = len(indices)
-    sum = vec.sum()
-    return  {"deg" : deg, "sum" : sum, "bclust" : binary, "wclust" : weighted}
 
 def merge(out_pref, years, full_word_list, id):
     merged_word_stats = {}
@@ -53,25 +37,11 @@ def merge(out_pref, years, full_word_list, id):
     ioutils.write_pickle(merged_word_stats, out_pref + "-" + str(id) + ".pkl")
 
 def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, alpha, fwer_control, id):
-    years = word_infos.keys()
-    random.shuffle(years)
     print proc_num, "Start loop"
     while True:
-        lock.acquire()
-        work_left = False
-        for year in years:
-            existing_files = set(os.listdir(in_dir + "/" + out_pref.split("/")[-2]))
-            fname = out_pref.split("/")[-1] + str(year) + "-tmp" + str(id) + ".pkl"
-            if fname in existing_files:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            with open(in_dir + "/" + out_pref.split("/")[-2] + "/"+ fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
+       try: 
+            year = queue.get(block=False)
+        except Empty:
             print proc_num, "Finished"
             break
 
@@ -115,16 +85,18 @@ def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sa
         
         print proc_num, "Writing stats for year", year
         ioutils.write_pickle(word_stat_vecs, out_pref + str(year) + "-tmp" + str(id) + ".pkl")
+        queue.task_done()
 
 def run_parallel(num_procs, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, fwer_control, id):
     word_set = set([])
     word_indices = {}
+    queue = Queue()
     for year, year_info in year_indexes.iteritems():
         word_set = word_set.union(set(year_info[0]))
         word_indices[year] = year_info[1]
+        queue.put(year)
     word_list = list(word_set)
-    lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, fwer_control, id]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, queue, out_pref, in_dir, year_indexes, num_boots, smooth, eff_sample_size, alpha, fwer_control, id]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:

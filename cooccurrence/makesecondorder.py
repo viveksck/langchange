@@ -13,7 +13,7 @@ END_YEAR = 2000
 THRESHOLD = 0.1
 MIN_COOCCURS = 10
 
-def make_secondorder_mat(old_mat):
+def make_secondorder_mat(old_mat, thresh=THRESHOLD, min_cooccurs=MIN_COOCCURS):
     old_mat.setdiag(0)
     old_mat = old_mat.tocsr()
     rows_to_del = set([])

@@ -1,7 +1,8 @@
 import random
 import os
 import argparse
-from multiprocessing import Process, Lock
+from Queue import Empty
+from multiprocessing import Process, Queue
 from scipy.sparse import coo_matrix
 
 import ioutils
@@ -11,19 +12,21 @@ import numpy as np
 cimport numpy as np
 
 NAN = float('nan')
+STATS = ["deg", "sum", "bclust", "wclust"]
 
-def compute_word_stats(mat, word, index_set, word_index):
+def compute_word_stats(mat, word, word_index, index_set = None):
     if not word in word_index:
-        return NAN, NAN, NAN, NAN 
+        return {"deg" : NAN, "sum" : NAN, "bclust" : NAN, "wclust" : NAN}
     word_i = word_index[word] 
-    if not word_i in index_set or word_i >= mat.shape[0]: 
-        return NAN, NAN, NAN, NAN
+    if index_set != None and not word_i in index_set:
+        return {"deg" : NAN, "sum" : NAN, "bclust" : NAN, "wclust" : NAN}
+    if word_i >= mat.shape[0]: 
+        return {"deg" : NAN, "sum" : NAN, "bclust" : NAN, "wclust" : NAN}
     vec = mat[word_i, :]
     indices = vec.nonzero()[1]
-    indices = np.intersect1d(indices, index_set, assume_unique=True)
     vec = vec[:, indices]
     if len(indices) <= 1:
-        return 0, 0, len(indices), vec.sum()
+        return {"deg" : len(indices), "sum" : vec.sum(), "bclust" : 0, "wclust" : 0}
     weights = vec/vec.sum()
     reduced = mat[indices, :]
     reduced = reduced[:, indices]
@@ -32,56 +35,43 @@ def compute_word_stats(mat, word, index_set, word_index):
     binary = float(reduced.nnz) / (len(indices) * (len(indices) - 1)) 
     deg = len(indices)
     sum = vec.sum()
-    return (weighted, binary, deg, sum)
+    return  {"deg" : deg, "sum" : sum, "bclust" : binary, "wclust" : weighted}
 
-def merge(out_pref, tmp_out_pref, years, word_list):
-    binary_yearstats = {}
-    weighted_yearstats = {}
-    deg_yearstats = {}
-    sum_yearstats = {}
+def get_year_stats(mat, year_index, word_list, index_set = None)
+    mat.setdiag(0)
+    mat = mat.tocsr()
+    year_stats = {stat:{} for stat in STATS}
+    print proc_num, "Getting stats for year", year
     for word in word_list:
-        binary_yearstats[word] = {}
-        weighted_yearstats[word] = {}
-        deg_yearstats[word] = {}
-        sum_yearstats[word] = {}
-    for year in years:
-        binary_yearstat = ioutils.load_pickle(tmp_out_pref + str(year) + "-binary.pkl")
-        weighted_yearstat = ioutils.load_pickle(tmp_out_pref + str(year) + "-weighted.pkl")
-        deg_yearstat = ioutils.load_pickle(tmp_out_pref + str(year) + "-deg.pkl")
-        sum_yearstat = ioutils.load_pickle(tmp_out_pref + str(year) + "-sum.pkl")
         for word in word_list:
-            binary_yearstats[word][year] = binary_yearstat[word]
-            weighted_yearstats[word][year] = weighted_yearstat[word]
-            deg_yearstats[word][year] = deg_yearstat[word]
-            sum_yearstats[word][year] = sum_yearstat[word]
-        os.remove(tmp_out_pref + str(year) + "-binary.pkl")
-        os.remove(tmp_out_pref + str(year) + "-weighted.pkl")
-        os.remove(tmp_out_pref + str(year) + "-deg.pkl")
-        os.remove(tmp_out_pref + str(year) + "-sum.pkl")
-    ioutils.write_pickle(binary_yearstats, out_pref + "-binary.pkl")
-    ioutils.write_pickle(weighted_yearstats, out_pref + "-weighted.pkl")
-    ioutils.write_pickle(deg_yearstats, out_pref + "-deg.pkl")
-    ioutils.write_pickle(sum_yearstats, out_pref + "-sum.pkl")
+            single_word_stats = compute_word_stats(mat, word, year_index, index_set = index_set)
+            for stat in single_word_stats:
+                year_stats[stat][word] = single_word_stats[stat]
+    return year_stats
 
-def main(proc_num, lock, out_pref, tmp_out_pref, in_dir, years, year_indexes, word_indices, word_list, thresh):
-    random.shuffle(years)
+def merge(out_pref, years, full_word_list):
+    merged_word_stats = {}
+    for stat in STATS:
+        merged_word_stats[stat] = {}
+        for word in full_word_list:
+            merged_word_stats[stat][word] = {}
+    for year in years:
+        year_stats = ioutils.load_pickle(out_pref + str(year) + ".pkl")
+        for stat, stat_vals in year_stats.iteritems():
+            for word in full_word_list:
+                if not word in stat_vals:
+                    merged_word_stats[stat][word][year] = NAN
+                else:
+                    merged_word_stats[stat][word][year] = stat_vals[word]
+        os.remove(out_pref + str(year) + "-tmp.pkl")
+    ioutils.write_pickle(merged_word_stats, out_pref +  ".pkl")
+
+def main(proc_num, queue, out_pref, in_dir, year_indexes, word_infos, thresh):
     print proc_num, "Start loop"
     while True:
-        lock.acquire()
-        work_left = False
-        for year in years:
-            existing_files = set(os.listdir(in_dir + "/netstats"))
-            fname = tmp_out_pref.split("/")[-1] + str(year) + "-binary.pkl"
-            if fname in existing_files:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            with open(in_dir + "/netstats/"+ fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
+        try: 
+            year = queue.get(block=False)
+        except Empty:
             print proc_num, "Finished"
             break
 
@@ -90,27 +80,11 @@ def main(proc_num, lock, out_pref, tmp_out_pref, in_dir, years, year_indexes, wo
             mat = matstore.retrieve_mat_as_coo_thresh(in_dir + str(year) + ".bin", thresh)
         else:
             mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin")
-        print mat.shape
-        mat.setdiag(0)
-        indices = word_indices[year]
-        mat = mat.tocsr()
-        weighted_word_stats = {}
-        binary_word_stats = {}
-        deg_word_stats = {}
-        sum_word_stats = {}
-        print proc_num, "Getting stats for year", year
-        for word in word_list:
-            weighted, binary, deg, sum = compute_word_stats(mat, word, indices, year_indexes[year])
-            weighted_word_stats[word] = weighted
-            binary_word_stats[word] = binary
-            deg_word_stats[word] = deg
-            sum_word_stats[word] = sum
+        year_stats = get_year_stats(mat, year_indexes[year], index_set = set(word_infos[year][1]))
 
         print proc_num, "Writing stats for year", year
-        ioutils.write_pickle(weighted_word_stats, tmp_out_pref + str(year) + "-weighted.pkl")
-        ioutils.write_pickle(binary_word_stats, tmp_out_pref + str(year) + "-binary.pkl")
-        ioutils.write_pickle(deg_word_stats, tmp_out_pref + str(year) + "-deg.pkl")
-        ioutils.write_pickle(sum_word_stats, tmp_out_pref + str(year) + "-sum.pkl")
+        ioutils.write_pickle(year_stats, out_pref + str(year) + "-tmp.pkl")
+        queue.task_done()
 
 def run_parallel(num_procs, out_pref, in_dir, years, year_indexes, word_infos, thresh):
     word_set = set([])
@@ -119,12 +93,14 @@ def run_parallel(num_procs, out_pref, in_dir, years, year_indexes, word_infos, t
         word_set = word_set.union(set(year_info[0]))
         word_indices[year] = year_info[1]
     word_list = list(word_set)
-    lock = Lock()
-    tmp_out_pref = out_pref + "tmp-"
-    procs = [Process(target=main, args=[i, lock, out_pref, tmp_out_pref, in_dir, years, year_indexes, word_indices, word_list, thresh]) for i in range(num_procs)]
+    queue = Queue()
+    random.shuffle(years)
+    for year in years:
+        queue.put(year)
+    procs = [Process(target=main, args=[i, queue, out_pref, in_dir, year_indexes, word_indices, word_list, thresh]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
         p.join()
     print "Merging"
-    merge(out_pref, tmp_out_pref, years, word_list)
+    merge(out_pref, years, word_list)
