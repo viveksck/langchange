@@ -1,8 +1,8 @@
 import random
 import os
 import argparse
-import collections 
 import sys
+import collections
 
 from Queue import Empty
 from multiprocessing import Process, Queue
@@ -12,6 +12,7 @@ import ioutils
 from cooccurrence import matstore
 from cooccurrence.laplaceppmigen import make_ppmi_mat
 from cooccurrence.symconf import make_conf_mat
+from cooccurrence.netstats import compute_word_stats
 
 import numpy as np 
 cimport numpy as np
@@ -36,10 +37,10 @@ def merge(out_pref, years, full_word_list, id):
         os.remove(out_pref + str(year) + "-tmp" + str(id) + ".pkl")
     ioutils.write_pickle(merged_word_stats, out_pref + "-" + str(id) + ".pkl")
 
-def main(proc_num, lock, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, alpha, fwer_control, id):
+def main(proc_num, queue, out_pref, in_dir, word_infos, num_boots, smooth, eff_sample_size, alpha, fwer_control, id):
     print proc_num, "Start loop"
     while True:
-       try: 
+        try: 
             year = queue.get(block=False)
         except Empty:
             print proc_num, "Finished"

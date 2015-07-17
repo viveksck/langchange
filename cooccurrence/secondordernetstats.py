@@ -52,6 +52,7 @@ def main(proc_num, queue, out_pref, in_dir, year_indices, word_infos, knn, thres
         year_stats = get_year_stats(second_mat, year_indices[year], word_infos[year][0], index_set = set(word_infos[year][1]))
         print proc_num, "Writing stats for year", year
         ioutils.write_pickle(year_stats, out_pref + str(year) + "-tmp.pkl")
+        queue.task_done()
 
 def run_parallel(num_procs, out_pref, in_dir, years, word_infos, knn=None, thresh=0):
     queue = Queue()

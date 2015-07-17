@@ -37,11 +37,10 @@ def compute_word_stats(mat, word, word_index, index_set = None):
     sum = vec.sum()
     return  {"deg" : deg, "sum" : sum, "bclust" : binary, "wclust" : weighted}
 
-def get_year_stats(mat, year_index, word_list, index_set = None)
+def get_year_stats(mat, year_index, word_list, index_set = None):
     mat.setdiag(0)
     mat = mat.tocsr()
     year_stats = {stat:{} for stat in STATS}
-    print proc_num, "Getting stats for year", year
     for word in word_list:
         for word in word_list:
             single_word_stats = compute_word_stats(mat, word, year_index, index_set = index_set)
@@ -80,6 +79,7 @@ def main(proc_num, queue, out_pref, in_dir, year_indexes, word_infos, thresh):
             mat = matstore.retrieve_mat_as_coo_thresh(in_dir + str(year) + ".bin", thresh)
         else:
             mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin")
+        print proc_num, "Getting stats for year", year
         year_stats = get_year_stats(mat, year_indexes[year], index_set = set(word_infos[year][1]))
 
         print proc_num, "Writing stats for year", year
