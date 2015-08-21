@@ -1,0 +1,128 @@
+Dependencies
+------------
+
+python >= 2.6
+
+    www.python.org
+
+numpy >= 1.5.1
+
+    www.numpy.org
+
+scipy >= 0.9.0
+    
+    www.scipy.org
+
+pandas >= 0.7.1
+
+    pandas.pydata.org
+
+patsy >= 0.3.0
+
+    patsy.readthedocs.org
+
+
+cython >= 0.20.1
+
+    http://cython.org/
+
+    Cython is required if you are building the source from github. However,
+    if you have are building from source distribution archive then the 
+    generated C files are included and Cython is not necessary. If you are 
+    building for Python 3.4, then you must use Cython >= 0.20.1. Earlier 
+    versions may be ok for Python < 3.4.
+
+Optional Dependencies
+---------------------
+
+X-12-ARIMA or X-13ARIMA-SEATS
+
+    http://www.census.gov/srd/www/x13as/
+
+    If available, time-series analysis can be conducted using either 
+    X-12-ARIMA or the newer X-13ARIMA-SEATS. You should place the 
+    appropriate executable on your PATH or set the X12PATH or X13PATH 
+    environmental variable to take advantage.
+
+matplotlib >= 1.1
+
+    http://matplotlib.sf.net/
+
+    Matplotlib is needed for plotting functionality and running many of the 
+    examples.
+
+sphinx >= 1.0.0
+
+    http://sphinx.pocoo.org/
+
+    Sphinx is used to build the documentation.
+
+nose >= 1.0.0
+
+    http://readthedocs.org/docs/nose/en/latest/
+
+    Nose is needed to run the tests.
+
+IPython >= 1.0
+
+    Needed to build the docs.
+
+
+Easy Install
+------------
+
+To get the latest release using easy_install you need setuptools (easy_install):
+
+    http://peak.telecommunity.com/DevCenter/EasyInstall
+
+Then you can do (with proper permissions):
+
+    easy_install -U statsmodels
+
+
+Ubuntu/Debian
+-------------
+
+On Ubuntu you can get dependencies through:
+
+    sudo apt-get install python python-dev python-setuptools python-numpy python-scipy
+    easy_install -U pandas 
+    easy_install -U cython
+
+Alternatively, you can install from the NeuroDebian repository:
+    
+    http://neuro.debian.net
+
+
+Installing from Source
+----------------------
+
+Download and extract the source distribution from PyPI or github
+
+    http://pypi.python.org/pypi/statsmodels
+    https://github.com/statsmodels/statsmodels/tags
+
+Or clone the bleeding edge code from our repository on github at
+
+    git clone git://github.com/statsmodels/statsmodels.git
+
+In the statsmodels directory do (with proper permissions)
+
+    python setup.py build
+    python setup.py install
+
+You will need a C compiler installed.
+
+Installing from Source on Windows
+---------------------------------
+
+See http://statsmodels.sf.net/devel/install.html#windows.
+
+
+Documentation
+-------------
+
+You may find more information about the project and installation in our 
+documentation
+
+http://statsmodels.sf.net/devel/install.html
