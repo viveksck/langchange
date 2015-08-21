@@ -14,8 +14,7 @@ VERSION = '20120701'
 TYPE = '5gram'
 EXCLUDE_PATTERN = re.compile('.*_[A-Z]+[_,\s].*')
 
-def main(proc_num, lock, download_dir, source):
-    page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
+def main(proc_num, lock, page, download_dir, source):
     pattern = re.compile('href=\'(.*%s-%s-%s-.*\.gz)' % (source, TYPE, VERSION))
     urls = pattern.findall(page.text)
     del page
@@ -94,13 +93,14 @@ def main(proc_num, lock, download_dir, source):
 
 
 def run_parallel(num_processes, out_dir, source):
+    page = requests.get("http://storage.googleapis.com/books/ngrams/books/datasetsv2.html")
     ioutils.mkdir(out_dir)
     ioutils.mkdir(out_dir + '/' + source)
     ioutils.mkdir(out_dir + '/' + source + '/' + VERSION)
     download_dir = out_dir + '/' + source + '/' + VERSION + '/' + TYPE + '/'
     ioutils.mkdir(download_dir)
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock, download_dir, source]) for i in range(num_processes)]
+    procs = [Process(target=main, args=[i, lock, page, download_dir, source]) for i in range(num_processes)]
     for p in procs:
         p.start()
     for p in procs:

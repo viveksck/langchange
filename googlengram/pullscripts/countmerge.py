@@ -6,7 +6,7 @@ from multiprocessing import Process, Lock
 from cooccurrence import matstore, indexing
 import ioutils
 
-YEARS = range(1800, 2001)
+YEARS = range(1900, 2001)
 
 def main(proc_num, lock, out_dir, in_dir):
     merged_index = ioutils.load_pickle(out_dir + "merged_index.pkl") 

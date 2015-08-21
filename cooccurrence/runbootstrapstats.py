@@ -3,7 +3,6 @@ import ioutils
 
 import numpy as np
 
-from cooccurrence.indexing import get_word_indices
 from cooccurrence.bootstrapstats import run_parallel
 
 if __name__ == '__main__':
@@ -28,24 +27,10 @@ if __name__ == '__main__':
     else:
         smooth = 10.0**(-1*float(args.smooth))
     years = range(args.start_year, args.end_year + 1)
-    word_pickle = ioutils.load_pickle(args.word_file)
-    if not args.start_year in word_pickle:
-        word_lists = {}
-        for year in years:
-            word_lists[year] = word_pickle
-    else:
-        word_lists = word_pickle
-    word_infos = {}
-    year_indexes = {}
     index = ioutils.load_pickle(args.dir + "/index.pkl")
-    for year in years:
-        word_list = word_lists[year]
-        if args.num_words != -1:
-            word_list = word_list[:args.num_words]
-        word_list, word_indices = get_word_indices(word_list, index)
-        word_infos[year] = (word_list, word_indices)
+    year_index_infos = ioutils.load_year_index_infos_common(index, years, args.word_file, num_words=args.num_words) 
     outpref = "/bootstats-" + str(args.alpha) + "-" + str(args.fwer_control) + "/" +  args.word_file.split("/")[-1].split(".")[0]
     if args.num_words != -1:
         outpref += "-top" + str(args.num_words)
     ioutils.mkdir(args.dir + "/" + outpref.split("/")[1])
-    run_parallel(args.num_procs, args.dir + outpref, args.dir + "/", word_infos, args.num_boots, smooth, eff_sample_size, args.alpha, args.fwer_control, args.id)       
+    run_parallel(args.num_procs, args.dir + outpref, args.dir + "/", year_index_infos, args.num_boots, smooth, eff_sample_size, args.alpha, args.fwer_control, args.id)       

@@ -3,14 +3,11 @@ import numpy as np
 
 import ioutils
 from cooccurrence.symconf import run_parallel
-from cooccurrence.indexing import get_word_indices
 
 ALPHA = 0.001
 START_YEAR = 1900
 END_YEAR = 2000
-NUM_WORDS = 30000
-
-INDEX_FILE = "/dfs/scratch0/googlengrams/2012-eng-fic/5grams/merged_index.pkl"
+NUM_WORDS = 20000
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Merges years of raw 5gram data.")
@@ -28,19 +25,8 @@ if __name__ == '__main__':
     sample_sizes = ioutils.load_pickle(args.sample_file)
     eff_sample_size = np.percentile(np.array(sample_sizes.values()), 10)
     years = range(args.start_year, args.end_year + 1)
-    word_pickle = ioutils.load_pickle(args.word_file)
-    index = ioutils.load_pickle(INDEX_FILE)
-    word_pickle = ioutils.load_pickle(args.word_file)
-    word_info = {}
-    if not args.start_year in word_pickle:
-        word_pickle = word_pickle[:args.num_words]
-        year_word_info = get_word_indices(word_pickle, index)[1] 
-        for year in years:
-            word_info[year] = year_word_info
-    else:
-        for year in years:
-            word_info[year] = get_word_indices(word_pickle[year][:args.num_words], index)[1]
+    index = ioutils.load_pickle(args.in_dir + "/index.pkl")
+    year_index_infos = ioutils.load_year_index_infos_common(index, years, args.word_file, num_words=args.num_words) 
     out_dir = args.out_dir + "/alpha" + str(args.alpha) 
     ioutils.mkdir(out_dir)
-    run_parallel(args.num_procs,  out_dir + "/", args.in_dir + "/", years, args.alpha, eff_sample_size, word_info, args.fwer_control)       
-
+    run_parallel(args.num_procs,  out_dir + "/", args.in_dir + "/", args.alpha, eff_sample_size, year_index_infos, args.fwer_control)       

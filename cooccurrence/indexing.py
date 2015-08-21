@@ -38,3 +38,9 @@ def get_word_indices(word_list, index):
         except KeyError:
             print "Unmapped word!"
     return new_word_list, np.array(common_indices)
+
+def get_full_word_list(year_indexinfo):
+    word_set = set([])
+    for info in year_indexinfo.values():
+        word_set.update(info["list"])
+    return list(word_set)

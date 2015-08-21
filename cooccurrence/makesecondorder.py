@@ -1,8 +1,8 @@
-import random
-import os
 import argparse
+import random
 import collections
-from multiprocessing import Process, Lock
+from Queue import Empty
+from multiprocessing import Process, Queue
 from sklearn.preprocessing import normalize
 
 import ioutils
@@ -13,12 +13,12 @@ END_YEAR = 2000
 THRESHOLD = 0.1
 MIN_COOCCURS = 10
 
-def make_secondorder_mat(old_mat, thresh=THRESHOLD, min_cooccurs=MIN_COOCCURS):
+def make_secondorder_mat(old_mat, thresh=THRESHOLD, min_cooccurs=MIN_COOCCURS, shrink_mat=True):
     old_mat.setdiag(0)
     old_mat = old_mat.tocsr()
     rows_to_del = set([])
     for row_i in xrange(old_mat.shape[0]):
-        if len(old_mat[row_i, :].nonzero()[1]) < MIN_COOCCURS:
+        if len(old_mat[row_i, :].nonzero()[1]) < min_cooccurs:
             rows_to_del.add(row_i)
     print "To delete:", len(rows_to_del)
     old_mat = old_mat.tocoo()
@@ -29,39 +29,28 @@ def make_secondorder_mat(old_mat, thresh=THRESHOLD, min_cooccurs=MIN_COOCCURS):
     normalize(old_mat, copy=False)
     new_mat = old_mat.dot(old_mat.T)
     new_mat = new_mat.tocoo()
-    new_mat.data[new_mat.data < THRESHOLD] = 0
-    new_mat = new_mat.tocsr()
+    new_mat.data[new_mat.data < thresh] = 0
     keep_rows = []
-    for row_i in xrange(new_mat.shape[0]):
-        if new_mat[row_i, :].sum() > 0:
-            keep_rows.append(row_i)
-    print "Keep rows:", len(keep_rows)
-    new_mat.eliminate_zeros()
-    new_mat = new_mat[keep_rows, :]
-    new_mat = new_mat[:, keep_rows]
-    print "New mat dim:", new_mat.shape[0]
-    new_mat = new_mat.tocoo()
+    if shrink_mat:
+        new_mat = new_mat.tocsr()
+        for row_i in xrange(new_mat.shape[0]):
+            if new_mat[row_i, :].sum() > 0:
+                keep_rows.append(row_i)
+        print "Keep rows:", len(keep_rows)
+
+        new_mat.eliminate_zeros()
+        new_mat = new_mat[keep_rows, :]
+        new_mat = new_mat[:, keep_rows]
+        print "New mat dim:", new_mat.shape[0]
+        new_mat = new_mat.tocoo()
     return new_mat.row, new_mat.col, new_mat.data, keep_rows
 
-def main(proc_num, lock, in_dir, years):
-    random.shuffle(years)
+def worker(proc_num, queue, in_dir):
     print proc_num, "Start loop"
     while True:
-        lock.acquire()
-        work_left = False
-        for year in years:
-            dirs = set(os.listdir(in_dir + "/second/"))
-            if str(year) + ".bin" in dirs:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            fname = in_dir + "/second/"+ str(year) + ".bin"
-            with open(fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
+        try: 
+            year = queue.get(block=False)
+        except Empty:
             print proc_num, "Finished"
             break
 
@@ -77,16 +66,19 @@ def main(proc_num, lock, in_dir, years):
         matstore.export_mat_eff(row_d, col_d, data_d, year, in_dir + "/second/")
 
 def run_parallel(num_procs, in_dir, years):
-    lock = Lock()
-    procs = [Process(target=main, args=[i, lock, in_dir, years]) for i in range(num_procs)]
+    queue = Queue()
+    random.shuffle(years)
+    for year in years:
+        queue.put(year)
+    procs = [Process(target=worker, args=[i, queue, in_dir, years]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
         p.join()
  
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Merges years of raw 5gram data.")
-    parser.add_argument("in_dir", help="path to unmerged data")
+if __name__ == '__worker__':
+    parser = argparse.ArgumentParser(description="Makes and stores second order matrices from first order PPMI data..")
+    parser.add_argument("in_dir", help="path to first order data")
     parser.add_argument("num_procs", type=int, help="number of processes to spawn")
     parser.add_argument("--start-year", type=int, help="start year (inclusive)", default=START_YEAR)
     parser.add_argument("--end-year", type=int, help="start year (inclusive)", default=END_YEAR)

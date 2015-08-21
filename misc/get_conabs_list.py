@@ -20,8 +20,6 @@ con_thresh = np.percentile(scores.values(), 75)
 consfp = open("concretewords.txt", "w")
 absfp = open("abstractwords.txt", "w")
 for word in scores:
-    if word not in words:
-        continue
     if scores[word] < abs_thresh:
         absfp.write(word + "\n")
     elif scores[word] > con_thresh:

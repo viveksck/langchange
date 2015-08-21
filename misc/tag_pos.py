@@ -4,7 +4,7 @@ import cPickle as pickle
 
 VERBS = set(['VB', 'VBD', 'VBG', 'VBN', 'VBZ', 'VBP'])
 NOUNS = set(['NN', 'NNS'])
-ADJECTIVES = set(['JJ', 'JJS', 'JJT'])
+ADJECTIVES = set(['JJ', 'JJS', 'JJT', 'JJS'])
 ADVERBS = set(['RB'])
 
 INPUT_FILE = "/dfs/scratch0/googlengrams/2012-eng-fic/info/commonnonstop-1900-2000-8-6.pkl"

@@ -31,7 +31,7 @@ def main(proc_num, lock, out_dir, in_dir, years):
             break
 
         print proc_num, "Loading  matrix", year
-        coo_mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin", min_size=230000)
+        coo_mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin", min_size=10**6)
         csr_mat = coo_mat.tocsr()
         sum_mat = (csr_mat + csr_mat.T) 
         sum_mat = sum_mat.tocoo()

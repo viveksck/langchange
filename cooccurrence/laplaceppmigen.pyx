@@ -2,7 +2,8 @@ import random
 import os
 import argparse
 import collections
-from multiprocessing import Process, Lock
+from Queue import Empty 
+from multiprocessing import Process, Queue
 from scipy.sparse import coo_matrix
 
 import ioutils
@@ -21,58 +22,35 @@ def compute_rowcol_probs(csr_mat, prob_norm, smooth):
     row_probs /= prob_norm
     return row_probs
 
-def make_ppmi_mat(old_mat, conf_mat, smooth, eff_sample_size):
+def make_ppmi_mat(old_mat, conf_mat, smooth):
     smooth = old_mat.sum() * smooth
-    print smooth
     prob_norm = old_mat.sum() + (old_mat.shape[0] ** 2) * smooth
-#    temp = old_mat / old_mat.sum()
-#    old_sum = old_mat.sum()
     row_probs = compute_rowcol_probs(old_mat, prob_norm, smooth)
     old_mat = old_mat.tocoo()
     row_d = old_mat.row
     col_d = old_mat.col
     data_d = old_mat.data
-    
     for i in xrange(len(old_mat.data)):
         joint_prob = (data_d[i] + smooth) / prob_norm
         data_d[i] = np.log(joint_prob / (row_probs[row_d[i], 0] * row_probs[col_d[i], 0]))
         if conf_mat != None:
             if conf_mat[row_d[i], col_d[i]] <= 0:
                 data_d[i] = 0
-#            else:
-#                if data_d[i] < 0:
-#                    print "Old: ", temp[row_d[i], col_d[i]], temp[row_d[i], :].sum(), temp[col_d[i], :].sum()
-#                    print "New: ", joint_prob, row_probs[row_d[i], 0], row_probs[col_d[i], 0]
-#                    print "Smooth: ", smooth, old_mat.shape[0], old_sum
         data_d[i] = max(data_d[i], 0)
         data_d[i] /= -1.0 * np.log(joint_prob)
 
-    return row_d, col_d, data_d
+    return coo_matrix(data_d, (row_d, col_d))
 
-def main(proc_num, lock, out_dir, in_dir, years, smooth, year_word_indices, conf_dir, eff_sample_size):
+def worker(proc_num, queue, out_dir, in_dir, smooth, year_index_infos, conf_dir):
     cdef int i
     cdef np.ndarray data_d
     cdef np.ndarray row_d, col_d
     cdef float prob_norm
-
-    random.shuffle(years)
     print proc_num, "Start loop"
     while True:
-        lock.acquire()
-        work_left = False
-        for year in years:
-            dirs = set(os.listdir(out_dir))
-            if str(year) + ".bin" in dirs:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            fname = out_dir + str(year) + ".bin"
-            with open(fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
+        try: 
+            year = queue.get(block=False)
+        except Empty:
             print proc_num, "Finished"
             break
 
@@ -84,30 +62,26 @@ def main(proc_num, lock, out_dir, in_dir, years, smooth, year_word_indices, conf
             conf_mat = conf_mat.tocsr()
         else:
             conf_mat = None
-        if year_word_indices != None:
-            word_indices = year_word_indices[year][1]
-#            tmp_word_indices = list(word_indices[word_indices < min(old_mat.shape[0], old_mat.shape[1])])
-#            for i in range(len(tmp_word_indices), len(word_indices)):
-#               tmp_word_indices.append(0) 
+        if year_index_infos != None:
+            word_indices = year_index_infos[year]["indices"]
             old_mat = old_mat[word_indices, :]
             old_mat = old_mat[:, word_indices]
-#            for i in range(len(tmp_word_indices), len(word_indices)):
-#                old_mat[i, :] = 0
-#                old_mat[:,i] = 0
             
-        row_d, col_d, data_d = make_ppmi_mat(old_mat, conf_mat, smooth, eff_sample_size)
+        ppmi_mat  = make_ppmi_mat(old_mat, conf_mat, smooth)
         print proc_num, "Writing counts for year", year
-        matstore.export_mat_eff(row_d, col_d, data_d, year, out_dir)
+        matstore.export_mat_eff(ppmi_mat.row, ppmi_mat.col, ppmi_mat.data, year, out_dir)
         year_index = collections.OrderedDict()
-        word_list = year_word_indices[year][0]
+        word_list = year_index_infos[year]["list"]
         for i in xrange(len(word_list)):
             year_index[word_list[i]] = i
         ioutils.write_pickle(year_index, out_dir + str(year) + "-index.pkl")
-            
 
-def run_parallel(num_procs, out_dir, in_dir, years, smooth, word_indices, conf_dir, eff_sample_size):
-    lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_dir, in_dir, years, smooth, word_indices, conf_dir, eff_sample_size]) for i in range(num_procs)]
+def run_parallel(num_procs, out_dir, in_dir, smooth, year_index_infos, conf_dir):
+    queue = Queue()
+    years = year_index_infos.keys()
+    for year in years:
+        queue.put(year)
+    procs = [Process(target=worker, args=[i, queue, out_dir, in_dir, smooth, year_index_infos, conf_dir]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:

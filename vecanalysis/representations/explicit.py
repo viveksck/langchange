@@ -31,9 +31,11 @@ class Explicit:
         return cls(mat, word_vocab, context_vocab, normalize, restricted_context)
 
     def get_subembed(self, word_list):
-        new_indices = np.array([self.wi[word] for word in word_list])
-        new_m = self.m[new_indices, :]
-        new_m = new_m[:, new_indices]
+        new_w_indices = np.array([self.wi[word] for word in word_list])
+        c_set = set(self.ic)
+        new_c_indices = np.array([self.ci[word] for word in word_list if word in c_set])
+        new_m = self.m[new_w_indices, :]
+        new_m = new_m[:, new_c_indices]
         return Explicit(new_m, word_list, word_list)
 
     def restrict_context(self, rel_words):
