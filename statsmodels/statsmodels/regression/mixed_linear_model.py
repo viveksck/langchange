@@ -2355,7 +2355,7 @@ class MixedLMResults(base.LikelihoodModelResults, base.ResultMixin):
         smry.add_dict(info)
         smry.add_title("Mixed Linear Model Regression Results")
 
-        float_fmt = "%.3f"
+        float_fmt = "%.5f"
 
         sdf = np.nan * np.ones((self.k_fe + self.k_re2 + self.k_vc, 6))
 

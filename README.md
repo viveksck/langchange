@@ -2,6 +2,8 @@
 
 ### Author: William Hamilton (wleif@stanford.edu)
 
+## Overview 
+
 This code base contains an eclectic collection of tool for analyzing semantic change using vector space semantics.
 The structure of the code (in terms of folder organization) is as follows:
 
@@ -17,3 +19,23 @@ The structure of the code (in terms of folder organization) is as follows:
 See REPLICATION.md for detailed instructions on how to replicate specific published/submitted results.
 
 See VISUALIZATION.md for detailed instructions on using my visualization tools, which allow you to visualize semantic change at the individual word level using low-dimensional word vector embeddings.
+
+## Dependencies
+
+Core dependencies:
+  * sklearn: http://scikit-learn.org/stable/
+  * cython: http://docs.cython.org/src/quickstart/install.html
+
+As noted above, a local version of statsmodels is included for replication purposes, so there is no need to manually install this dependency.
+
+For visualization and running the notebooks:
+  * seaborn: http://stanford.edu/~mwaskom/software/seaborn/
+
+## Installation
+
+After the core dependencies are installed run
+
+    python setup.py build_ext --inplace
+
+to compile the necessary cython modules.
+

@@ -98,11 +98,12 @@ def plot_basic(plot_info, start_year, end_year):
     plt.legend(plot_info.keys())
     plt.show()
 
-def plot_smooth(x, y, color='blue', ax=None):
+def plot_smooth(x, y, color='blue', window_len=75, window='hanning', ax=None, **kwargs):
     if ax == None:
         ax = plt.subplots(1,1)
     ax.plot(x, smooth(np.array(y)), color=color)
-    ax.scatter(x, y, marker='.', color=color)
+    scathand = ax.scatter(x, y, color=color, **kwargs)
+    return scathand
 
 def smooth(x, window_len=25, window='hanning'):
     """smooth the data using a window with requested size.

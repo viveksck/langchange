@@ -4,31 +4,22 @@ import argparse
 from multiprocessing import Process, Lock
 
 import ioutils
-from cooccurrence import matstore
-from cooccurrence.indexing import get_word_indices
-
 
 START_YEAR = 1900
 END_YEAR = 2000
-
-def compute_word_stats(mat, word, index):
-    word_i = index[word]
-    if word_i >= mat.shape[0]:
-        return 0
-    return mat[word_i, :].sum()
 
 def merge(word_list, years, in_dir, out_file):
     yearstats = {}
     for word in word_list:
         yearstats[word] = {}
     for year in years:
-        yearstat = ioutils.load_pickle(in_dir + str(year) + "-freqs.pkl")
-        for word in word_list:
+        yearstat = ioutils.load_pickle(in_dir + str(year) + "-freqstmp.pkl")
+        for word in yearstat.keys():
             yearstats[word][year] = yearstat[word]
-        os.remove(in_dir + str(year) + "-freqs.pkl")
+        os.remove(in_dir + str(year) + "-freqstmp.pkl")
     ioutils.write_pickle(yearstats, out_file)
 
-def main(proc_num, lock, in_dir, years, word_list, index):
+def main(proc_num, lock, in_dir, years, word_list):
     years = range(years[0], years[-1] + 1)
     random.shuffle(years)
     print proc_num, "Start loop"
@@ -37,11 +28,11 @@ def main(proc_num, lock, in_dir, years, word_list, index):
         work_left = False
         for year in years:
             dirs = set(os.listdir(in_dir))
-            if str(year) + "-freqs.pkl" in dirs:
+            if str(year) + "-freqstmp.pkl" in dirs:
                 continue
             work_left = True
             print proc_num, "year", year
-            fname = in_dir + str(year) + "-freqs.pkl"
+            fname = in_dir + str(year) + "-freqstmp.pkl"
             with open(fname, "w") as fp:
                 fp.write("")
             fp.close()
@@ -50,24 +41,26 @@ def main(proc_num, lock, in_dir, years, word_list, index):
         if not work_left:
             print proc_num, "Finished"
             break
-
-        print proc_num, "Retrieving mat for year", year
-        mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin")
-        print proc_num, "Making inverse freq mat", year
-        mat = mat.tocsr()
-        mat = mat / mat.sum()
+        
+        year_freqs = ioutils.load_pickle(in_dir + "/" + str(year) + "-freqs.pkl")
         word_stats = {}
         print proc_num, "Getting stats for year", year
+        sum = 0
         for word in word_list:
-            word_stats[word] = compute_word_stats(mat, word, index)
+            if word in year_freqs:
+                word_count = year_freqs[word][1]
+                sum += word_count
+                word_stats[word] = word_count
+        for word in word_stats:
+            word_stats[word] /= float(sum)
 
         print proc_num, "Writing stats for year", year
-        ioutils.write_pickle(word_stats, in_dir + str(year) + "-freqs.pkl")
+        ioutils.write_pickle(word_stats, in_dir + str(year) + "-freqstmp.pkl")
 
 
-def run_parallel(num_procs, in_dir, years, word_list, index, out_file):
+def run_parallel(num_procs, in_dir, years, word_list, out_file):
     lock = Lock()
-    procs = [Process(target=main, args=[i, lock, in_dir, years, word_list, index]) for i in range(num_procs)]
+    procs = [Process(target=main, args=[i, lock, in_dir, years, word_list]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
@@ -80,13 +73,10 @@ if __name__ == '__main__':
     parser.add_argument("out_file", help="path to network data (also where output goes)")
     parser.add_argument("in_dir", help="path to network data (also where output goes)")
     parser.add_argument("word_file", help="path to sorted word file")
-    parser.add_argument("index_file", help="path to sorted word file")
     parser.add_argument("num_procs", type=int, help="number of processes to spawn")
     parser.add_argument("--start-year", type=int, help="start year (inclusive)", default=START_YEAR)
     parser.add_argument("--end-year", type=int, help="end year (inclusive)", default=END_YEAR)
     args = parser.parse_args()
     years = range(args.start_year, args.end_year + 1)
-    index = ioutils.load_pickle(args.index_file)
     word_list = ioutils.load_pickle(args.word_file)
-    word_list, _ = get_word_indices(word_list, index)
-    run_parallel(args.num_procs, args.in_dir + "/", years, word_list, index, args.out_file)       
+    run_parallel(args.num_procs, args.in_dir + "/", years, word_list, args.out_file)       

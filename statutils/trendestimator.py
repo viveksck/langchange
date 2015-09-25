@@ -60,7 +60,7 @@ def get_new_words_by_range(word_series, start_year=1925, end_year=1950, not_pres
     return {word for word, year in get_new_words(word_series, start_year=1900, end_year=2000, not_present_min=not_present_min, not_present_max=not_present_max).iteritems()
             if year >= start_year and year < end_year}
 
-def get_new_words(word_series, start_year=1900, end_year=2000, not_present_min=0.25, not_present_max=0.75, s_buff=10, e_buff=10, shift=1):
+def get_successful_new_words(word_series, start_year=1900, end_year=2000, not_present_min=0.25, not_present_max=0.75, s_buff=10, e_buff=10, shift=1):
 #    trend_estimates = get_trend_estimates(word_series, start_year=start_year, end_year=end_year)
 #    processed = process_trend_estimates(trend_estimates)
 #    inc_words = set(processed["increasing"].keys())
@@ -76,11 +76,34 @@ def get_new_words(word_series, start_year=1900, end_year=2000, not_present_min=0
                 num_not_pres += 1
             else:
                 pres.append(year)
-        if float(num_not_pres)/len(years) > not_present_min and float(num_not_pres)/len(years) < not_present_max and last_not_pres < end_year - e_buff and np.min(pres) > start_year + s_buff:# and word in inc_words:
-            pres = [point for point in pres if point <= last_not_pres + 1]
+        if (float(num_not_pres)/len(years) > not_present_min and float(num_not_pres)/len(years) < not_present_max 
+                and last_not_pres < end_year - e_buff and np.min(pres) > start_year + s_buff):
+#            pres = [point for point in pres if point <= last_not_pres + 1]
             new_words[word] = np.min(pres)
                # new_words[word] = int((np.min(pres) + last_not_pres + 1) / 2.0)
 #            new_words[word] = len(pres)
+    return new_words
+
+
+def get_unsuccessful_new_words(word_series, start_year=1900, end_year=2000, not_present_min=0.25, not_present_max=0.99, s_buff=10, e_buff=10, shift=1):
+#    trend_estimates = get_trend_estimates(word_series, start_year=start_year, end_year=end_year)
+#    processed = process_trend_estimates(trend_estimates)
+#    inc_words = set(processed["increasing"].keys())
+    years = range(start_year, end_year)
+    new_words = {}
+    for word, year_series in word_series.iteritems():
+        last_not_pres = -1
+        num_not_pres = 0
+        pres = []
+        for year in years:
+            if not year in year_series or year_series[year] <= 0.0 or year_series[year] == float('nan'):
+                last_not_pres = max(year, last_not_pres)
+                num_not_pres += 1
+            else:
+                pres.append(year)
+        if float(num_not_pres)/len(years) > not_present_min and float(num_not_pres)/len(years) < not_present_max and max(pres) < end_year - e_buff and np.min(pres) > start_year + s_buff:# and word in inc_words:
+#            pres = [point for point in pres if point <= last_not_pres + 1]
+            new_words[word] = np.min(pres)
     return new_words
 
 def get_dying_words(word_series, start_year=1900, end_year=2000, not_present_min=0.25, not_present_max=0.75, buffer=10):
@@ -158,7 +181,6 @@ def get_densefreq_corr(density_trends_p, freq_trends_p, p_value_thresh = 0.001):
             freq_trends[word] = freq_trends_p[word]
     get_sig_slope = lambda info : info.params[1] if info.pvalues[1] < p_value_thresh else 0
     for word in density_trends.keys(): 
-        M
         if density_trends[word].nobs < 20 or freq_trends[word].nobs < 20:
             continue
         a.append(-1 * get_sig_slope(density_trends[word]))

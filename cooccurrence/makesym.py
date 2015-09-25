@@ -1,35 +1,22 @@
 import random
-import os
 import argparse
-from multiprocessing import Process, Lock
+from Queue import Empty 
+from multiprocessing import Process, Queue
 
 from cooccurrence import matstore
 
 START_YEAR = 1900
 END_YEAR = 2000
 
-def main(proc_num, lock, out_dir, in_dir, years):
+def main(proc_num, queue, out_dir, in_dir):
     random.shuffle(years)
     print proc_num, "Start loop"
     while True:
-        lock.acquire()
-        work_left = False
-        for year in years:
-            dirs = set(os.listdir(out_dir))
-            if str(year) + ".bin" in dirs:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            fname = out_dir + str(year) + ".bin"
-            with open(fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
+        try: 
+            year = queue.get(block=False)
+        except Empty:
             print proc_num, "Finished"
             break
-
         print proc_num, "Loading  matrix", year
         coo_mat = matstore.retrieve_mat_as_coo(in_dir + str(year) + ".bin", min_size=10**6)
         csr_mat = coo_mat.tocsr()
@@ -43,8 +30,10 @@ def main(proc_num, lock, out_dir, in_dir, years):
             
 
 def run_parallel(num_procs, out_dir, in_dir, years):
-    lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_dir, in_dir, years]) for i in range(num_procs)]
+    queue = Queue()
+    for year in  years:
+        queue.put(year)
+    procs = [Process(target=main, args=[i, queue, out_dir, in_dir]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:

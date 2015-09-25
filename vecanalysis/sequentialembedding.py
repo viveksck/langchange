@@ -18,7 +18,7 @@ class SequentialEmbedding:
 
     @classmethod
     def from_ordered_dict(cls, year_embeds):
-        new_seq_embeds = cls([])
+        new_seq_embeds = cls([]) 
         new_seq_embeds.embeds = year_embeds
         return new_seq_embeds
 
@@ -32,6 +32,15 @@ class SequentialEmbedding:
             for _, neighbour in closest:
                 neighbour_set.add(neighbour)
         return neighbour_set
+
+    def get_seq_closest(self, word, start_year, num_years=10, n=10):
+        closest = collections.defaultdict(float)
+        for year in range(start_year, start_year + num_years):
+            embed = self.embeds[year]
+            year_closest = embed.closest(word, n=n*10)
+            for score, neigh in year_closest.iteritems():
+                closest[neigh] += score
+        return sorted(closest, key = lambda word : closest[word], reverse=True)[0:n]
 
     def get_word_subembeds(self, word, n=3, num_rand=None, word_list=None):
         if word_list == None:

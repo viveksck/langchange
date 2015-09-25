@@ -1,42 +1,34 @@
 import random
-import os
+import sys
 import argparse
-from multiprocessing import Process, Lock
+from Queue import Empty 
+from multiprocessing import Process, Queue
 
 from cooccurrence import matstore, indexing
 import ioutils
 
 YEARS = range(1900, 2001)
 
-def main(proc_num, lock, out_dir, in_dir):
+def main(proc_num, queue, out_dir, in_dir):
     merged_index = ioutils.load_pickle(out_dir + "merged_index.pkl") 
     random.shuffle(YEARS)
     print proc_num, "Start loop"
     while True:
-        lock.acquire()
-        work_left = False
-        for year in YEARS:
-            dirs = set(os.listdir(out_dir))
-            if str(year) + ".bin" in dirs:
-                continue
-            work_left = True
-            print proc_num, "year", year
-            fname = out_dir + str(year) + ".bin"
-            with open(fname, "w") as fp:
-                fp.write("")
-            fp.close()
-            break
-        lock.release()
-        if not work_left:
+        try: 
+            year = queue.get(block=False)
+        except Empty:
             print proc_num, "Finished"
             break
-
         print proc_num, "Fixing counts for year", year
         fixed_counts = {}
         old_mat = matstore.retrieve_mat_as_dict(in_dir + str(year) + ".bin")
         old_index = ioutils.load_pickle(in_dir + str(year) + "-list.pkl") 
         for pair, count in old_mat.iteritems():
-            i_word = old_index[pair[0]]
+            try:
+                i_word = old_index[pair[0]]
+            except IndexError:
+                print pair
+                sys.exit(0)
             c_word = old_index[pair[1]]
             new_pair = (indexing.word_to_static_id(i_word, merged_index), 
                     indexing.word_to_static_id(c_word, merged_index))
@@ -46,8 +38,10 @@ def main(proc_num, lock, out_dir, in_dir):
         matstore.export_mats_from_dicts({str(year) : fixed_counts}, out_dir)
 
 def run_parallel(num_procs, out_dir, in_dir):
-    lock = Lock()
-    procs = [Process(target=main, args=[i, lock, out_dir, in_dir]) for i in range(num_procs)]
+    queue = Queue()
+    for year in YEARS:
+        queue.put(year)
+    procs = [Process(target=main, args=[i, queue, out_dir, in_dir]) for i in range(num_procs)]
     for p in procs:
         p.start()
     for p in procs:
