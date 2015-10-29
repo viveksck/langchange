@@ -14,8 +14,8 @@ Place these files in some known directories, `DATA_DIR` and `MISC_DIR` respectiv
 * `prediction.ipynb` contains code for predicting how much word meanings will change. Running all the cells will replicate Figure 4 and the two parts of Extended Data Figure 4.
 
 3) If you wish to replicate the whole analysis pipeline. You will need to 
-    a) Use the scripts under `googlengrams/pullscripts` to pull data from GoogleBooks (make sure you have >30Gbs of free space!!). Or else pull the data yourself. The data needs to eventually be in a binary "dok" sparse matrix format. See `cooccurrence/matstore.pyx` for details.
-    b) Use the scripts under `cooccurrence` to build vector representations. In particular, `runsymconf.py` to get binary confidence matrix from co-occurrence counts and then `runlaplaceppmigen.py` to get PPMI word vectors. See these files for details. 
-    c) Run the stats scripts under `cooccurrence` to get statistics from the vectors, e.g. `runnetstats.py` to get most statistics. 
+    * Use the scripts under `googlengrams/pullscripts` to pull data from GoogleBooks (make sure you have >30Gbs of free space!!). Or else pull the data yourself. The data needs to eventually be in a binary "dok" sparse matrix format. See `cooccurrence/matstore.pyx` for details.
+    * Use the scripts under `cooccurrence` to build vector representations. In particular, `runsymconf.py` to get binary confidence matrix from co-occurrence counts and then `runlaplaceppmigen.py` to get PPMI word vectors. See these files for details. 
+    * Run the stats scripts under `cooccurrence` to get statistics from the vectors, e.g. `runnetstats.py` to get most statistics. 
 
 4) Email wleif@stanford.edu if something is off or missing!
