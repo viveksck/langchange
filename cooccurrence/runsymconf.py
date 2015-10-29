@@ -10,7 +10,7 @@ END_YEAR = 2000
 NUM_WORDS = 20000
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Merges years of raw 5gram data.")
+    parser = argparse.ArgumentParser(description="Creates binary matrix full of entries that are signicantly correlated.")
     parser.add_argument("out_dir", help="directory where data will be stored")
     parser.add_argument("in_dir", help="path to unmerged data")
     parser.add_argument("sample_file", help="path to file with sample sizes")

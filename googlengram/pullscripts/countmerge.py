@@ -1,4 +1,3 @@
-import random
 import sys
 import argparse
 from Queue import Empty 
@@ -11,7 +10,6 @@ YEARS = range(1900, 2001)
 
 def main(proc_num, queue, out_dir, in_dir):
     merged_index = ioutils.load_pickle(out_dir + "merged_index.pkl") 
-    random.shuffle(YEARS)
     print proc_num, "Start loop"
     while True:
         try: 

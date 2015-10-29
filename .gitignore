@@ -2,6 +2,7 @@
 seaborn
 coha
 scikits-bootstrap
+pattern
 
 *.c
 
