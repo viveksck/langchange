@@ -1,10 +1,10 @@
-## Instructions for replicating "Statistical regularities in the evolution of the English language."
+## Instructions for replicating "Statistical regularities in the evolution of English word meaning"
 
-The easiest way to replicate the results is as follows:
+The easiest way to replicate the results of the paper is as follows:
 
 1) Download statistics files from
 
-*`http://stanford.edu/~wleif/files/stats_lang_data.tar.gz` -- contains word vectors and summary statistics
+* `http://stanford.edu/~wleif/files/stats_lang_data.tar.gz` -- contains word vectors and summary statistics
 * `http://stanford.edu/~wleif/files/misc_lang_data.tar.gz` --- contains POS tags and other misc. info
 
 Place these files in some known directories, `DATA_DIR` and `MISC_DIR` respectively. 
