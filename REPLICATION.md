@@ -4,8 +4,8 @@ The easiest way to replicate the results of the paper is as follows:
 
 1) Download statistics files from
 
-* `http://stanford.edu/~wleif/files/stats_lang_data.tar.gz` -- contains word vectors and summary statistics
-* `http://stanford.edu/~wleif/files/misc_lang_data.tar.gz` --- contains POS tags and other misc. info
+* `http://snap.stanford.edu/googlengrams/stats_lang_data.tar.gz` -- contains word vectors and summary statistics
+* `http://snap.stanford.edu/googlengrams/misc_lang_data.tar.gz` --- contains POS tags and other misc. info
 
 Place these files in some known directories, `DATA_DIR` and `MISC_DIR` respectively. 
  
